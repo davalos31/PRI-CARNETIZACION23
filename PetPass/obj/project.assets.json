@@ -24022,24 +24022,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Windows\\.nuget\\packages\\": {},
+    "C:\\Users\\win\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj",
+      "projectUniqueName": "C:\\Users\\win\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj",
       "projectName": "PetPass",
-      "projectPath": "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj",
-      "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\obj\\",
+      "projectPath": "C:\\Users\\win\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj",
+      "packagesPath": "C:\\Users\\win\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\win\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\win\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

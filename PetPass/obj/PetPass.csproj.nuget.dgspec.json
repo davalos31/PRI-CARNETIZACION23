@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Windows\\source\\repos\\PetPass\\PetPass\\PetPass.csproj": {}
+    "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Windows\\source\\repos\\PetPass\\PetPass\\PetPass.csproj": {
+    "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Windows\\source\\repos\\PetPass\\PetPass\\PetPass.csproj",
+        "projectUniqueName": "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj",
         "projectName": "PetPass",
-        "projectPath": "C:\\Users\\Windows\\source\\repos\\PetPass\\PetPass\\PetPass.csproj",
+        "projectPath": "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj",
         "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Windows\\source\\repos\\PetPass\\PetPass\\obj\\",
+        "outputPath": "C:\\Users\\Windows\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

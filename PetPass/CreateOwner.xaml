@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.CreateOwner"
+             Title="CreateOwner">
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Padding="20">
+                <Label Text="Formulario de Registro" FontSize="20" HorizontalOptions="CenterAndExpand" Margin="0,10,0,20"/>
+                <Label Text="Complete el siguiente formulario para generar al propietario" HorizontalOptions="CenterAndExpand"/>
+                <VerticalStackLayout Padding="20">
+                    <Label Text="Datos del Responsable" HorizontalOptions="Center"/>
+
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Nombre" HorizontalOptions="FillAndExpand"/>
+                        <Entry x:Name="EntryName" HorizontalOptions="FillAndExpand"  />
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Apellido Paterno" HorizontalOptions="FillAndExpand"/>
+                        <Entry x:Name="EntryFirstName" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Apellido Materno" HorizontalOptions="FillAndExpand"/>
+                        <Entry x:Name="EntryLastName" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="C.I" HorizontalOptions="FillAndExpand"/>
+                        <Entry x:Name="EntryCI" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Fecha Nacimiento" HorizontalOptions="FillAndExpand"/>
+                        <DatePicker x:Name="EntryBirthDate" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Sexo" HorizontalOptions="FillAndExpand"/>
+                        <Picker x:Name="EntryGender" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Direccion" HorizontalOptions="FillAndExpand"/>
+                        <Entry x:Name="EntryAddress" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Telefono/Celular" HorizontalOptions="FillAndExpand"/>
+                        <Entry x:Name="EntryPhone" TextChanged="EntryPhone_TextChanged" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Margin="0,10" Orientation="Horizontal">
+                        <Label Text="Correo Electronico" HorizontalOptions="FillAndExpand"/>
+                        <Entry x:Name="EntryEmail" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0">
+                        <Button x:Name="btnVolver" Text="Volver" Clicked="btnVolver_Clicked" HorizontalOptions="FillAndExpand" WidthRequest="100" Margin="10,0,10,0"/>
+                        <Button x:Name="btnRegistrar" Text="Registrar" Clicked="btnRegistrar_Clicked" HorizontalOptions="FillAndExpand" WidthRequest="100" Margin="10,0,10,0"/>
+
+                    </StackLayout>
+                </VerticalStackLayout>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

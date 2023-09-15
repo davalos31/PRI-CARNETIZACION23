@@ -21,5 +21,11 @@
             SemanticScreenReader.Announce(CounterBtn.Text);
             // creacion rama ricaldez
         }
+
+        private void btnCreateOwner_Clicked(object sender, EventArgs e)
+        {
+            var form = new CreateOwner();
+            Navigation.PushAsync(form);
+        }
     }
 }

@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-14T02:49:19.791</Modified>
+      <Modified>2023-09-15T01:59:43.963</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-09-14T02:49:19.364</Modified>
+      <Modified>2023-09-15T01:59:43.620</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.runtimeconfig.json">
       <PackagePath>PetPass.runtimeconfig.json</PackagePath>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.dll">
       <PackagePath>PetPass.dll</PackagePath>
-      <Modified>2023-09-14T02:49:17.399</Modified>
+      <Modified>2023-09-15T01:59:42.034</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>PetPass.exe</PackagePath>
-      <Modified>2023-09-14T02:49:17.425</Modified>
+      <Modified>2023-09-15T01:59:42.080</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.5\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -920,7 +920,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.deps.json">
       <PackagePath>PetPass.deps.json</PackagePath>
-      <Modified>2023-09-14T02:49:19.608</Modified>
+      <Modified>2023-09-15T01:59:43.800</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.86\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

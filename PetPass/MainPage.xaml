@@ -35,6 +35,10 @@
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center" />
 
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button x:Name="btnCreateOwner" Text="Crear Dueño" Clicked="btnCreateOwner_Clicked" HorizontalOptions="CenterAndExpand"/>
+            </HorizontalStackLayout>
+
         </VerticalStackLayout>
     </ScrollView>
 

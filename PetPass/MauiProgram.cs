@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Camera.MAUI;
 
 namespace PetPass
 {
@@ -9,6 +10,7 @@ namespace PetPass
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCameraView()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

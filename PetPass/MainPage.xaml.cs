@@ -1,4 +1,6 @@
-﻿namespace PetPass
+﻿
+using PetPass.Inicio_de_sesion;
+namespace PetPass
 {
     public partial class MainPage : ContentPage
     {
@@ -31,6 +33,12 @@
         {
             var formulariopet = new UseCamera();
             Navigation.PushAsync(formulariopet);
+        }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+            var Sesion = new Session();
+            Navigation.PushAsync(Sesion);
         }
     }
 }

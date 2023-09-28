@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.Inicio_de_sesion.Session"
+             Title="Session">
+    <VerticalStackLayout>
+        <Label Text="Iniciar Sesión"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               Margin="0,20,0,20"/>
+
+        <Label Text="Correo Electrónico:"/>
+        <Entry x:Name="EmailEntry" Placeholder="Ingrese su correo electrónico" Keyboard="Email" />
+
+        <Label Text="Contraseña:"/>
+        <Entry x:Name="PasswordEntry" Placeholder="Ingrese su contraseña" IsPassword="True" />
+
+        <Button Text="Iniciar Sesión" Clicked="Button_Clicked"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+
+        <Label Text="¿Olvidaste tu contraseña?"
+               TextColor="Blue"
+               FontSize="16"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ForgotPassword_Tapped" />
+            </Label.GestureRecognizers>
+        </Label>
+    </VerticalStackLayout>
+
+</ContentPage>

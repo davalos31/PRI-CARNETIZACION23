@@ -45,6 +45,8 @@
 
                 <Button Text="Tomar Foto" Clicked="Button_Clicked_1" HorizontalOptions="CenterAndExpand"/>
                 <Button Text="Formulario Pet"  Clicked="Button_Clicked" HorizontalOptions="CenterAndExpand"/>
+                
+                <Button Text="Inisio Sesion"  Clicked="Button_Clicked_2" HorizontalOptions="CenterAndExpand"/>
             </HorizontalStackLayout>
 
         </VerticalStackLayout>

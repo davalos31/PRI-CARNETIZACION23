@@ -3,6 +3,7 @@ using Microsoft.Maui.Controls;
 
 public partial class Session : ContentPage
 {
+    //este esl para el inicio sesion
 	public Session()
 	{
 		InitializeComponent();

@@ -2,6 +2,7 @@ namespace PetPass.Inicio_de_sesion;
 
 public partial class NewPassword : ContentPage
 {
+    //este es el cambio de contraseña
 	public NewPassword()
 	{
 		InitializeComponent();

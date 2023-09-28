@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-09-28T08:57:58.345</Modified>
+      <Modified>2023-09-28T12:40:04.042</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.dll">
       <PackagePath>PetPass.dll</PackagePath>
-      <Modified>2023-09-28T08:57:57.281</Modified>
+      <Modified>2023-09-28T12:40:02.747</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>PetPass.exe</PackagePath>
-      <Modified>2023-09-28T08:57:57.323</Modified>
+      <Modified>2023-09-28T12:40:02.780</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.deps.json">
       <PackagePath>PetPass.deps.json</PackagePath>

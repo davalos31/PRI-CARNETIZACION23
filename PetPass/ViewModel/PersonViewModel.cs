@@ -10,20 +10,20 @@ using PetPass.Base;
 using PetPass.Resources.Tools;
 using PetPass.Model;
 using PetPass.Service;
-
-
+using Command = MvvmHelpers.Commands.Command;
+using PetPass.View;
 
 namespace PetPass.ViewModel
 {
     public class PersonViewModel : ViewModelBase, INotifyPropertyChanged
     {
-
         private readonly IPersonService _personService;
 
-        public PersonViewModel()
+        public PersonViewModel(IPersonService personService)
         {
-            _personService = new PersonService();
-            CreatePersonCommand = new AsyncCommand(CreatePersonAsync);
+            _personService = personService;
+            CreatePersonCommand = new AsyncCommand(async () => await CreatePerson());
+            PagesLogin = new AsyncCommand(async () => await Login());
             SearchCommand = new AsyncCommand(SearchAsync);
         }
 
@@ -168,7 +168,9 @@ namespace PetPass.ViewModel
             }
         }
 
-        public ICommand CreatePersonCommand { get; private set; }
+        public ICommand CreatePersonCommand { get; set; }
+
+        public ICommand PagesLogin{ get; set; }
         public ICommand SearchCommand { get; private set; }
 
         private async Task SearchAsync()
@@ -193,48 +195,48 @@ namespace PetPass.ViewModel
             }
         }
 
-        private async Task CreatePersonAsync()
+        private async Task Login()
         {
+            await App.Current.MainPage.Navigation.PushAsync(new Login());
+        }
 
 
-
-
-    
-
-            //// Validar los datos del objeto Person utilizando ValidationForm
-            //List<string> validationErrors = ValidationForm.ValidatePerson(person);
-
-            //if (validationErrors.Count > 0)
-            //{
-            //    // Hay errores de validación, muestra los mensajes en una alerta
-            //    string errorMessage = string.Join("\n", validationErrors);
-            //    await Application.Current.MainPage.DisplayAlert("Error de validación", errorMessage, "OK");
-            //    return;
-            //}
-
-            var person = new Person
+        private async Task CreatePerson()
+        {
+            // Crea un objeto Person con los datos del formulario
+            Person person = new Person
             {
-                Name = Name,
-                FirstName = FirstName,
-                LastName = LastName,
-                CI = CI,
-                Gender = Gender,
-                Address = Address,
-                Phone = Phone,
-                Email = Email
+                Name = this.Name,
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                CI = this.CI,
+                Gender = this.Gender,
+                Address = this.Address,
+                Phone = this.Phone,
+                Email = this.Email
             };
 
-            // No hay errores de validación, intenta crear la persona
+            // Llama al método para crear la persona en el servicio
             Person createdPerson = await _personService.CreatePersonAsync(person);
 
+            // Verifica si la persona se creó exitosamente o si hubo un error
             if (createdPerson != null)
             {
-                await Application.Current.MainPage.DisplayAlert("Éxito", "Persona creada correctamente.", "OK");
+                // La persona se creó exitosamente. Muestra un mensaje al usuario.
+                await Application.Current.MainPage.DisplayAlert("Éxito", "La persona se creó exitosamente.", "Aceptar");
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo crear la persona. Inténtalo de nuevo.", "OK");
+                // Hubo un error al crear la persona. Muestra un mensaje de error al usuario.
+                await Application.Current.MainPage.DisplayAlert("Error", "Hubo un error al crear la persona.", "Aceptar");
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

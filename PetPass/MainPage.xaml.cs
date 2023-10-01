@@ -27,5 +27,11 @@
             var form = new CreateOwner();
             Navigation.PushAsync(form);
         }
-    }
+
+		private void btnAskRecovery_Clicked(object sender, EventArgs e)
+		{
+			var form = new AskRecovery();
+			Navigation.PushAsync(form);
+		}
+	}
 }

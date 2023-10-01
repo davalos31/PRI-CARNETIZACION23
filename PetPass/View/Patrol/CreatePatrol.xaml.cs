@@ -1,4 +1,6 @@
+using Microsoft.Extensions.Logging;
 using PetPass.Model;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 
 namespace PetPass.View.Patrol;
@@ -7,189 +9,177 @@ public partial class CreatePatrol : ContentPage
 {
     private int _personID;
     private readonly string _connectionString = "Server=DbPetPass.mssql.somee.com; Database=DbPetPass;User=nahuubj_SQLLogin_1; Password=z5qp9mphxt; Trusted_Connection=false; Encrypt=False;";
+
+    private List<Zone> allZones;
+    private List<Zone> filteredZones;
+    public ObservableCollection<Zone> Zones { get; set; }
+    public ObservableCollection<Campaign> Campaigns { get; set; }
+
+    private int selectedZoneID;
+    private int selectedCampaignID;
+    // Establece la fecha actual en el campo patrolDate
+    private DateTime currentPatrolDate = DateTime.Now;
     public CreatePatrol(int personId)
 	{
 		InitializeComponent();
 		_personID = personId;
-     
-        CargarDatosParaPickers();
-
-
+      //  Zones = new ObservableCollection<Zone>(); // Inicializa la colección aquí
+        Campaigns = new ObservableCollection<Campaign>();
+        allZones = new List<Zone>();
+        filteredZones = new List<Zone>();
+        LoadDataFromDatabase();
+        UpdateListView();
+        BindingContext = this;
+        LoadDataFromDatabase();
+        LoadCampaignsFromDatabase();
+       
     }
 
-
-    private async void CargarDatosParaPickers()
+    private void LoadDataFromDatabase()
     {
+        string consultaSQL = "SELECT TOP 10 zoneID, [name] FROM [Zone]";
+
         try
         {
-            // Llena el Picker de Zone
-            List<Zone> zones = await ObtenerZonasAsync();
-            foreach (Zone zone in zones)
+            using (SqlConnection conexion = new SqlConnection(_connectionString))
             {
-                ZonePicker.Items.Add(zone.Name);
-            }
+                conexion.Open();
 
-            // Llena el Picker de Campaign
-            //List<Campaign> campaigns = await ObtenerCampañasAsync();
-            //foreach (Campaign campaign in campaigns)
-            //{
-            //    CampaignPicker.Items.Add(campaign.Name);
-            //}
-        }
-        catch (Exception ex)
-        {
-            await DisplayAlert("Error", $"Error al cargar datos para los pickers: {ex.Message}", "Aceptar");
-        }
-    }
-
-
-    private async Task<List<Zone>> ObtenerZonasAsync()
-    {
-        // Realiza una consulta SQL para obtener datos de la tabla Zone
-        List<Zone> zones = new List<Zone>();
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            await connection.OpenAsync();
-            using (SqlCommand command = new SqlCommand("SELECT [name] FROM [DbPetPass].[dbo].[Zone]", connection))
-            {
-                SqlDataReader reader = await command.ExecuteReaderAsync();
-                while (reader.Read())
+                using (SqlCommand comando = new SqlCommand(consultaSQL, conexion))
                 {
-                    string name = reader.GetString(0);
-                    zones.Add(new Zone { Name = name });
-                }
-            }
-        }
-        return zones;
-    }
-
-    //private async Task<List<Campaign>> ObtenerCampañasAsync()
-    //{
-    //    // Realiza una consulta SQL para obtener datos de la tabla Campaign
-    //    List<Campaign> campaigns = new List<Campaign>();
-    //    using (SqlConnection connection = new SqlConnection(_connectionString))
-    //    {
-    //        await connection.OpenAsync();
-    //        using (SqlCommand command = new SqlCommand("SELECT [campaignID], [name] FROM [DbPetPass].[dbo].[Campaign]", connection))
-    //        {
-    //            SqlDataReader reader = await command.ExecuteReaderAsync();
-    //            while (reader.Read())
-    //            {
-    //                int campaignID;
-    //                object campaignIDObject = reader[0];
-    //                if (campaignIDObject != DBNull.Value)
-    //                {
-    //                    campaignID = Convert.ToInt32(campaignIDObject);
-    //                }
-    //                else
-    //                {
-    //                    campaignID = -1; // Otra acción por defecto si es DBNull
-    //                }
-
-    //                string name = reader.GetString(1);
-    //                campaigns.Add(new Campaign { CampaignID = campaignID, Name = name });
-    //            }
-    //        }
-    //    }
-    //    return campaigns;
-    //}
-
-    // Evento para guardar la patrulla con los valores seleccionados
-    private async void GuardarButton_Clicked(object sender, EventArgs e)
-    {
-        // Obtén la fecha seleccionada en el DatePicker
-        DateTime selectedDate = DatePicker.Date;
-
-        // Obtén los valores seleccionados en los pickers
-        string selectedZoneName = ZonePicker.SelectedItem as string;
-        string selectedCampaignName = CampaignPicker.SelectedItem as string;
-
-        // Busca el ID correspondiente a los valores seleccionados
-        int selectedZoneID = await ObtenerIDDeZonaAsync(selectedZoneName);
-        int selectedCampaignID = await ObtenerIDDeCampañaAsync(selectedCampaignName);
-
-        // Ahora tienes los IDs de Zone y Campaign, así como la fecha seleccionada.
-        // Puedes usarlos para realizar el insert en la tabla Patrol.
-        await InsertarPatrullaAsync(selectedZoneID, selectedCampaignID, selectedDate);
-    }
-
-    private async Task<int> ObtenerIDDeZonaAsync(string zoneName)
-    {
-        // Realiza una consulta SQL para obtener el ID de la zona
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            await connection.OpenAsync();
-            using (SqlCommand command = new SqlCommand(
-                "SELECT [zoneID] FROM [DbPetPass].[dbo].[Zone] WHERE [name] = @ZoneName", connection))
-            {
-                command.Parameters.AddWithValue("@ZoneName", zoneName);
-                object result = await command.ExecuteScalarAsync();
-                if (result != null && result != DBNull.Value)
-                {
-                    return (int)result;
-                }
-            }
-        }
-        return -1; // Valor predeterminado en caso de error
-    }
-
-    private async Task<int> ObtenerIDDeCampañaAsync(string campaignName)
-    {
-        // Realiza una consulta SQL para obtener el ID de la campaña
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            await connection.OpenAsync();
-            using (SqlCommand command = new SqlCommand(
-                "SELECT [campaignID] FROM [DbPetPass].[dbo].[Campaign] WHERE [name] = @CampaignName", connection))
-            {
-                command.Parameters.AddWithValue("@CampaignName", campaignName);
-                object result = await command.ExecuteScalarAsync();
-                if (result != null && result != DBNull.Value)
-                {
-                    return (int)result;
-                }
-            }
-        }
-        return -1; // Valor predeterminado en caso de error
-    }
-
-    private async Task InsertarPatrullaAsync(int selectedZoneID, int selectedCampaignID, DateTime selectedDate)
-    {
-        try
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-
-                using (SqlCommand command = new SqlCommand(
-                    "INSERT INTO [DbPetPass].[dbo].[Patrol] ([patrolDate], [personID], [zoneID], [campaignID]) " +
-                    "VALUES (@PatrolDate, @PersonID, @ZoneID, @CampaignID)", connection))
-                {
-                    command.Parameters.AddWithValue("@PatrolDate", selectedDate); // Agrega la fecha de patrullaje
-                    command.Parameters.AddWithValue("@PersonID", _personID);
-                    command.Parameters.AddWithValue("@ZoneID", selectedZoneID);
-                    command.Parameters.AddWithValue("@CampaignID", selectedCampaignID);
-
-                    int rowsAffected = await command.ExecuteNonQueryAsync();
-
-                    // Si rowsAffected es mayor que 0, la inserción fue exitosa.
-                    if (rowsAffected > 0)
+                    using (SqlDataReader lector = comando.ExecuteReader())
                     {
-                        await DisplayAlert("Éxito", "La patrulla se creó exitosamente.", "Aceptar");
-                    }
-                    else
-                    {
-                        await DisplayAlert("Error", "Hubo un error al crear la patrulla.", "Aceptar");
+                        Zones = new ObservableCollection<Zone>(); // Inicializa la colección aquí
+
+                        while (lector.Read())
+                        {
+                            byte zoneIDByte = lector.GetByte(0);
+                            int zoneID = Convert.ToInt32(zoneIDByte);
+                            string nombre = lector.GetString(1);
+                            Zones.Add(new Zone { ZoneID = zoneID, Name = nombre });
+                            Console.WriteLine($"zoneID: {zoneID}, Nombre: {nombre}");
+                        }
                     }
                 }
             }
         }
         catch (Exception ex)
         {
-            // Manejar cualquier excepción que pueda ocurrir durante la inserción.
-            Console.WriteLine($"Error al insertar patrulla: {ex.Message}");
+            DisplayAlert("Error", "Error al cargar datos desde la base de datos1: " + ex.Message, "Aceptar");
+        }
+
+        UpdateListView(); // Llama a UpdateListView después de cargar los datos
+    }
+
+
+
+    private void UpdateListView()
+    {
+        zoneListView.ItemsSource = filteredZones; // Configura la ListView con filteredZones
+    }
+
+    private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+    {
+        string searchText = e.NewTextValue;
+        filteredZones = Zones.Where(zone => zone.Name.Contains(searchText)).ToList(); // Filtrar la lista Zones
+        UpdateListView();
+    }
+
+    private void OnAddButtonClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.CommandParameter is int zoneID)
+        {
+            // Almacena el ZoneID seleccionado en la variable selectedZoneID
+            selectedZoneID = zoneID;
+
+            // Realiza cualquier otra lógica que necesites aquí
         }
     }
+
+    private void LoadCampaignsFromDatabase()
+    {
+        string consultaSQL = "SELECT campaignID, [name] FROM [Campaign] ";
+
+        try
+        {
+            using (SqlConnection conexion = new SqlConnection(_connectionString))
+            {
+                conexion.Open();
+
+                using (SqlCommand comando = new SqlCommand(consultaSQL, conexion))
+                {
+                    using (SqlDataReader lector = comando.ExecuteReader())
+                    {
+                       
+                        while (lector.Read())
+                        {
+                           
+                            int campaignID = lector.GetInt32(0);
+                           // int campaignID = Convert.ToInt32(campaignIDByte);
+                            string nombre = lector.GetString(1);
+                            Campaigns.Add(new Campaign { CampaignID = campaignID, Name = nombre });
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", "Error al cargar datos de campañas desde la base de datos: " + ex.Message, "Aceptar");
+        }
+    }
+
+    private void OnAddCampaignButtonClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.CommandParameter is int campaignID)
+        {
+            // Almacena el CampaignID seleccionado en la variable selectedCampaignID
+            selectedCampaignID = campaignID;
+
+            // Realiza cualquier otra lógica que necesites aquí
+        }
+    }
+
+    private void InsertPatrolIntoDatabase()
+    {
+        try
+        {
+            using (SqlConnection conexion = new SqlConnection(_connectionString))
+            {
+                conexion.Open();
+
+                string insertSQL = "INSERT INTO [Patrol] ([patrolDate], [personID], [zoneID], [campaignID]) VALUES (@PatrolDate, @PersonID, @ZoneID, @CampaignID)";
+
+                using (SqlCommand comando = new SqlCommand(insertSQL, conexion))
+                {
+                    // Configura los parámetros del comando
+                    comando.Parameters.AddWithValue("@PatrolDate", currentPatrolDate); // Utiliza el valor de currentPatrolDate
+                    comando.Parameters.AddWithValue("@PersonID", _personID);
+                    comando.Parameters.AddWithValue("@ZoneID", selectedZoneID);
+                    comando.Parameters.AddWithValue("@CampaignID", selectedCampaignID);
+
+                    // Ejecuta el comando de inserción
+                    comando.ExecuteNonQuery();
+                }
+            }
+
+            DisplayAlert("Éxito", "Patrol insertado en la base de datos correctamente", "Aceptar");
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", "Error al insertar el patrol en la base de datos: " + ex.Message, "Aceptar");
+        }
+    }
+
+
+    private void OnInsertButtonClicked(object sender, EventArgs e)
+    {
+        // Llama al método InsertPatrolIntoDatabase para insertar los datos en la base de datos
+        InsertPatrolIntoDatabase();
+    }
+
+
+
 }
 
 

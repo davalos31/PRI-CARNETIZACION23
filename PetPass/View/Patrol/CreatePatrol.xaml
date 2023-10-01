@@ -4,36 +4,56 @@
              x:Class="PetPass.View.Patrol.CreatePatrol"
              Title="CreatePatrol">
     <VerticalStackLayout>
+
         <StackLayout>
-            <!-- Otros campos de entrada aquí -->
-
-
-            <ListView x:Name="listaZonas">
+            <Entry x:Name="searchEntry" Placeholder="Buscar por nombre" TextChanged="OnSearchTextChanged"/>
+            <ListView x:Name="zoneListView" ItemsSource="{Binding Zones}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" />
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding ZoneID}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand">
+                                    <Label.TextColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <!-- Define el color de la letra para cada plataforma (iOS, Android, etc.) -->
+                                            <On Platform="iOS" Value="Black" />
+                                            <On Platform="Android" Value="Black" />
+                                            <!-- Agrega más plataformas si es necesario -->
+                                        </OnPlatform>
+                                    </Label.TextColor>
+                                </Label>
+                                <Button Text="Agregar" Clicked="OnAddButtonClicked" CommandParameter="{Binding ZoneID}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                  
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+
+        <StackLayout>
+            <!-- Lista de Campañas -->
+            <Label Text="Lista de Campañas" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+            <ListView x:Name="campaignListView" ItemsSource="{Binding Campaigns}" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                                <Button Text="Agregar" Clicked="OnAddCampaignButtonClicked" CommandParameter="{Binding CampaignID}"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-
-
-            <!-- Campo de selección para Zone -->
-            <Label Text="Seleccione la Zona:" />
-            <Picker x:Name="ZonePicker">
-                <!-- Aquí se llenará dinámicamente con opciones de la tabla Zone -->
-            </Picker>
-
-            <!-- Campo de selección para Campaign -->
-            <Label Text="Seleccione la Campaña:" />
-            <Picker x:Name="CampaignPicker">
-                <!-- Aquí se llenará dinámicamente con opciones de la tabla Campaign -->
-            </Picker>
-
-            <Label Text="Fecha de Patrullaje:" />
-            <DatePicker x:Name="DatePicker" />
-
-            <Button Text="Guardar" Clicked="GuardarButton_Clicked" />
+            <DatePicker x:Name="patrolDate" Date="{Binding currentPatrolDate}" Format="D"/>
+            <Button Text="Insertar" Clicked="OnInsertButtonClicked"/>
         </StackLayout>
+
+
+
     </VerticalStackLayout>
 </ContentPage>

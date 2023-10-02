@@ -12,6 +12,7 @@ using PetPass.Model;
 using PetPass.Service;
 using Command = MvvmHelpers.Commands.Command;
 using PetPass.View;
+using PetPass.View.Patrol;
 
 namespace PetPass.ViewModel
 {
@@ -197,7 +198,8 @@ namespace PetPass.ViewModel
 
         private async Task Login()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new Login());
+            //await App.Current.MainPage.Navigation.PushAsync(new Login());
+            await App.Current.MainPage.Navigation.PushAsync(new DetailPatrol());
         }
 
 

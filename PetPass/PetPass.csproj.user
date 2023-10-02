@@ -35,6 +35,12 @@
     <MauiXaml Update="View\Patrol\CreatePatrol.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="View\Patrol\DetailPatrol.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Patrol\EditPatrol.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
   </ItemGroup>
   <ItemGroup>
     <None Update="Platforms\Windows\Package.appxmanifest">

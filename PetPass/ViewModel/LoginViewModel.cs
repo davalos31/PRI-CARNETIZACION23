@@ -83,6 +83,8 @@ namespace PetPass.ViewModel
                     // Reemplaza "OtraPagina" con el nombre de la página a la que deseas redirigir.
                     int personID = await GetPersonIDAsync(Username);
                     await Application.Current.MainPage.Navigation.PushAsync(new CreatePatrol(personID));
+                   
+
                 }
                 else
                 {

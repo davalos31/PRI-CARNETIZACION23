@@ -13,16 +13,10 @@
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding ZoneID}" HorizontalOptions="StartAndExpand"/>
-                                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand">
-                                    <Label.TextColor>
-                                        <OnPlatform x:TypeArguments="Color">
-                                            <!-- Define el color de la letra para cada plataforma (iOS, Android, etc.) -->
-                                            <On Platform="iOS" Value="Black" />
-                                            <On Platform="Android" Value="Black" />
-                                            <!-- Agrega más plataformas si es necesario -->
-                                        </OnPlatform>
-                                    </Label.TextColor>
-                                </Label>
+                                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand"/>
+                                
+                                
+                                
                                 <Button Text="Agregar" Clicked="OnAddButtonClicked" CommandParameter="{Binding ZoneID}"/>
                             </StackLayout>
                         </ViewCell>

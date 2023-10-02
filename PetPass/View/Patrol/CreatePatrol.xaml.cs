@@ -89,10 +89,10 @@ public partial class CreatePatrol : ContentPage
     {
         if (sender is Button button && button.CommandParameter is int zoneID)
         {
-            // Almacena el ZoneID seleccionado en la variable selectedZoneID
+          
             selectedZoneID = zoneID;
 
-            // Realiza cualquier otra lógica que necesites aquí
+           
         }
     }
 
@@ -133,10 +133,10 @@ public partial class CreatePatrol : ContentPage
     {
         if (sender is Button button && button.CommandParameter is int campaignID)
         {
-            // Almacena el CampaignID seleccionado en la variable selectedCampaignID
+   
             selectedCampaignID = campaignID;
 
-            // Realiza cualquier otra lógica que necesites aquí
+            
         }
     }
 
@@ -152,18 +152,19 @@ public partial class CreatePatrol : ContentPage
 
                 using (SqlCommand comando = new SqlCommand(insertSQL, conexion))
                 {
-                    // Configura los parámetros del comando
+                   
                     comando.Parameters.AddWithValue("@PatrolDate", currentPatrolDate); // Utiliza el valor de currentPatrolDate
                     comando.Parameters.AddWithValue("@PersonID", _personID);
                     comando.Parameters.AddWithValue("@ZoneID", selectedZoneID);
                     comando.Parameters.AddWithValue("@CampaignID", selectedCampaignID);
 
-                    // Ejecuta el comando de inserción
+                   
                     comando.ExecuteNonQuery();
                 }
             }
 
             DisplayAlert("Éxito", "Patrol insertado en la base de datos correctamente", "Aceptar");
+            Navigation.PushAsync(new DetailPatrol());
         }
         catch (Exception ex)
         {
@@ -174,7 +175,7 @@ public partial class CreatePatrol : ContentPage
 
     private void OnInsertButtonClicked(object sender, EventArgs e)
     {
-        // Llama al método InsertPatrolIntoDatabase para insertar los datos en la base de datos
+    
         InsertPatrolIntoDatabase();
     }
 

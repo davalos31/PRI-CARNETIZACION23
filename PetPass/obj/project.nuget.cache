@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qhF3Ew1eOutdvQp/fLWiFHh/FTRtrJ1KFEpNGTZ4OxU52tdApvTl/DA4CHNTTRZe/SZ82VF+79UrTetLO/zWGw==",
+  "dgSpecHash": "lKerU1c7xuF+/QjmiSlyRTPu/iGoNHl8J/TJRVjNRZLvyszq58ZAxwES0ovKCc0C1ytscFKhV6cw5nT/bRdlAA==",
   "success": true,
   "projectFilePath": "C:\\Users\\ASUS\\Documents\\GitHub\\PRI-CARNETIZACION23\\PetPass\\PetPass.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\7.0.92\\microsoft.maui.graphics.win2d.winui.desktop.7.0.92.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.windowsappsdk\\1.2.221209.1\\microsoft.windowsappsdk.1.2.221209.1.nupkg.sha512",
+    "C:\\Users\\ASUS\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\xamarin.android.glide\\4.13.2.2\\xamarin.android.glide.4.13.2.2.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\xamarin.android.glide.annotations\\4.13.2.2\\xamarin.android.glide.annotations.4.13.2.2.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\xamarin.android.glide.disklrucache\\4.13.2.2\\xamarin.android.glide.disklrucache.4.13.2.2.nupkg.sha512",

@@ -25,11 +25,15 @@
         <Label Text="Raza:"/>
         <Entry x:Name="RazaEntry" Placeholder="Ingrese la raza de la mascota"/>
 
-        <Label Text="Género:"/>
-        <StackLayout Orientation="Horizontal">
-            <RadioButton x:Name="GeneroMachoRadioButton" Content="Macho"/>
-            <RadioButton x:Name="GeneroHembraRadioButton" Content="Hembra"/>
-        </StackLayout>
+        <Label Text="Genero:"/>
+        <Picker x:Name="GeneroPet">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Macho</x:String>
+                    <x:String>Hembra</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
 
         <Label Text="Fecha de Nacimiento:"/>
         <DatePicker x:Name="FechaNacimientoDatePicker"/>

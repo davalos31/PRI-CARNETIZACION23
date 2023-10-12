@@ -688,6 +688,9 @@
     <AppxPackagedFile Include="C:\Users\ASUS\.nuget\packages\microsoft.windowsappsdk\1.2.221209.1\lib\net6.0-windows10.0.18362.0\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.Net.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ASUS\.nuget\packages\newtonsoft.json\13.0.3\lib\net6.0\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ASUS\.nuget\packages\zxing.net\0.16.9\lib\net7.0\zxing.dll">
       <PackagePath>zxing.dll</PackagePath>
     </AppxPackagedFile>

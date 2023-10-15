@@ -11,7 +11,7 @@ namespace PetPass.Service
     public class UserService : IUserService
     {
         private readonly string _connectionString;
-        public UserService(string connectiom) 
+        public UserService(string connectiom)
         {
             _connectionString = connectiom;
         }

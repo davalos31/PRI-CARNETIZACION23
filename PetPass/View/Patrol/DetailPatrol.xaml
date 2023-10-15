@@ -4,26 +4,23 @@
              x:Class="PetPass.View.Patrol.DetailPatrol"
              Title="DetailPatrol">
     <VerticalStackLayout>
+        <!-- Contenido de tu página aquí -->
+
         <ListView x:Name="zoneListView" ItemsSource="{Binding Patrols}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <!--<Label Text="{Binding patrolID}" />-->
-                            <Label Text="{Binding patrolDate}"  />
+                            <Label Text="{Binding patrolDate}" />
                             <Label Text="{Binding Person.Name}" />
-                            <!-- Accede a la propiedad Name de la clase Person -->
                             <Label Text="{Binding Zone.Name}" />
-                            <!-- Accede a la propiedad Name de la clase Zone -->
                             <Label Text="{Binding Campaign.Name}" />
-                            <!-- Accede a la propiedad CampaignName de la clase Campaign -->
-                            <Button Text="Editar"  />
-                            <Button Text="Eliminar"  Clicked="OnEditButtonClicked"/>
+                            <Button Text="Editar" />
+                            <Button Text="Eliminar" Clicked="OnEditButtonClicked"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
     </VerticalStackLayout>
 </ContentPage>

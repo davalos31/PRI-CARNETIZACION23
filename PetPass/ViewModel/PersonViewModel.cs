@@ -154,7 +154,19 @@ namespace PetPass.ViewModel
                 }
             }
         }
-
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                if (_errorMessage != value)
+                {
+                    _errorMessage = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         private List<Person> _people;
         public List<Person> People
         {
@@ -171,7 +183,7 @@ namespace PetPass.ViewModel
 
         public ICommand CreatePersonCommand { get; set; }
 
-        public ICommand PagesLogin{ get; set; }
+        public ICommand PagesLogin { get; set; }
         public ICommand SearchCommand { get; private set; }
 
         private async Task SearchAsync()
@@ -205,32 +217,59 @@ namespace PetPass.ViewModel
 
         private async Task CreatePerson()
         {
-            // Crea un objeto Person con los datos del formulario
-            Person person = new Person
+            try
             {
-                Name = this.Name,
-                FirstName = this.FirstName,
-                LastName = this.LastName,
-                CI = this.CI,
-                Gender = this.Gender,
-                Address = this.Address,
-                Phone = this.Phone,
-                Email = this.Email
-            };
+                // Agregar registros para verificar que se llama correctamente
+                Console.WriteLine("CreatePerson: Creando persona...");
 
-            // Llama al método para crear la persona en el servicio
-            Person createdPerson = await _personService.CreatePersonAsync(person);
+                // Validar que los campos requeridos estén llenos
+                if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(FirstName))
+                {
+                    Console.WriteLine("CreatePerson: Campos requeridos incompletos.");
+                    await Application.Current.MainPage.DisplayAlert("Error", "Nombre y Apellido son obligatorios.", "Aceptar");
+                    return;
+                }
 
-            // Verifica si la persona se creó exitosamente o si hubo un error
-            if (createdPerson != null)
-            {
-                // La persona se creó exitosamente. Muestra un mensaje al usuario.
-                await Application.Current.MainPage.DisplayAlert("Éxito", "La persona se creó exitosamente.", "Aceptar");
+                // Crear un objeto Person con los datos del formulario
+                Person person = new Person
+                {
+                    Name = this.Name,
+                    FirstName = this.FirstName,
+                    LastName = this.LastName,
+                    CI = this.CI,
+                    Gender = this.Gender,
+                    Address = this.Address,
+                    Phone = this.Phone,
+                    Email = this.Email
+                    // Agregar otros campos aquí...
+                };
+
+                // Llama al método para crear la persona en el servicio
+                Person createdPerson = await _personService.CreatePersonAsync(person);
+
+                if (createdPerson != null)
+                {
+                    // La persona se creó exitosamente. Muestra un mensaje de éxito.
+                    Console.WriteLine("CreatePerson: Persona creada con éxito.");
+                    await Application.Current.MainPage.DisplayAlert("Éxito", "La persona se creó exitosamente.", "Aceptar");
+                }
+                else
+                {
+                    // Hubo un error al crear la persona. Muestra un mensaje de error.
+                    Console.WriteLine("CreatePerson: Error al crear persona.");
+                    await Application.Current.MainPage.DisplayAlert("Error", "Hubo un error al crear la persona. Verifica los datos e intenta nuevamente.", "Aceptar");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Hubo un error al crear la persona. Muestra un mensaje de error al usuario.
-                await Application.Current.MainPage.DisplayAlert("Error", "Hubo un error al crear la persona.", "Aceptar");
+                // Establece el mensaje de error en la propiedad ErrorMessage
+                ErrorMessage = "Error: " + ex.Message;
+
+                // Muestra un mensaje de error en la consola
+                Console.WriteLine("CreatePerson: Error inesperado: " + ex.Message);
+
+                // Muestra un mensaje de error al usuario
+                await Application.Current.MainPage.DisplayAlert("Error", "Se produjo un error inesperado al crear la persona: " + ex.Message, "Aceptar");
             }
         }
 

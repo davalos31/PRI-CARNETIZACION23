@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.View.Login.Login"
+             Title="Login" BindingContext="{Binding LoginViewModel}">
+
+    <StackLayout>
+        <!-- Campo de entrada de usuario (username) -->
+        <Entry Placeholder="Usuario" Text="{Binding Username}" />
+
+        <!-- Campo de entrada de contraseña (password) -->
+        <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="true" />
+
+        <!-- Botón de inicio de sesión -->
+        <Button Text="Iniciar Sesión" Command="{Binding LoginCommand}" />
+
+        <!-- Etiqueta para mostrar mensajes de error -->
+        <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding ErrorMessage}" />
+    </StackLayout>
+</ContentPage>

@@ -5,48 +5,22 @@
              Title="CreatePatrol">
     <VerticalStackLayout>
 
-        <StackLayout>
-            <Entry x:Name="searchEntry" Placeholder="Buscar por nombre" TextChanged="OnSearchTextChanged"/>
-            <ListView x:Name="zoneListView" ItemsSource="{Binding Zones}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding ZoneID}" HorizontalOptions="StartAndExpand"/>
-                                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand"/>
-                                
-                                
-                                
-                                <Button Text="Agregar" Clicked="OnAddButtonClicked" CommandParameter="{Binding ZoneID}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                  
-                </ListView.ItemTemplate>
-            </ListView>
+        <VerticalStackLayout>
+            <StackLayout>
+                <!-- Picker para seleccionar una zona -->
+                <Picker x:Name="zonePicker" Title="Selecciona una zona" SelectedIndexChanged="OnZonePickerSelectedIndexChanged" />
 
-        </StackLayout>
+                <!-- Picker para seleccionar una campaña -->
+                <Picker x:Name="campaignPicker" Title="Selecciona una campaña" SelectedIndexChanged="OnCampaignPickerSelectedIndexChanged" />
 
-        <StackLayout>
-            <!-- Lista de Campañas -->
-            <Label Text="Lista de Campañas" FontSize="20" HorizontalOptions="CenterAndExpand"/>
-            <ListView x:Name="campaignListView" ItemsSource="{Binding Campaigns}" HasUnevenRows="true">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{Binding Name}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                                <Button Text="Agregar" Clicked="OnAddCampaignButtonClicked" CommandParameter="{Binding CampaignID}"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                <!-- DatePicker para elegir la fecha de la patrulla -->
+                <Label Text="Fecha de la Patrulla:" />
+                <DatePicker x:Name="patrolDatePicker" Date="{Binding CurrentPatrolDate}" />
 
-            <DatePicker x:Name="patrolDate" Date="{Binding currentPatrolDate}" Format="D"/>
-            <Button Text="Insertar" Clicked="OnInsertButtonClicked"/>
-        </StackLayout>
-
+                <!-- Botón para agregar -->
+                <Button Text="Agregar" Clicked="OnInsertButtonClicked" />
+            </StackLayout>
+        </VerticalStackLayout>
 
 
     </VerticalStackLayout>

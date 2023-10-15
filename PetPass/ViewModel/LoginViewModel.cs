@@ -17,6 +17,7 @@ namespace PetPass.ViewModel
 
         private readonly IUserService _userService;
 
+
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
@@ -82,15 +83,20 @@ namespace PetPass.ViewModel
                     // Redirige a otra página si el rol es "B".
                     // Reemplaza "OtraPagina" con el nombre de la página a la que deseas redirigir.
                     int personID = await GetPersonIDAsync(Username);
+
+                    await Application.Current.MainPage.Navigation.PushAsync(new DetailPatrol());
+                    //await Application.Current.MainPage.Navigation.PushAsync(new CreatePatrol(personID));
+
                     await Application.Current.MainPage.Navigation.PushAsync(new CreatePatrol(personID));
                    
+
 
                 }
                 else
                 {
                     // Manejar otros roles o mostrar mensajes de error según sea necesario.
                 }
-                
+
             }
             else
             {

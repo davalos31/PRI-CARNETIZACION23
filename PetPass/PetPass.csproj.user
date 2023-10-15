@@ -29,7 +29,7 @@
     <MauiXaml Update="Resources\Styles\Styles.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="View\Login.xaml">
+    <MauiXaml Update="View\Login\Login.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="View\Patrol\CreatePatrol.xaml">
@@ -39,6 +39,12 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="View\Patrol\EditPatrol.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Report\ReportPet.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Report\ReportZone.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

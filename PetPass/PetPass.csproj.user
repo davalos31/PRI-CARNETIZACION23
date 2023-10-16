@@ -32,6 +32,12 @@
     <MauiXaml Update="View\Login\Login.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="View\MenuMain.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Menu\Menu.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="View\Patrol\CreatePatrol.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

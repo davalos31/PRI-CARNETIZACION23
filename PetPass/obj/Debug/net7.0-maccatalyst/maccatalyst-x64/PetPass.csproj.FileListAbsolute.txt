@@ -38,3 +38,25 @@ C:\Users\Victor Hugo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7
 C:\Users\Victor Hugo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.dll
 C:\Users\Victor Hugo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\refint\PetPass.dll
 C:\Users\Victor Hugo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.pdb
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\mauiimage.inputs
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\mauifont.inputs
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\mauisplash.inputs
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\mauisplash.stamp
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\mauiimage.stamp
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\mauifont.stamp
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\actool\_PartialAppManifest.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\actool\_BundleResourceWithLogicalName.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\actool\_ProcessedImageAssetsPath.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\coremlc\_PartialAppManifest.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\coremlc\_BundleResourceWithLogicalName.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\coremlc\_ProcessedCoreMLModelsPath.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\_ProcessedBundleResourcesPath.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\_ProcessedContentPath.items
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.AssemblyInfo.cs
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.dll
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\refint\PetPass.dll
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.pdb

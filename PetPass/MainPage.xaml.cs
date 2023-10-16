@@ -12,6 +12,7 @@ using PetPass.View;
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new CreatePerson());
+            //await Application.Current.MainPage.Navigation.PushAsync(new CreatePerson());
+            await Application.Current.MainPage.Navigation.PushAsync(new MenuMain());
         }
     }

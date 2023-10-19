@@ -10,5 +10,7 @@ namespace PetPass.Service
     internal interface IPetService
     {
         Task<bool> CreatePet(Pet pet);
+
+
     }
 }

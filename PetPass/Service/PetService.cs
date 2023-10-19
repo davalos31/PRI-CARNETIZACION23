@@ -29,8 +29,9 @@ namespace PetPass.Service
 
 
                 string petJson = JsonConvert.SerializeObject(pet);
+                
                 var content = new StringContent(petJson, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await _httpClient.PostAsync("PetPass/Pets/CreatePet", content);
+                HttpResponseMessage response = await _httpClient.PostAsync("PetPass/Pets/CreatePet", content );
 
 
 

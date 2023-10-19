@@ -10,10 +10,10 @@
                Margin="0,20,0,20"/>
 
         <Label Text="Nombre:"/>
-        <Entry x:Name="NombreEntry" Placeholder="Ingrese el nombre de la mascota"/>
+        <Entry x:Name="Name" Placeholder="Ingrese el nombre de la mascota"/>
 
         <Label Text="Especie:"/>
-        <Picker x:Name="EspeciePicker">
+        <Picker x:Name="Specie">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Gato</x:String>
@@ -23,10 +23,10 @@
         </Picker>
 
         <Label Text="Raza:"/>
-        <Entry x:Name="RazaEntry" Placeholder="Ingrese la raza de la mascota"/>
+        <Entry x:Name="Breed" Placeholder="Ingrese la raza de la mascota"/>
 
         <Label Text="Genero:"/>
-        <Picker x:Name="GeneroPet">
+        <Picker x:Name="Gender">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Macho</x:String>
@@ -36,10 +36,10 @@
         </Picker>
 
         <Label Text="Fecha de Nacimiento:"/>
-        <DatePicker x:Name="FechaNacimientoDatePicker"/>
+        <DatePicker x:Name="BirthDate"/>
 
         <Label Text="Rasgo Especial:"/>
-        <Entry x:Name="RasgoEspecialEntry" Placeholder="Ingrese un rasgo especial"/>
+        <Entry x:Name=" SpecialFeature" Placeholder="Ingrese un rasgo especial"/>
 
         <Label Text="Estado:"/>
         <Picker x:Name="EstadoPicker">
@@ -50,6 +50,7 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
+        
         
 
         <Button Text="Capturar Fotografía" Clicked="Button_Clicked_1"  />

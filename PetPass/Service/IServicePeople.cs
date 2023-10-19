@@ -9,6 +9,6 @@ namespace PetPass.Service
 {
 	internal interface IServicePeople
 	{
-		Task<bool> CreateOwner(Person person);
+		Task<bool> CreateOwner(Person person,int userId);
 	}
 }

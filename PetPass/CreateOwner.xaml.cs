@@ -8,8 +8,9 @@ public partial class CreateOwner : ContentPage
 {
     string[] Sexos = { "Masculino", "Femenino", "Otro" };
     readonly ServicePeople SP;
+	int userId = 10;
 
-    public CreateOwner()
+	public CreateOwner()
     {
         InitializeComponent();
         loadPicker();
@@ -56,9 +57,9 @@ public partial class CreateOwner : ContentPage
         {
             try
             {
-				Person p = new(EntryName.Text, EntryFirstName.Text, EntryLastName.Text, EntryCI.Text, Sexos[EntryGender.SelectedIndex][0], EntryAddress.Text, int.Parse(EntryPhone.Text), EntryEmail.Text);
+				Person p = new(0,EntryName.Text, EntryFirstName.Text, EntryLastName.Text, EntryCI.Text, Sexos[EntryGender.SelectedIndex][0].ToString(), EntryAddress.Text, int.Parse(EntryPhone.Text), EntryEmail.Text,1);
 
-				bool res = await SP.CreateOwner(p);
+				bool res = await SP.CreateOwner(p, userId);
 			    if (res)
 				{
 					await DisplayAlert("Sistema", "el registro se completo correctamente", "ok");

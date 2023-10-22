@@ -1,4 +1,5 @@
 ﻿using PetPass.Base;
+using PetPass.Model;
 using PetPass.Service;
 using PetPass.View;
 using PetPass.View.Patrol;
@@ -16,12 +17,18 @@ namespace PetPass.ViewModel
     {
 
         private readonly IUserService _userService;
+        private UserService _authService;
+        private AuthToken _authToken;
 
 
         public LoginViewModel(IUserService userService)
         {
             _userService = userService;
+            // _authService = new UserService("Server=DbPetPass.mssql.somee.com; Database=DbPetPass;User=nahuubj_SQLLogin_1; Password=z5qp9mphxt; Trusted_Connection=false; Encrypt=False;");
+            _authService = new UserService();
             LoginCommand = new Command(Login);
+            LoginCommandToken = new Command(async () => await LoginToken());
+
         }
 
         private string _username;
@@ -66,7 +73,24 @@ namespace PetPass.ViewModel
             }
         }
 
+        public AuthToken AuthToken
+        {
+            get { return _authToken; }
+            set
+            {
+                if (_authToken != value)
+                {
+                    _authToken = value;
+                    OnPropertyChanged(nameof(AuthToken));
+                }
+            }
+        }
+  
+
+
+
         public ICommand LoginCommand { get; private set; }
+        public ICommand LoginCommandToken { get; private set; }
 
         private async void Login()
         {
@@ -116,6 +140,19 @@ namespace PetPass.ViewModel
                 // Manejar cualquier excepción que pueda ocurrir durante la recuperación.
                 Console.WriteLine($"Error al obtener el personID: {ex.Message}");
                 return 0;
+            }
+        }
+
+        public async Task LoginToken()
+        {
+            _authToken = await _authService.GetAuthTokenAsync(Username, Password);
+            if (_authToken != null)
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new CreatePerson());
+            }
+            else
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetPass.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace PetPass.Service
         Task<int> GetPersonIDByUsernameAsync(string username);
         Task<string> GetUserRoleAsync(string userName, string password);
         Task<bool> ValidarUsuarioAsync(string username, string password);
+        Task<AuthToken> GetAuthTokenAsync(string username, string password);
     }
 }

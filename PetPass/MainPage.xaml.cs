@@ -1,7 +1,8 @@
 ﻿namespace PetPass;
 using PetPass.View;
+using PetPass.View.Login;
 
-    public partial class MainPage : ContentPage
+public partial class MainPage : ContentPage
     {
         
 

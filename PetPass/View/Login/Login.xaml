@@ -4,17 +4,33 @@
              x:Class="PetPass.View.Login.Login"
              Title="Login" BindingContext="{Binding LoginViewModel}">
 
-    <StackLayout>
-        <!-- Campo de entrada de usuario (username) -->
+    <!--<StackLayout>
+        --><!-- Campo de entrada de usuario (username) --><!--
         <Entry Placeholder="Usuario" Text="{Binding Username}" />
 
-        <!-- Campo de entrada de contraseña (password) -->
+        --><!-- Campo de entrada de contraseña (password) --><!--
         <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="true" />
 
-        <!-- Botón de inicio de sesión -->
-        <Button Text="Iniciar Sesión" Command="{Binding LoginCommand}" />
+        --><!-- Botón de inicio de sesión --><!--
+        <Button Text="Iniciar Sesión" Command="{Binding LoginCommandToken}" />
 
-        <!-- Etiqueta para mostrar mensajes de error -->
+        --><!-- Etiqueta para mostrar mensajes de error --><!--
         <Label Text="{Binding ErrorMessage}" TextColor="Red" IsVisible="{Binding ErrorMessage}" />
+    </StackLayout>-->
+
+    <StackLayout>
+        <!-- Campo de entrada de usuario (username) -->
+        <Entry Placeholder="Usuario" x:Name="usernameEntry" />
+
+        <!-- Campo de entrada de contraseña (password) -->
+        <Entry Placeholder="Contraseña" IsPassword="True" x:Name="passwordEntry" />
+
+        <!-- Botón de inicio de sesión -->
+        <Button
+     x:Name="CounterBtn"
+     Text="Click me"
+     SemanticProperties.Hint="Counts the number of times you click"
+     Clicked="OnCounterClicked"
+     HorizontalOptions="Center" />
     </StackLayout>
 </ContentPage>

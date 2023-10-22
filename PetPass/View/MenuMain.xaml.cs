@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using PetPass.View.Report;
 using System;
 
 namespace PetPass.View
@@ -47,12 +48,12 @@ namespace PetPass.View
 
         private void OnReporte1Clicked(object sender, EventArgs e)
         {
-            // Lógica para el Reporte 1
+             Navigation.PushAsync(new ReportPet());
         }
 
         private void OnReporte2Clicked(object sender, EventArgs e)
         {
-            // Lógica para el Reporte 2
+            Navigation.PushAsync(new ReportZone());
         }
 
         private void OnReporte3Clicked(object sender, EventArgs e)
@@ -80,7 +81,7 @@ namespace PetPass.View
 
         private void OnJefeBrigada1Clicked(object sender, EventArgs e)
         {
-            // Lógica para el Jefe Brigada 1
+            Navigation.PushAsync(new CreatePerson());
         }
 
         private void OnJefeBrigada2Clicked(object sender, EventArgs e)

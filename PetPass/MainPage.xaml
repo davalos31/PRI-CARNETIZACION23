@@ -9,36 +9,24 @@
             Padding="30,0"
             VerticalOptions="Center">
 
+            <Label
+                Text="Bienvenido"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
             <Image
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
             <Button
-                x:Name="CounterBtn"
-                Text="Click me"
+                x:Name="btnLogin"
+                Text="Comenzar"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Clicked="btnLogin_Clicked"
                 HorizontalOptions="Center" />
-
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Button x:Name="btnCreateOwner" Text="Crear Dueño" Clicked="btnCreateOwner_Clicked" HorizontalOptions="CenterAndExpand"/>
-                <Button x:Name="btnAskRecovery" Text="Recuperar Correo" Clicked="btnAskRecovery_Clicked" HorizontalOptions="CenterAndExpand"/>
-            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

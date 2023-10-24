@@ -26,23 +26,53 @@ build_metadata.AdditionalFiles.ManifestResourceName = PetPass.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/AskRecovery.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = PetPass.AskRecovery.xaml
-build_metadata.AdditionalFiles.TargetPath = AskRecovery.xaml
-build_metadata.AdditionalFiles.RelativePath = AskRecovery.xaml
-
 [C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/CreateOwner.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.CreateOwner.xaml
 build_metadata.AdditionalFiles.TargetPath = CreateOwner.xaml
 build_metadata.AdditionalFiles.RelativePath = CreateOwner.xaml
 
+[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/FirstLogin.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.FirstLogin.xaml
+build_metadata.AdditionalFiles.TargetPath = Login\FirstLogin.xaml
+build_metadata.AdditionalFiles.RelativePath = Login\FirstLogin.xaml
+
+[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Login\LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Login\LoginPage.xaml
+
+[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/RequireEmail.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.RequireEmail.xaml
+build_metadata.AdditionalFiles.TargetPath = Login\RequireEmail.xaml
+build_metadata.AdditionalFiles.RelativePath = Login\RequireEmail.xaml
+
+[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/RestorePassword.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.RestorePassword.xaml
+build_metadata.AdditionalFiles.TargetPath = Login\RestorePassword.xaml
+build_metadata.AdditionalFiles.RelativePath = Login\RestorePassword.xaml
+
 [C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/MenuBrigadier.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.MenuBrigadier.xaml
+build_metadata.AdditionalFiles.TargetPath = MenuBrigadier.xaml
+build_metadata.AdditionalFiles.RelativePath = MenuBrigadier.xaml
+
+[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/RegisterPet.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.RegisterPet.xaml
+build_metadata.AdditionalFiles.TargetPath = RegisterPet.xaml
+build_metadata.AdditionalFiles.RelativePath = RegisterPet.xaml
 
 [C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
@@ -56,8 +86,8 @@ build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Resources.Styles.S
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/RestorePassword.xaml]
+[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/UseCamera.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = PetPass.RestorePassword.xaml
-build_metadata.AdditionalFiles.TargetPath = RestorePassword.xaml
-build_metadata.AdditionalFiles.RelativePath = RestorePassword.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.UseCamera.xaml
+build_metadata.AdditionalFiles.TargetPath = UseCamera.xaml
+build_metadata.AdditionalFiles.RelativePath = UseCamera.xaml

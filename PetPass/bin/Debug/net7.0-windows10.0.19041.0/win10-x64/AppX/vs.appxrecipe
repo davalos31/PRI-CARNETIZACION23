@@ -30,25 +30,25 @@
     <AppXManifest Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-10-19T11:38:08.634</Modified>
+      <Modified>2023-10-24T22:17:32.239</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-10-19T11:36:49.388</Modified>
+      <Modified>2023-10-24T22:17:30.986</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.runtimeconfig.json">
       <PackagePath>PetPass.runtimeconfig.json</PackagePath>
-      <Modified>2023-10-12T02:09:59.945</Modified>
+      <Modified>2023-10-24T22:17:30.737</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.dll">
       <PackagePath>PetPass.dll</PackagePath>
-      <Modified>2023-10-19T11:38:07.109</Modified>
+      <Modified>2023-10-24T22:17:25.358</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>PetPass.exe</PackagePath>
-      <Modified>2023-10-19T11:38:07.132</Modified>
+      <Modified>2023-10-24T22:17:25.482</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.5\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -806,6 +806,10 @@
       <PackagePath>WinRT.Runtime.dll</PackagePath>
       <Modified>2022-11-16T01:34:42.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diego\.nuget\packages\camera.maui\1.4.4\lib\net7.0-windows10.0.19041\Camera.MAUI.dll">
+      <PackagePath>Camera.MAUI.dll</PackagePath>
+      <Modified>2023-06-09T10:14:44.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\.nuget\packages\microsoft.extensions.configuration\7.0.0\lib\net7.0\Microsoft.Extensions.Configuration.dll">
       <PackagePath>Microsoft.Extensions.Configuration.dll</PackagePath>
       <Modified>2022-10-18T16:15:22.000</Modified>
@@ -918,6 +922,10 @@
       <PackagePath>System.Data.SqlClient.dll</PackagePath>
       <Modified>2022-10-17T23:26:08.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diego\.nuget\packages\zxing.net\0.16.9\lib\net7.0\zxing.dll">
+      <PackagePath>zxing.dll</PackagePath>
+      <Modified>2023-02-23T20:44:14.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\.nuget\packages\microsoft.graphics.win2d\1.0.4\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
       <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
       <Modified>2022-10-04T20:41:34.000</Modified>
@@ -932,7 +940,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.deps.json">
       <PackagePath>PetPass.deps.json</PackagePath>
-      <Modified>2023-10-19T11:38:08.454</Modified>
+      <Modified>2023-10-24T22:17:31.670</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.86\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>
@@ -952,23 +960,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.434</Modified>
+      <Modified>2023-10-24T22:04:31.426</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.470</Modified>
+      <Modified>2023-10-24T22:04:31.466</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.525</Modified>
+      <Modified>2023-10-24T22:04:31.515</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.606</Modified>
+      <Modified>2023-10-24T22:04:31.600</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.824</Modified>
+      <Modified>2023-10-24T22:04:31.874</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
@@ -980,207 +988,207 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2023-10-12T01:51:30.914</Modified>
+      <Modified>2023-10-24T22:04:31.942</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.386</Modified>
+      <Modified>2023-10-24T22:04:32.579</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.414</Modified>
+      <Modified>2023-10-24T22:04:32.600</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.428</Modified>
+      <Modified>2023-10-24T22:04:32.617</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.455</Modified>
+      <Modified>2023-10-24T22:04:32.648</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.536</Modified>
+      <Modified>2023-10-24T22:04:32.779</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.057</Modified>
+      <Modified>2023-10-24T22:04:32.114</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.060</Modified>
+      <Modified>2023-10-24T22:04:32.121</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.086</Modified>
+      <Modified>2023-10-24T22:04:32.194</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.068</Modified>
+      <Modified>2023-10-24T22:04:32.146</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.074</Modified>
+      <Modified>2023-10-24T22:04:32.176</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.017</Modified>
+      <Modified>2023-10-24T22:04:32.071</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.023</Modified>
+      <Modified>2023-10-24T22:04:32.076</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.051</Modified>
+      <Modified>2023-10-24T22:04:32.106</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.028</Modified>
+      <Modified>2023-10-24T22:04:32.084</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.037</Modified>
+      <Modified>2023-10-24T22:04:32.091</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.943</Modified>
+      <Modified>2023-10-24T22:04:31.969</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.948</Modified>
+      <Modified>2023-10-24T22:04:31.976</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.955</Modified>
+      <Modified>2023-10-24T22:04:31.985</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.960</Modified>
+      <Modified>2023-10-24T22:04:31.995</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.972</Modified>
+      <Modified>2023-10-24T22:04:32.006</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
       <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.976</Modified>
+      <Modified>2023-10-24T22:04:32.014</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
       <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.981</Modified>
+      <Modified>2023-10-24T22:04:32.024</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
       <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.012</Modified>
+      <Modified>2023-10-24T22:04:32.054</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
       <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.986</Modified>
+      <Modified>2023-10-24T22:04:32.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
       <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2023-10-12T01:51:30.992</Modified>
+      <Modified>2023-10-24T22:04:32.038</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.169</Modified>
+      <Modified>2023-10-24T22:04:32.320</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.176</Modified>
+      <Modified>2023-10-24T22:04:32.328</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.185</Modified>
+      <Modified>2023-10-24T22:04:32.340</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.204</Modified>
+      <Modified>2023-10-24T22:04:32.356</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.240</Modified>
+      <Modified>2023-10-24T22:04:32.388</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.126</Modified>
+      <Modified>2023-10-24T22:04:32.244</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.134</Modified>
+      <Modified>2023-10-24T22:04:32.252</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.141</Modified>
+      <Modified>2023-10-24T22:04:32.262</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.147</Modified>
+      <Modified>2023-10-24T22:04:32.271</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.160</Modified>
+      <Modified>2023-10-24T22:04:32.286</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.090</Modified>
+      <Modified>2023-10-24T22:04:32.201</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.094</Modified>
+      <Modified>2023-10-24T22:04:32.207</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.104</Modified>
+      <Modified>2023-10-24T22:04:32.215</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.110</Modified>
+      <Modified>2023-10-24T22:04:32.224</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.120</Modified>
+      <Modified>2023-10-24T22:04:32.236</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.253</Modified>
+      <Modified>2023-10-24T22:04:32.425</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.265</Modified>
+      <Modified>2023-10-24T22:04:32.439</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.284</Modified>
+      <Modified>2023-10-24T22:04:32.455</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.304</Modified>
+      <Modified>2023-10-24T22:04:32.495</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.371</Modified>
+      <Modified>2023-10-24T22:04:32.557</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.006</Modified>
+      <Modified>2023-10-24T22:04:31.922</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.024</Modified>
+      <Modified>2023-10-24T22:04:31.938</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.048</Modified>
+      <Modified>2023-10-24T22:04:31.975</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.083</Modified>
+      <Modified>2023-10-24T22:04:32.014</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2023-10-12T01:51:31.161</Modified>
+      <Modified>2023-10-24T22:04:32.099</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

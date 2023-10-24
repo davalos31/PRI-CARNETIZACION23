@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.RegisterPet"
+             Title="RegisterPet">
+    <VerticalStackLayout>
+        <Label Text="Formulario de Registro de Mascotas"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               Margin="0,20,0,20"/>
+
+        <Label Text="Nombre:"/>
+        <Entry x:Name="Name" Placeholder="Ingrese el nombre de la mascota"/>
+
+        <Label Text="Especie:"/>
+        <Picker x:Name="Specie">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Gato</x:String>
+                    <x:String>Perro</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Raza:"/>
+        <Entry x:Name="Breed" Placeholder="Ingrese la raza de la mascota"/>
+
+        <Label Text="Genero:"/>
+        <Picker x:Name="Gender">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Macho</x:String>
+                    <x:String>Hembra</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Fecha de Nacimiento:"/>
+        <DatePicker x:Name="BirthDate"/>
+
+        <Label Text="Rasgo Especial:"/>
+        <Entry x:Name=" SpecialFeature" Placeholder="Ingrese un rasgo especial"/>
+
+        <Label Text="Estado:"/>
+        <Picker x:Name="EstadoPicker">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Activo</x:String>
+                    <x:String>Inactivo</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+
+
+        <Button Text="Capturar Fotografía" Clicked="Button_Clicked_1"  />
+
+        <Button Text="Registrar" Clicked="Button_Clicked"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+    </VerticalStackLayout>
+</ContentPage>

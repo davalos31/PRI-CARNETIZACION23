@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.Login.FirstLogin"
+             Title="FirstLogin">
+    <VerticalStackLayout>
+        <Label Text="Cambiar Contraseña"
+               FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               Margin="0,20,0,20"/>
+
+        <Label Text="Nueva Contraseña:"/>
+        <Entry x:Name="NewPasswordEntry" Placeholder="Ingrese su nueva contraseña" IsPassword="True" />
+
+        <Label Text="Confirmar Nueva Contraseña:"/>
+        <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirme su nueva contraseña" IsPassword="True" />
+
+        <Button Text="Cambiar Contraseña" Clicked="Button_Clicked"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+
+        <Label Text="¿Olvidaste tu contraseña?"
+               TextColor="Blue"
+               FontSize="16"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer />
+            </Label.GestureRecognizers>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

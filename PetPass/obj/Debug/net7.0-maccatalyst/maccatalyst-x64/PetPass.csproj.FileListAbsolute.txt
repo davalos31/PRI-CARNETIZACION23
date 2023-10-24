@@ -258,3 +258,6 @@ C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-mac
 C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.pdb
 C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\PetPass.genruntimeconfig.cache
 C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\ref\PetPass.dll
+C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\Camera.MAUI.dll
+C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\Newtonsoft.Json.dll
+C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\zxing.dll

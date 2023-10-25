@@ -130,12 +130,12 @@ namespace PetPass.View
 
         private void OnCrearCampanas1Clicked(object sender, EventArgs e)
         {
-            // Lógica para crear campaña 1
+            Navigation.PushAsync(new CreateCampaign( _token));
         }
 
         private void OnCrearCampanas2Clicked(object sender, EventArgs e)
         {
-            // Lógica para crear campaña 2
+            Navigation.PushAsync(new DetailCampaign(_token));
         }
 
         private void OnCrearCampanas3Clicked(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace PetPass.View
 
         private void OnCrearPatrullajeBClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new DetailPatrol( _token));
+            Navigation.PushAsync(new DetailPatrol( _token,_userId));
         }
 
         private void OnCrearPatrullajeCClicked(object sender, EventArgs e)

@@ -16,7 +16,7 @@
             <DatePicker x:Name="patrolDatePicker"  />
 
             <!-- Botón para agregar -->
-            <Button Text="Editar"  />
+            <Button Text="Editar"  Clicked="UpdatePatrolButton_Clicked"  />
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

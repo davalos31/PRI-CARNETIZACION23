@@ -11,11 +11,11 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding patrolDate}" />
+                            <Label Text="{Binding PatrolDate}" />
                             <Label Text="{Binding Person.Name}" />
                             <Label Text="{Binding Zone.Name}" />
                             <Label Text="{Binding Campaign.Name}" />
-                            <Button Text="Editar" Clicked="Edit" CommandParameter="{Binding patrolID}"/>
+                            <Button Text="Editar" Clicked="Edit" CommandParameter="{Binding PatrolId}"/>
                             <Button Text="Eliminar" Clicked="OnEditButtonClicked"/>
                         </StackLayout>
                     </ViewCell>

@@ -15,7 +15,7 @@ namespace PetPass.Model
         public int CampaignId { get; set; }
 
         public Campaigns? Campaign { get; set; }
-        public User? Person { get; set; }
+        public Persons? Person { get; set; }
         public Zone? Zone { get; set; }
     }
 }

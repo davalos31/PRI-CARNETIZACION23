@@ -49,7 +49,7 @@ public partial class EditCampaign : ContentPage
         if (updated)
         {
             DisplayAlert("Éxito", "La campaña se actualizó correctamente.", "OK");
-            Navigation.PushAsync(new DetailCampaign());
+          //  Navigation.PushAsync(new DetailCampaign());
             // Puedes manejar la navegación o cualquier otra acción aquí
         }
         else
@@ -60,7 +60,7 @@ public partial class EditCampaign : ContentPage
 
     private void Back(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new DetailCampaign());
+       // Navigation.PushAsync(new DetailCampaign());
     }
 
 }

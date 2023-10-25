@@ -13,7 +13,7 @@ namespace PetPass.View.Patrol
 {
     public partial class CreatePatrol : ContentPage
     {
-        private PatrolViewModel _viewModel;
+       // private PatrolViewModel _viewModel;
         private PatrolService _patrolService;
         private ObservableCollection<string> zoneNames = new ObservableCollection<string>();
         private ObservableCollection<string> campaignNames = new ObservableCollection<string>();
@@ -29,8 +29,8 @@ namespace PetPass.View.Patrol
         {
             InitializeComponent();
             _patrolService = new PatrolService();
-            _viewModel = new PatrolViewModel(personID);
-            BindingContext = _viewModel;
+          //  _viewModel = new PatrolViewModel(personID);
+           // BindingContext = _viewModel;
 
             zonePicker.ItemsSource = zoneNames;
             campaignPicker.ItemsSource = campaignNames;

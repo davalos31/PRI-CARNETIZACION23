@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-10-25T06:05:03.862</Modified>
+      <Modified>2023-10-25T20:04:01.385</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-10-25T05:55:18.573</Modified>
+      <Modified>2023-10-25T19:57:27.888</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.runtimeconfig.json">
       <PackagePath>PetPass.runtimeconfig.json</PackagePath>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.dll">
       <PackagePath>PetPass.dll</PackagePath>
-      <Modified>2023-10-25T06:05:01.529</Modified>
+      <Modified>2023-10-25T20:03:59.523</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>PetPass.exe</PackagePath>
-      <Modified>2023-10-25T06:05:01.678</Modified>
+      <Modified>2023-10-25T20:03:59.704</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\PetPass.deps.json">
       <PackagePath>PetPass.deps.json</PackagePath>

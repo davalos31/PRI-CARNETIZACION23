@@ -73,7 +73,7 @@ public partial class EditPerson : ContentPage
             {
                 DisplayAlert("Éxito", "Jefe Brigada Actualizado correctamente.", "OK");
                 Clear();
-                Navigation.PopAsync();
+                Navigation.PushAsync(new MenuMain(_idUserValue, _token));
             }
             else
             {

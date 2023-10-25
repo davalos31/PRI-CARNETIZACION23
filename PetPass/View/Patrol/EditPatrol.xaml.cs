@@ -1,3 +1,4 @@
+
 using PetPass.Model;
 using PetPass.Service;
 using PetPass.ViewModel;
@@ -8,7 +9,7 @@ namespace PetPass.View.Patrol;
 
 public partial class EditPatrol : ContentPage
 {
-    private PatrolViewModel _viewModel;
+  //  private PatrolViewModel _viewModel;
     private PatrolService _patrolService;
     private ObservableCollection<string> zoneNames = new ObservableCollection<string>();
     private ObservableCollection<string> campaignNames = new ObservableCollection<string>();
@@ -19,15 +20,16 @@ public partial class EditPatrol : ContentPage
     private DateTime selectedDate;
     int _idPatrolValue;
     string _tokenValue;
-    public EditPatrol(int _idPatrol, string _token)
+    int _idUser;
+    public EditPatrol(int _idPatrol, string _token,int _userID)
 	{
 
         InitializeComponent();
 
         _patrolService = new PatrolService();
-        _viewModel = new PatrolViewModel(_idPatrol);
-        BindingContext = _viewModel;
-
+      //  _viewModel = new PatrolViewModel(_idPatrol);
+      //  BindingContext = _viewModel;
+        _idUser = _userID;
         zonePicker.ItemsSource = zoneNames;
         campaignPicker.ItemsSource = campaignNames;
 
@@ -67,6 +69,58 @@ public partial class EditPatrol : ContentPage
 
         }
     }
+
+
+    private async void UpdatePatrolButton_Clicked(object sender, EventArgs e)
+    {
+        try
+        {
+            selectedDate = patrolDatePicker.Date;
+
+
+
+
+            string authToken = _tokenValue;
+
+
+            Persons person = null;
+            Zone zone = null;
+            Campaigns campaign = null;
+
+            person = new Persons { PersonId = _idUser };
+            byte zoneId = (byte)selectedZoneId; // Realiza una conversión explícita a byte
+            campaign = new Campaigns { CampaignID = selectedCampaignId };
+
+            Patrol1 newPatrol = new Patrol1
+            {
+                PatrolDate = DateTime.Now,
+                PersonId = 3,
+                ZoneId = 1,
+                CampaignId = 1
+            };
+
+            // Llama al método CreatePersonAsync de PersonService
+            var updatePatrol = await _patrolService.UpdatePatrolApi(newPatrol);
+
+            if (updatePatrol != null)
+            {
+                DisplayAlert("Éxito", "Jefe Brigada Actualizado correctamente.", "OK");
+                Navigation.PopAsync();
+            }
+            else
+            {
+                DisplayAlert("Error", "No se pudo actualizar el Jefe Brigada.", "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", ex.Message, "OK");
+        }
+
+    }
+
+
+
 
 
 

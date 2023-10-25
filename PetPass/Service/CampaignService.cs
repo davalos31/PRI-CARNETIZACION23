@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,25 +23,32 @@ namespace PetPass.Service
             _httpClient.BaseAddress = new Uri("https://localhost:44313/");
         }
 
-        public async Task<Campaigns> CreateCampaignAsync(Campaigns campaign)
+        public async Task<Campaigns> CreateCampaignAsync(Campaigns campaign, string authToken)
         {
             try
             {
                 var campaignJson = JsonConvert.SerializeObject(campaign);
                 var content = new StringContent(campaignJson, System.Text.Encoding.UTF8, "application/json");
 
-                var response = await _httpClient.PostAsync("PetPass/Campaigns/Create", content);
+                using (var requestMessage = new HttpRequestMessage(HttpMethod.Post, "PetPass/Campaigns/Create"))
+                {
+                    // Agregar el token de autorización a la solicitud
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+                    requestMessage.Content = content;
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var createdCampaign = JsonConvert.DeserializeObject<Campaigns>(responseContent);
-                    return createdCampaign;
-                }
-                else
-                {
-                    // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar null
-                    return null;
+                    var response = await _httpClient.SendAsync(requestMessage);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var createdCampaign = JsonConvert.DeserializeObject<Campaigns>(responseContent);
+                        return createdCampaign;
+                    }
+                    else
+                    {
+                        // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar null
+                        return null;
+                    }
                 }
             }
             catch (Exception ex)
@@ -50,6 +58,7 @@ namespace PetPass.Service
                 return null;
             }
         }
+       
 
         public async Task<Campaigns> GetCampaignAsync(int id)
         {
@@ -77,22 +86,28 @@ namespace PetPass.Service
             }
         }
 
-        public async Task<List<Campaigns>> GetCampaignsAsync()
+        public async Task<List<Campaigns>> GetCampaignsAsync(string authToken)
         {
             try
             {
-                var response = await _httpClient.GetAsync("PetPass/Campaigns");
+                using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "PetPass/Campaigns"))
+                {
+                    // Agregar el token de autorización a la solicitud
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var campaigns = JsonConvert.DeserializeObject<List<Campaigns>>(responseContent);
-                    return campaigns;
-                }
-                else
-                {
-                    // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar una lista vacía
-                    return new List<Campaigns>();
+                    var response = await _httpClient.SendAsync(requestMessage);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var campaigns = JsonConvert.DeserializeObject<List<Campaigns>>(responseContent);
+                        return campaigns;
+                    }
+                    else
+                    {
+                        // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar una lista vacía
+                        return new List<Campaigns>();
+                    }
                 }
             }
             catch (Exception ex)

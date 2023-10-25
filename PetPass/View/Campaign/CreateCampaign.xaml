@@ -5,14 +5,11 @@
              Title="CreateCampaign">
     <StackLayout Padding="15">
         <Label Text="Nombre de la Campaña" />
-        <Entry Placeholder="Ingrese el nombre de la campaña" Text="{Binding CampaignName}" />
-
-        <Label Text="Fecha de Inicio" />
-        <DatePicker Date="{Binding StartDate}" />
+        <Entry Placeholder="Ingrese el nombre de la campaña" x:Name="NameEntry" />
 
         <Label Text="Fecha de Finalización" />
-        <DatePicker Date="{Binding EndDate}" />
+        <DatePicker x:Name="EndDateEntry" />
 
-        <Button Text="Guardar Campaña" Command="{Binding SaveCampaignCommand}" />
+        <Button Text="Guardar Campaña" Clicked="OnSaveCampaignClicked"/>
     </StackLayout>
 </ContentPage>

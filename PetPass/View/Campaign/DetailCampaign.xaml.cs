@@ -9,13 +9,15 @@ public partial class DetailCampaign : ContentPage
     private CampaignViewModel viewModel;
     private CampaignService _campaignService;
     private int _id;
-    public DetailCampaign()
+    string _token;
+    public DetailCampaign(string token)
     {
         InitializeComponent();
         // Inicializa viewModel con una instancia de CampaignViewModel y CampaignService
-        viewModel = new CampaignViewModel(new CampaignService());
+       // viewModel = new CampaignViewModel(new CampaignService());
         _campaignService = new CampaignService();
-        BindingContext = viewModel;
+        _token = token;
+      //  BindingContext = viewModel;
         LoadPersonData();
     }
 
@@ -26,7 +28,7 @@ public partial class DetailCampaign : ContentPage
         try
         {
             var campaignService = new CampaignService();
-            List<Campaigns> campaignDataList = await campaignService.GetCampaignsAsync();
+            List<Campaigns> campaignDataList = await campaignService.GetCampaignsAsync(_token);
 
             if (campaignDataList != null && campaignDataList.Count > 0)
             {

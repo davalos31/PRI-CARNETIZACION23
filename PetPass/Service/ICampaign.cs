@@ -9,12 +9,12 @@ namespace PetPass.Service
 {
    public interface ICampaign
     {
-        Task<Campaigns> CreateCampaignAsync(Campaigns campaign);
+        Task<Campaigns> CreateCampaignAsync(Campaigns campaign, string authToken);
 
         Task<Campaigns> GetCampaignAsync(int id);
 
 
 
-        Task<List<Campaigns>> GetCampaignsAsync();
+        Task<List<Campaigns>> GetCampaignsAsync(string authToken);
     }
 }

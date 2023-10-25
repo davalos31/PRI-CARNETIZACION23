@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Collections.Generic;
 
+
 namespace PetPass.Service
 {
     public class PatrolService : IPatrol
@@ -549,6 +550,36 @@ namespace PetPass.Service
             }
 
             return patrolsByZone;
+        }
+
+
+        public async Task<Patrol1> UpdatePatrolApi(Patrol1 patrol)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE [DbPetPass].[dbo].[Patrol] " +
+                                     "SET [patrolDate] = @PatrolDate, " +
+                                     "[personID] = @PersonID, " +
+                                     "[zoneID] = @ZoneID, " +
+                                     "[campaignID] = @CampaignID " +
+                                     "WHERE [patrolID] = @PatrolID";
+
+                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@PatrolDate", patrol.PatrolDate);
+                    command.Parameters.AddWithValue("@PersonID", patrol.Person.PersonId);
+                    command.Parameters.AddWithValue("@ZoneID", patrol.Zone.ZoneID);
+                    command.Parameters.AddWithValue("@CampaignID", patrol.Campaign.CampaignID);
+                    command.Parameters.AddWithValue("@PatrolID", patrol.PatrolId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            // Debes devolver un valor del tipo Task<Patrol1>, por ejemplo, el mismo objeto patrol
+            return patrol;
         }
 
     }

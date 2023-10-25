@@ -15,13 +15,14 @@ namespace PetPass.View.Patrol
         private string _connectionString = "Server=DbPetPass.mssql.somee.com; Database=DbPetPass; User=nahuubj_SQLLogin_1; Password=z5qp9mphxt; Trusted_Connection=false; Encrypt=False;";
         private PatrolService _patrolService;
         string _tokenValue;
+        int _idUser;
 
-        public DetailPatrol(string _tokenvalue)
+        public DetailPatrol(string _tokenvalue, int _iduser)
         {
             InitializeComponent();
             _tokenValue = _tokenvalue;
             _patrolService = new PatrolService();
-      
+            _idUser = _iduser;
             LoadDateApiAsync();
         }
 
@@ -123,7 +124,7 @@ namespace PetPass.View.Patrol
             {
                 string userIDValue = patrolId.ToString();
                 DisplayAlert("ID Guardado", "El valor de la patrulla es: " + userIDValue, "OK");
-                Navigation.PushAsync(new EditPatrol(patrolId, _tokenValue));
+                Navigation.PushAsync(new EditPatrol(patrolId, _tokenValue,_idUser ));
             }
             else
             {

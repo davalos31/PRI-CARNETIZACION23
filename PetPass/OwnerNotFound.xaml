@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.OwnerNotFound"
+             Title="Registrar Mascota">
+    <VerticalStackLayout>
+        <Label 
+            Text="Responsable Inexistente:"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="18"
+            Margin="0,0,0,20" />
+
+        <!-- Botones -->
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Volver" WidthRequest="120" HeightRequest="40" Margin="10" Clicked="Button_Clicked"/>
+            <Button Text="Crear cuenta" WidthRequest="120" HeightRequest="40" Margin="10" Clicked="Button_Clicked_1" />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

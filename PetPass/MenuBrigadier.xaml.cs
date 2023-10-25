@@ -6,4 +6,16 @@ public partial class MenuBrigadier : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        var formPet = new RegisterPetIni();
+        Navigation.PushAsync(formPet);
+    }
+
+    private void Button_Clicked_1(object sender, EventArgs e)
+    {
+        var formOwner = new CreateOwner();
+        Navigation.PushAsync(formOwner);
+    }
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.RegisterPetIni"
+             Title="RegisterPetIni">
+    <VerticalStackLayout>
+        <Label 
+            Text="Registro de Mascotas"
+            FontSize="24"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <Entry Placeholder="Número" />
+            <Button Text="Buscar" 
+                    Clicked="Button_Clicked"/>
+        </StackLayout>
+
+        <Entry Placeholder="Nombre" />
+        <Entry Placeholder="Apellido Paterno" />
+        <Entry Placeholder="Apellido Materno" />
+
+        <!-- Usamos una etiqueta para indicar la selección de fecha -->
+        <Label Text="Fecha de Nacimiento" />
+        <DatePicker />
+
+        <Button Text="Continuar"
+                BackgroundColor="#007ACC"
+                TextColor="White"
+                VerticalOptions="EndAndExpand" />
+    </VerticalStackLayout>
+</ContentPage>

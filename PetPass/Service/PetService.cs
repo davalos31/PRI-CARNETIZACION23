@@ -8,17 +8,13 @@ using System.Threading.Tasks;
 
 namespace PetPass.Service
 {
-	internal class PetService : IPetService
+	internal class PetService : BaseService, IPetService
 	{
-		private readonly HttpClient _httpClient;
-
-
-		public PetService()
+		public PetService() : base()
 		{
-			_httpClient = new HttpClient();
-			_httpClient.BaseAddress = new Uri("https://localhost:44313/");
-			//token
+
 		}
+
 		public async Task<bool> CreatePet(Pet pet)
 		{
 			try

@@ -9,8 +9,8 @@
                HorizontalOptions="CenterAndExpand"
                Margin="0,20,0,20"/>
 
-        <Label Text="Correo Electrónico:"/>
-        <Entry x:Name="EmailEntry" Placeholder="Ingrese su correo electrónico" Keyboard="Email" />
+        <Label Text="Usuario:"/>
+        <Entry x:Name="UserEntry" Placeholder="Ingrese su usuario" Keyboard="Email" />
 
         <Label Text="Contraseña:"/>
         <Entry x:Name="PasswordEntry" Placeholder="Ingrese su contraseña" IsPassword="True" />

@@ -10,17 +10,14 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PetPass.Service
 {
-	internal class ServicePeople : IServicePeople
+	internal class ServicePeople : BaseService, IServicePeople
 	{
-		private readonly HttpClient _httpClient;
-		string jwtToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxMCIsIm5iZiI6MTY5NzcxNDg2NiwiZXhwIjoxNjk3NzI5MjY1LCJpYXQiOjE2OTc3MTQ4NjZ9.kdNuYYdSzGKltys8RODoXb9rmTNZSJycwnyWZp0Y_cA";
 
-		public ServicePeople()
+		public ServicePeople() : base()
 		{
-			_httpClient = new HttpClient();
-			_httpClient.BaseAddress = new Uri("https://localhost:44313/");
-			_httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+
 		}
+
 		public async Task<bool> CreateOwner(Person person, int userId)
 		{
 			try

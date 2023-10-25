@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Maui.ApplicationModel.Communication;
+using Newtonsoft.Json;
+using PetPass.Model;
+using PetPass.Model.Extras;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +10,81 @@ using System.Threading.Tasks;
 
 namespace PetPass.Service
 {
-	internal class LoginService : ILoginService
+    internal class LoginService : BaseService, ILoginService
 	{
-		private readonly HttpClient _httpClient;
-
-		public LoginService()
+		public LoginService() : base()
 		{
-			_httpClient = new HttpClient();
-			_httpClient.BaseAddress = new Uri("https://localhost:44313/");
-			//token
+
 		}
 
-		public async void FirstLogin(int userID, string newPassword)
+		public async Task<AuthResponse> Login(string Username, string Userpassword)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				if (Username == null || Userpassword == null)
+				{
+					Console.WriteLine("El ingrese el usuario y contraseña.");
+					return null;
+				}
+
+				string dataJson = JsonConvert.SerializeObject(new UserRequest(Username,Userpassword));
+				var content = new StringContent(dataJson, Encoding.UTF8, "application/json");
+				HttpResponseMessage response = await _httpClient.PostAsync($"PetPass/Users/Login", content);
+
+				if (response.IsSuccessStatusCode)
+				{
+					string responseBody = await response.Content.ReadAsStringAsync();
+
+					if (string.IsNullOrEmpty(responseBody))
+					{
+						Console.WriteLine("La respuesta del servidor está vacía.");
+						return null;
+					}
+
+					return JsonConvert.DeserializeObject<AuthResponse>(responseBody);
+				}
+				else
+				{
+					Console.WriteLine($"Error al usar la api. Código de estado HTTP: {response.StatusCode}");
+					return null;
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error general: {ex.Message}");
+				return null;
+			}
+		}
+
+		public async Task<bool> FirstLogin(int userID, string newPassword)
+		{
+			try
+			{
+				if (userID <= 0 || newPassword == null)
+				{
+					Console.WriteLine("error del id y contraseña.");
+					return false;
+				}
+
+				string dataJson = JsonConvert.SerializeObject(new FirstLoginUser(userID, newPassword));
+				var content = new StringContent(dataJson, Encoding.UTF8, "application/json");
+				HttpResponseMessage response = await _httpClient.PutAsync($"PetPass/Users/firstPassword", content);
+
+				if (response.IsSuccessStatusCode)
+				{
+					return true;
+				}
+				else
+				{
+					Console.WriteLine($"Error al usar la api. Código de estado HTTP: {response.StatusCode}");
+					return false;
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Error general: {ex.Message}");
+				return false;
+			}
 		}
 
 

@@ -18,7 +18,7 @@ namespace PetPass.ViewModel
 
         private readonly IUserService _userService;
         private UserService _authService;
-        private AuthToken _authToken;
+    
 
 
         public LoginViewModel(IUserService userService)
@@ -73,18 +73,7 @@ namespace PetPass.ViewModel
             }
         }
 
-        public AuthToken AuthToken
-        {
-            get { return _authToken; }
-            set
-            {
-                if (_authToken != value)
-                {
-                    _authToken = value;
-                    OnPropertyChanged(nameof(AuthToken));
-                }
-            }
-        }
+   
   
 
 
@@ -108,10 +97,10 @@ namespace PetPass.ViewModel
                     // Reemplaza "OtraPagina" con el nombre de la página a la que deseas redirigir.
                     int personID = await GetPersonIDAsync(Username);
 
-                    await Application.Current.MainPage.Navigation.PushAsync(new DetailPatrol());
+               
                     //await Application.Current.MainPage.Navigation.PushAsync(new CreatePatrol(personID));
 
-                    await Application.Current.MainPage.Navigation.PushAsync(new CreatePatrol(personID));
+                  //  await Application.Current.MainPage.Navigation.PushAsync(new CreatePatrol(personID));
                    
 
 
@@ -145,15 +134,15 @@ namespace PetPass.ViewModel
 
         public async Task LoginToken()
         {
-            _authToken = await _authService.GetAuthTokenAsync(Username, Password);
-            if (_authToken != null)
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new CreatePerson());
-            }
-            else
-            {
-                await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
-            }
+            //_authToken = await _authService.GetAuthTokenAsync(Username, Password);
+            //if (_authToken != null)
+            //{
+            //    await Application.Current.MainPage.Navigation.PushAsync(new CreatePerson());
+            //}
+            //else
+            //{
+            //    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+            //}
         }
     }
 }

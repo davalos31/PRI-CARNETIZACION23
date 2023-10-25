@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PetPass.Model
 {
-    public class Person
+    public class Persons
     {
-         public int PersonId { get; set; }
+        public int PersonId { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,6 +17,7 @@ namespace PetPass.Model
         public string Address { get; set; }
         public int Phone { get; set; }
         public string Email { get; set; }
-        //  public int State { get; set; }
+        public int State { get; set; }
+        public int UserID { get; set; }
     }
 }

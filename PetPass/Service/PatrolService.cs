@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Collections.Generic;
 
 namespace PetPass.Service
 {
@@ -25,6 +27,172 @@ namespace PetPass.Service
 
 
 
+
+       
+
+        public async Task<bool> CreatePatrolAsyncApi(string token, Patrol1 patrol)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    // Define la URL del servicio API
+                    string apiUrl = "https://localhost:44313/PetPass/Patrol/CreatePatrol";
+
+                    // Serializa el objeto Patrol a JSON
+                    string patrolJson = JsonConvert.SerializeObject(patrol);
+
+                    // Configura el encabezado de autorización con el token
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    // Crea un contenido de cadena con el JSON
+                    var content = new StringContent(patrolJson, Encoding.UTF8, "application/json");
+
+                    // Realiza una solicitud POST al servicio
+                    HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Si la solicitud es exitosa, devuelve true
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier excepción que pueda ocurrir durante la solicitud
+                Console.WriteLine($"Error al crear el Patrol: {ex.Message}");
+            }
+
+            // Si algo salió mal, devuelve false
+            return false;
+        }
+
+
+
+        public async Task<Patrol1> GetPatrolDetailsAsyncApi(string token, int patrolId)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    // Define la URL del servicio
+                    string apiUrl = $"https://localhost:44313/PetPass/Patrol/{patrolId}"; // Asegúrate de usar la URL correcta.
+
+                    // Configura el encabezado de autorización con el token
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    // Realiza una solicitud GET al servicio
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Lee y deserializa el contenido de la respuesta a un objeto Patrol
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        Patrol1 patrol = JsonConvert.DeserializeObject<Patrol1>(responseContent);
+                        return patrol;
+                    }
+                    else
+                    {
+                        // Maneja el error si la solicitud no fue exitosa
+                        Console.WriteLine("Error: " + response.StatusCode);
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja las excepciones, como problemas de red
+                Console.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<Zone>> GetZonesAsyncApi(string token)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    // Define la URL del servicio
+                    string apiUrl = "https://localhost:44313/PetPass/Patrol/GetZones";
+
+                    // Configura el encabezado de autorización con el token
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    // Realiza una solicitud GET al servicio
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Lee y deserializa el contenido de la respuesta a una lista de Persons
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        List<Zone> zoneList = JsonConvert.DeserializeObject<List<Zone>>(responseContent);
+                        return zoneList;
+                    }
+                    else
+                    {
+                        // Maneja el error si la solicitud no fue exitosa
+                        Console.WriteLine("Error: " + response.StatusCode);
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja las excepciones, como problemas de red
+                Console.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<Patrol1>> GetPatrolAsyncApi(string token)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    // Define la URL del servicio
+                    string apiUrl = "https://localhost:44313/PetPass/Patrol";
+
+                    // Configura el encabezado de autorización con el token
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    // Realiza una solicitud GET al servicio
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Lee y deserializa el contenido de la respuesta a una lista de Persons
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        List<Patrol1> patrolList = JsonConvert.DeserializeObject<List<Patrol1>>(responseContent);
+                        return patrolList;
+                    }
+                    else
+                    {
+                        // Maneja el error si la solicitud no fue exitosa
+                        Console.WriteLine("Error: " + response.StatusCode);
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja las excepciones, como problemas de red
+                Console.WriteLine("Error: " + ex.Message);
+                return null;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
         public async Task<Patrol1> CreatePatrolAsync(Patrol1 patrol)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -36,8 +204,8 @@ namespace PetPass.Service
                     string sql = "INSERT INTO [Patrol] ([patrolDate], [personID], [zoneID], [campaignID]) VALUES (@PatrolDate, @PersonID, @ZoneID, @CampaignID)";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@PatrolDate", patrol.patrolDate);
-                        command.Parameters.AddWithValue("@PersonID", patrol.Person.PersonId);
+                       // command.Parameters.AddWithValue("@PatrolDate", patrol.patrolDate);
+                     //   command.Parameters.AddWithValue("@PersonID", patrol.Person.PersonId);
                         command.Parameters.AddWithValue("@ZoneID", patrol.Zone.ZoneID);
                         command.Parameters.AddWithValue("@CampaignID", patrol.Campaign.CampaignID);
 
@@ -53,39 +221,39 @@ namespace PetPass.Service
             }
         }
 
-        public async Task<List<Zone>> GetZonesAsync()
+        //public async Task<List<Zone>> GetZonesAsync()
+        //{
+        //    List<Zone> zones = new List<Zone>();
+
+        //    using (SqlConnection connection = new SqlConnection(_connectionString))
+        //    {
+        //        await connection.OpenAsync();
+
+        //        string sql = "SELECT [ZoneID], [Name] FROM [Zone]";
+
+        //        using (SqlCommand command = new SqlCommand(sql, connection))
+        //        {
+        //            using (SqlDataReader reader = await command.ExecuteReaderAsync())
+        //            {
+        //                while (reader.Read())
+        //                {
+        //                    Zone zone = new Zone
+        //                    {
+        //                        ZoneID = (int)reader.GetByte(0),
+        //                        Name = reader.GetString(1)
+        //                    };
+        //                    zones.Add(zone);
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return zones;
+        //}
+
+        public async Task<List<Campaigns>> GetCampaignsAsync()
         {
-            List<Zone> zones = new List<Zone>();
-
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                await connection.OpenAsync();
-
-                string sql = "SELECT [ZoneID], [Name] FROM [Zone]";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    using (SqlDataReader reader = await command.ExecuteReaderAsync())
-                    {
-                        while (reader.Read())
-                        {
-                            Zone zone = new Zone
-                            {
-                                ZoneID = (int)reader.GetByte(0),
-                                Name = reader.GetString(1)
-                            };
-                            zones.Add(zone);
-                        }
-                    }
-                }
-            }
-
-            return zones;
-        }
-
-        public async Task<List<Campaign>> GetCampaignsAsync()
-        {
-            List<Campaign> campaigns = new List<Campaign>();
+            List<Campaigns> campaigns = new List<Campaigns>();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -99,7 +267,7 @@ namespace PetPass.Service
                     {
                         while (reader.Read())
                         {
-                            Campaign campaign = new Campaign
+                            Campaigns campaign = new Campaigns
                             {
                                 CampaignID = reader.GetInt32(0),
                                 Name = reader.GetString(1)
@@ -113,9 +281,9 @@ namespace PetPass.Service
             return campaigns;
         }
 
-        public async Task<List<Person>> GetAllPersonsAsync()
+        public async Task<List<Persons>> GetAllPersonsAsync()
         {
-            List<Person> persons = new List<Person>();
+            List<Persons> persons = new List<Persons>();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -132,7 +300,7 @@ namespace PetPass.Service
                             int personID = reader.GetInt32(0);
                             string personName = reader.GetString(1);
 
-                            Person person = new Person
+                            Persons person = new Persons
                             {
                                 PersonId = personID,
                                 Name = personName
@@ -171,16 +339,16 @@ namespace PetPass.Service
                             int campaignID = reader.GetInt32(4);
 
                             // Obtener los objetos completos de Person, Zone y Campaign utilizando sus respectivos métodos de consulta por ID.
-                            Person person = await GetPersonByIdAsync(personID);
+                            Persons person = await GetPersonByIdAsync(personID);
                             Zone zone = await GetZoneByIdAsync(zoneID);
-                            Campaign campaign = await GetCampaignByIdAsync(campaignID);
+                            Campaigns campaign = await GetCampaignByIdAsync(campaignID);
 
                             // Crear una instancia de Patrol1 con los objetos completos
                             Patrol1 patrol = new Patrol1
                             {
-                                patrolID = patrolID,
-                                patrolDate = patrolDate,
-                                Person = person,
+                                //patrolID = patrolID,
+                              //  patrolDate = patrolDate,
+                               // Person = person,
                                 Zone = zone,
                                 Campaign = campaign
                             };
@@ -195,7 +363,7 @@ namespace PetPass.Service
         }
 
 
-        public async Task<Person> GetPersonByIdAsync(int personId)
+        public async Task<Persons> GetPersonByIdAsync(int personId)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -210,7 +378,7 @@ namespace PetPass.Service
                     {
                         if (reader.Read())
                         {
-                            Person person = new Person
+                            Persons person = new Persons
                             {
                                 PersonId = reader.GetInt32(0),
                                 Name = reader.GetString(1)
@@ -253,7 +421,7 @@ namespace PetPass.Service
             return null; // Retornar null si no se encontró ninguna zona con ese ID
         }
 
-        public async Task<Campaign> GetCampaignByIdAsync(int campaignId)
+        public async Task<Campaigns> GetCampaignByIdAsync(int campaignId)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -268,7 +436,7 @@ namespace PetPass.Service
                     {
                         if (reader.Read())
                         {
-                            Campaign campaign = new Campaign
+                            Campaigns campaign = new Campaigns
                             {
                                 CampaignID = reader.GetInt32(0),
                                 Name = reader.GetString(1)
@@ -294,9 +462,9 @@ namespace PetPass.Service
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@PatrolID", updatedPatrol.patrolID);
-                        command.Parameters.AddWithValue("@PatrolDate", updatedPatrol.patrolDate);
-                        command.Parameters.AddWithValue("@PersonID", updatedPatrol.Person.PersonId);
+                     //   command.Parameters.AddWithValue("@PatrolID", updatedPatrol.patrolID);
+                       // command.Parameters.AddWithValue("@PatrolDate", updatedPatrol.patrolDate);
+                      //  command.Parameters.AddWithValue("@PersonID", updatedPatrol.Person.PersonId);
                         command.Parameters.AddWithValue("@ZoneID", updatedPatrol.Zone.ZoneID);
                         command.Parameters.AddWithValue("@CampaignID", updatedPatrol.Campaign.CampaignID);
 

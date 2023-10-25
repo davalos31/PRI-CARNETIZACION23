@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using Microsoft.Maui.Controls;
 using PetPass.Model;
 using System.Collections.Generic;
+using PetPass.Service;
+
 
 namespace PetPass.View.Patrol
 {
@@ -11,11 +13,16 @@ namespace PetPass.View.Patrol
     {
         private ObservableCollection<Patrol1> Patrols;
         private string _connectionString = "Server=DbPetPass.mssql.somee.com; Database=DbPetPass; User=nahuubj_SQLLogin_1; Password=z5qp9mphxt; Trusted_Connection=false; Encrypt=False;";
+        private PatrolService _patrolService;
+        string _tokenValue;
 
-        public DetailPatrol()
+        public DetailPatrol(string _tokenvalue)
         {
             InitializeComponent();
-            LoadDataFromDatabase();
+            _tokenValue = _tokenvalue;
+            _patrolService = new PatrolService();
+      
+            LoadDateApiAsync();
         }
 
         private void LoadDataFromDatabase()
@@ -43,15 +50,15 @@ namespace PetPass.View.Patrol
                                 int campaignID = lector.GetInt32(4);
 
                                 // Obtén los datos relacionados de las tablas Person, Zone y Campaign
-                                Person person = GetPersonById(personID);
+                                Persons person = GetPersonById(personID);
                                 Zone zone = GetZoneById(zoneID);
-                                Campaign campaign = GetCampaignById(campaignID);
+                                Campaigns campaign = GetCampaignById(campaignID);
 
                                 Patrols.Add(new Patrol1
                                 {
-                                    patrolID = patrolID,
-                                    patrolDate = patrolDate,
-                                    Person = person,
+                                    PatrolId= patrolID,
+                                    PatrolDate = patrolDate,
+                                 //   Person = person.PersonId,
                                     Zone = zone,
                                     Campaign = campaign
                                 });
@@ -70,15 +77,79 @@ namespace PetPass.View.Patrol
             UpdateListView(); // Llama a la función para actualizar la vista con los datos cargados
         }
 
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            PatrolListView.ItemsSource = Patrols;
+        }
+
+
+        private async Task LoadDateApiAsync()
+        {
+            try
+            {
+                // Llama al método para obtener la lista de patrullas, pasando el token de autorización
+                Patrols = new ObservableCollection<Patrol1>();
+                string authToken = _tokenValue; // Reemplaza con tu token real
+                List<Patrol1> patrolList = await _patrolService.GetPatrolAsyncApi(authToken);
+               
+                if (patrolList != null)
+                {
+                    // Los datos se cargaron con éxito, ahora puedes usar la lista `patrolList`.
+                    foreach (var patrol in patrolList)
+                    {
+                        Patrols.Add(patrol);
+                    }
+                }
+                else
+                {
+                    // Maneja el caso en el que no se pudieron obtener datos (error o lista vacía).
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja excepciones, como problemas de red o errores en la solicitud HTTP.
+                Console.WriteLine("Error al cargar datos: " + ex.Message);
+            }
+        }
+
+
+
+        private void Edit(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is int patrolId)
+            {
+                string userIDValue = patrolId.ToString();
+                DisplayAlert("ID Guardado", "El valor de la patrulla es: " + userIDValue, "OK");
+                Navigation.PushAsync(new EditPatrol(patrolId, _tokenValue));
+            }
+            else
+            {
+                DisplayAlert("Error", "No se ha seleccionado un elemento válido.", "OK");
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
         private void UpdateListView()
         {
             // Asigna la colección Patrols como origen de datos para tu ListView
-            zoneListView.ItemsSource = Patrols;
+            //zoneListView.ItemsSource = Patrols;
         }
 
-        private Person GetPersonById(int personID)
+        private Persons GetPersonById(int personID)
         {
-            Person person = null;
+            Persons person = null;
 
             // Establece la cadena de conexión a tu base de datos
             string connectionString = _connectionString;
@@ -105,7 +176,7 @@ namespace PetPass.View.Patrol
                                 string name = lector.GetString(1);
 
                                 // Crea una instancia de Person con los datos recuperados
-                                person = new Person
+                                person = new Persons
                                 {
                                     PersonId = personId,
                                     Name = name
@@ -174,9 +245,9 @@ namespace PetPass.View.Patrol
             return zone;
         }
 
-        private Campaign GetCampaignById(int campaignID)
+        private Campaigns GetCampaignById(int campaignID)
         {
-            Campaign campaign = null;
+            Campaigns campaign = null;
 
             // Establece la cadena de conexión a tu base de datos
             string connectionString = _connectionString;
@@ -203,7 +274,7 @@ namespace PetPass.View.Patrol
                                 string campaignName = lector.GetString(1);
 
                                 // Crea una instancia de Campaign con los datos recuperados
-                                campaign = new Campaign
+                                campaign = new Campaigns
                                 {
                                     CampaignID = campaignId,
                                     Name = campaignName
@@ -228,7 +299,7 @@ namespace PetPass.View.Patrol
             var selectedPatrol = (Patrol1)((Button)sender).CommandParameter;
 
             // Navega a la página de edición y pasa los datos seleccionados como parámetro
-            await Navigation.PushAsync(new EditPatrol(selectedPatrol));
+          //  await Navigation.PushAsync(new EditPatrol(selectedPatrol));
         }
     }
 }

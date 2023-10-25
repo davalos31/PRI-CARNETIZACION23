@@ -18,11 +18,14 @@ namespace PetPass.View.Patrol
         private ObservableCollection<string> zoneNames = new ObservableCollection<string>();
         private ObservableCollection<string> campaignNames = new ObservableCollection<string>();
         private List<Zone> zones;
-        private List<Campaign> campaigns;
+        private List<Campaigns> campaigns;
         private int selectedZoneId;
         private int selectedCampaignId;
+        string _tokenValue;
+        int _idUser;
+        private DateTime selectedDate;
 
-        public CreatePatrol(int personID)
+        public CreatePatrol(int personID, string _token)
         {
             InitializeComponent();
             _patrolService = new PatrolService();
@@ -33,7 +36,10 @@ namespace PetPass.View.Patrol
             campaignPicker.ItemsSource = campaignNames;
 
             zones = new List<Zone>();
-            campaigns = new List<Campaign>();
+            campaigns = new List<Campaigns>();
+
+            _tokenValue = _token;
+            _idUser = personID;
 
             LoadData();
         }
@@ -42,7 +48,8 @@ namespace PetPass.View.Patrol
         {
             try
             {
-                zones = await _patrolService.GetZonesAsync();
+                PatrolService _patrolService = new PatrolService();
+                zones = await _patrolService.GetZonesAsyncApi(_tokenValue);
                 campaigns = await _patrolService.GetCampaignsAsync();
 
                 zoneNames.Clear();
@@ -60,7 +67,7 @@ namespace PetPass.View.Patrol
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error al cargar listas", ex.Message, "OK");
+                await DisplayAlert("Error al cargar lista de datos", ex.Message, "OK");
             }
         }
 
@@ -72,7 +79,7 @@ namespace PetPass.View.Patrol
             if (selectedZone != null)
             {
                 selectedZoneId = selectedZone.ZoneID;
-                _viewModel.SetSelectedZoneId(selectedZoneId);
+               
             }
         }
 
@@ -84,13 +91,56 @@ namespace PetPass.View.Patrol
             if (selectedCampaign != null)
             {
                 selectedCampaignId = selectedCampaign.CampaignID;
-                _viewModel.SetSelectedCampaignId(selectedCampaignId);
+                
             }
         }
 
         private async void OnInsertButtonClicked(object sender, EventArgs e)
         {
-            await _viewModel.InsertPatrolAsync();
+            try
+            {
+                selectedDate = patrolDatePicker.Date;
+       
+
+               
+
+                string authToken = _tokenValue;
+
+
+                Persons person = null;
+                Zone zone = null;
+                Campaigns campaign = null;
+
+                person = new Persons { PersonId = _idUser };
+                byte zoneId = (byte)selectedZoneId; // Realiza una conversión explícita a byte
+                campaign = new Campaigns { CampaignID = selectedCampaignId };
+
+                Patrol1 newPatrol = new Patrol1
+                {
+                    PatrolDate = DateTime.Now,
+                    PersonId = _idUser,
+                    ZoneId = zoneId, 
+                    CampaignId = selectedCampaignId
+                };
+
+                bool createResult = await _patrolService.CreatePatrolAsyncApi(authToken, newPatrol);
+
+                    if (createResult)
+                    {
+                        await DisplayAlert("Éxito", "Patrulla creada", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Error", "No se pudo crear la patrulla", "OK");
+                    }
+                
+
+              
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", "Ocurrió un error: " + ex.Message, "OK");
+            }
         }
 
        

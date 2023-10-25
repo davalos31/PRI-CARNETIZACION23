@@ -1,4 +1,7 @@
 using Microsoft.Maui.Controls;
+using PetPass.View.Campaign;
+using PetPass.View.Patrol;
+using PetPass.View.Person;
 using PetPass.View.Report;
 using System;
 
@@ -8,10 +11,16 @@ namespace PetPass.View
     {
         private bool areReportsVisible = false;
         private bool areJefeBrigadaVisible = false;
+        private bool areCampanasVisible = false;
+        private bool arePatrullajeVisible = false;
+        int _userId;
+        string _token;
 
-        public MenuMain()
+        public MenuMain(int userId, string token)
         {
             InitializeComponent();
+            _userId = userId;
+            _token = token;
         }
 
         private void OnContentViewTapped(object sender, EventArgs e)
@@ -19,13 +28,19 @@ namespace PetPass.View
             // Oculta todos los botones adicionales
             showReportsButtonsStackLayout.IsVisible = false;
             jefeBrigadaButtonsStackLayout.IsVisible = false;
+            crearCampanasButtonsStackLayout.IsVisible = false;
+            crearPatrullajeButtonsStackLayout.IsVisible = false;
 
-            // Muestra el botón "Mostrar Reportes" y "Por Jefe Brigada"
+            // Muestra el botón "Mostrar Reportes", "Por Jefe Brigada", "Crear Campañas" y "Crear Patrullaje"
             showReportsButton.IsVisible = true;
             jefeBrigadaButton.IsVisible = true;
+            crearCampanasButton.IsVisible = true;
+            crearPatrullajeButton.IsVisible = true;
 
             areReportsVisible = false;
             areJefeBrigadaVisible = false;
+            areCampanasVisible = false;
+            arePatrullajeVisible = false;
         }
 
         private void OnShowReportsClicked(object sender, EventArgs e)
@@ -37,9 +52,11 @@ namespace PetPass.View
             }
             else
             {
-                // Si no están visibles, muéstralos y oculta los botones de "Por Jefe Brigada"
+                // Si no están visibles, muéstralos y oculta los botones de "Por Jefe Brigada", "Crear Campañas" y "Crear Patrullaje"
                 showReportsButtonsStackLayout.IsVisible = true;
                 jefeBrigadaButtonsStackLayout.IsVisible = false;
+                crearCampanasButtonsStackLayout.IsVisible = false;
+                crearPatrullajeButtonsStackLayout.IsVisible = false;
             }
 
             // Invierte el estado de visibilidad
@@ -48,7 +65,7 @@ namespace PetPass.View
 
         private void OnReporte1Clicked(object sender, EventArgs e)
         {
-             Navigation.PushAsync(new ReportPet());
+            Navigation.PushAsync(new ReportPet());
         }
 
         private void OnReporte2Clicked(object sender, EventArgs e)
@@ -70,9 +87,11 @@ namespace PetPass.View
             }
             else
             {
-                // Si no están visibles, muéstralos y oculta los botones de reportes
+                // Si no están visibles, muéstralos y oculta los botones de reportes, "Crear Campañas" y "Crear Patrullaje"
                 jefeBrigadaButtonsStackLayout.IsVisible = true;
                 showReportsButtonsStackLayout.IsVisible = false;
+                crearCampanasButtonsStackLayout.IsVisible = false;
+                crearPatrullajeButtonsStackLayout.IsVisible = false;
             }
 
             // Invierte el estado de visibilidad
@@ -81,17 +100,82 @@ namespace PetPass.View
 
         private void OnJefeBrigada1Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreatePerson());
+            Navigation.PushAsync(new CreatePerson(_userId, _token));
         }
 
         private void OnJefeBrigada2Clicked(object sender, EventArgs e)
         {
-            // Lógica para el Jefe Brigada 2
+            Navigation.PushAsync(new DetailPerson(_token, _userId));
         }
 
-        private void OnJefeBrigada3Clicked(object sender, EventArgs e)
+        private void OnCrearCampanasClicked(object sender, EventArgs e)
         {
-            // Lógica para el Jefe Brigada 3
+            if (areCampanasVisible)
+            {
+                // Si los botones de "Crear Campañas" ya están visibles, ocúltalos
+                crearCampanasButtonsStackLayout.IsVisible = false;
+            }
+            else
+            {
+                // Si no están visibles, muéstralos y oculta los botones de reportes, "Por Jefe Brigada" y "Crear Patrullaje"
+                crearCampanasButtonsStackLayout.IsVisible = true;
+                showReportsButtonsStackLayout.IsVisible = false;
+                jefeBrigadaButtonsStackLayout.IsVisible = false;
+                crearPatrullajeButtonsStackLayout.IsVisible = false;
+            }
+
+            // Invierte el estado de visibilidad
+            areCampanasVisible = !areCampanasVisible;
+        }
+
+        private void OnCrearCampanas1Clicked(object sender, EventArgs e)
+        {
+            // Lógica para crear campaña 1
+        }
+
+        private void OnCrearCampanas2Clicked(object sender, EventArgs e)
+        {
+            // Lógica para crear campaña 2
+        }
+
+        private void OnCrearCampanas3Clicked(object sender, EventArgs e)
+        {
+            // Lógica para crear campaña 3
+        }
+
+        private void OnCrearPatrullajeClicked(object sender, EventArgs e)
+        {
+            if (arePatrullajeVisible)
+            {
+                // Si los botones de "Crear Patrullaje" ya están visibles, ocúltalos
+                crearPatrullajeButtonsStackLayout.IsVisible = false;
+            }
+            else
+            {
+                // Si no están visibles, muéstralos y oculta los botones de reportes, "Por Jefe Brigada" y "Crear Campañas"
+                crearPatrullajeButtonsStackLayout.IsVisible = true;
+                showReportsButtonsStackLayout.IsVisible = false;
+                jefeBrigadaButtonsStackLayout.IsVisible = false;
+                crearCampanasButtonsStackLayout.IsVisible = false;
+            }
+
+            // Invierte el estado de visibilidad
+            arePatrullajeVisible = !arePatrullajeVisible;
+        }
+
+        private void OnCrearPatrullajeAClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreatePatrol(_userId, _token));
+        }
+
+        private void OnCrearPatrullajeBClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new DetailPatrol( _token));
+        }
+
+        private void OnCrearPatrullajeCClicked(object sender, EventArgs e)
+        {
+            // Lógica para crear patrullaje C
         }
     }
 }

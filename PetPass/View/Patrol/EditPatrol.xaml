@@ -4,9 +4,19 @@
              x:Class="PetPass.View.Patrol.EditPatrol"
              Title="EditPatrol">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <StackLayout>
+            <!-- Picker para seleccionar una zona -->
+            <Picker x:Name="zonePicker" Title="Selecciona una zona" SelectedIndexChanged="OnZonePickerSelectedIndexChanged" />
+
+            <!-- Picker para seleccionar una campaña -->
+            <Picker x:Name="campaignPicker" Title="Selecciona una campaña" SelectedIndexChanged="OnCampaignPickerSelectedIndexChanged" />
+
+            <!-- DatePicker para elegir la fecha de la patrulla -->
+            <Label Text="Fecha de la Patrulla:" />
+            <DatePicker x:Name="patrolDatePicker"  />
+
+            <!-- Botón para agregar -->
+            <Button Text="Editar"  />
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>

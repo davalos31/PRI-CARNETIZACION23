@@ -106,48 +106,8 @@ namespace PetPass.Service
             }
         }
 
-        public async Task<AuthToken> GetAuthTokenAsync(string username, string password)
-        {
-            try
-            {
-                // URL del punto de autenticación
-                string authUrl = "https://localhost:44313/PetPass/Users/Login";  // Reemplaza con la URL correcta
 
-                // Crear un objeto JSON con las credenciales
-                var credentials = new
-                {
-                    Username = username,
-                    Password = password
-                };
+       
 
-                // Serializar el objeto a JSON
-                string jsonCredentials = JsonConvert.SerializeObject(credentials);
-
-                // Crear una solicitud POST con el cuerpo JSON
-                var content = new StringContent(jsonCredentials, Encoding.UTF8, "application/json");
-
-                // Realizar la solicitud POST al servicio de autenticación
-                var response = await _httpClient.PostAsync(authUrl, content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    // Leer y deserializar la respuesta del servicio
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var authToken = JsonConvert.DeserializeObject<AuthToken>(responseContent);
-                    return authToken;
-                }
-                else
-                {
-                    // Manejar el caso en que la autenticación no fue exitosa, por ejemplo, lanzar una excepción o devolver null.
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Manejar excepciones, como problemas de red o problemas en el servicio.
-                // Puedes registrar el error o lanzar una excepción personalizada.
-                throw ex;
-            }
-        }
     }
 }

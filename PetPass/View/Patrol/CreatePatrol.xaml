@@ -15,7 +15,7 @@
 
                 <!-- DatePicker para elegir la fecha de la patrulla -->
                 <Label Text="Fecha de la Patrulla:" />
-                <DatePicker x:Name="patrolDatePicker" Date="{Binding CurrentPatrolDate}" />
+                <DatePicker x:Name="patrolDatePicker"  />
 
                 <!-- Botón para agregar -->
                 <Button Text="Agregar" Clicked="OnInsertButtonClicked" />

@@ -11,7 +11,8 @@ namespace PetPass.Service
     {
         Task<int> GetPersonIDByUsernameAsync(string username);
         Task<string> GetUserRoleAsync(string userName, string password);
+      //  Task LoginAsync(string username, string password);
         Task<bool> ValidarUsuarioAsync(string username, string password);
-        Task<AuthToken> GetAuthTokenAsync(string username, string password);
+       // Task<AuthToken> GetAuthTokenAsync(string username, string password);
     }
 }

@@ -42,11 +42,31 @@
 
             <!-- Espacio para mostrar los botones adicionales de "Por Jefe Brigada" -->
             <StackLayout x:Name="jefeBrigadaButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
-                <Button Text="Jefe Brigada 1" Clicked="OnJefeBrigada1Clicked" />
-                <Button Text="Jefe Brigada 2" Clicked="OnJefeBrigada2Clicked" />
-                <Button Text="Jefe Brigada 3" Clicked="OnJefeBrigada3Clicked" />
+                <Button Text="Crear Jefe" Clicked="OnJefeBrigada1Clicked" />
+                <Button Text="Detalles" Clicked="OnJefeBrigada2Clicked" />
             </StackLayout>
-       
+
+            <!-- Botón "Crear Campañas" -->
+            <Button x:Name="crearCampanasButton" Text="Crear Campañas" Clicked="OnCrearCampanasClicked" 
+                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Espacio para mostrar los botones adicionales de "Crear Campañas" -->
+            <StackLayout x:Name="crearCampanasButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                <Button Text="Opción 1" Clicked="OnCrearCampanas1Clicked" />
+                <Button Text="Opción 2" Clicked="OnCrearCampanas2Clicked" />
+                <Button Text="Opción 3" Clicked="OnCrearCampanas3Clicked" />
+            </StackLayout>
+
+            <!-- Botón "Crear Patrullaje" -->
+            <Button x:Name="crearPatrullajeButton" Text="Patrullaje" Clicked="OnCrearPatrullajeClicked" 
+                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Espacio para mostrar los botones adicionales de "Crear Patrullaje" -->
+            <StackLayout x:Name="crearPatrullajeButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                <Button Text="Crear Patrullaje " Clicked="OnCrearPatrullajeAClicked" />
+                <Button Text="Opción B" Clicked="OnCrearPatrullajeBClicked" />
+                <Button Text="Opción C" Clicked="OnCrearPatrullajeCClicked" />
+            </StackLayout>
         </StackLayout>
     </ContentView>
 </ContentPage>

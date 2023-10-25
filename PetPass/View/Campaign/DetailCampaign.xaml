@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.View.Campaign.DetailCampaign"
+             Title="DetailCampaign">
+    <ListView x:Name="CampaignDataListView" ItemsSource="{Binding CampaignDataList}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Name}" />
+                        <Label Text="{Binding StartDate}" />
+                        <Label Text="{Binding EndDate}" />
+                        <Label Text="{Binding CampaignID}" />
+                        <Button Text="Editar" Clicked="Edit" CommandParameter="{Binding CampaignID}" />
+                        <Button Text="Eliminar" Clicked="Delete_Clicked" CommandParameter="{Binding CampaignID}" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

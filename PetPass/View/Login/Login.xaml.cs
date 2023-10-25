@@ -1,83 +1,102 @@
 using Newtonsoft.Json;
+using PetPass.Model;
 using PetPass.Service;
-using PetPass.ViewModel;
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace PetPass.View.Login
 {
     public partial class Login : ContentPage
     {
-        private readonly string authServiceBaseUrl = "https://localhost:44313/PetPass/Users"; // Reemplaza con la URL de tu microservicio
-        private string authToken; // Declarar la variable aquí
+        
+       
 
         public Login()
         {
             InitializeComponent();
+           
         }
-        private async Task<bool> LoginAsync(string username, string password)
+
+        private async Task<LoginResponse> LoginAsync(string username, string password)
         {
             try
             {
-                string baseUrl = "https://localhost:44313//PetPass/Users";
-                string apiEndpoint = "/Login";
+                string baseUrl = "https://localhost:44313"; // URL base de tu servicio API
+                string apiEndpoint = "/PetPass/Users/Login"; // Ruta al endpoint de inicio de sesión
                 string fullUrl = baseUrl + apiEndpoint;
 
                 using (HttpClient httpClient = new HttpClient())
                 {
-                    // Prepara los datos a enviar (username y password)
-                    var data = new { username, password };
-                    string jsonData = JsonConvert.SerializeObject(data);
-                    StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                    var userRequest = new User
+                    {
+                        Username = username,
+                        UserPassword = password
+                    };
+
+                    string jsonRequest = JsonConvert.SerializeObject(userRequest);
+                    StringContent content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
                     HttpResponseMessage response = await httpClient.PostAsync(fullUrl, content);
 
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonResponse = await response.Content.ReadAsStringAsync();
-                        authToken = jsonResponse; // Asigna el token a la variable authToken
-                        return true; // Indica que el inicio de sesión fue exitoso
-                    }
-                    else if (response.StatusCode == HttpStatusCode.BadRequest)
-                    {
-                        // El servidor devolvió un error BadRequest. Puedes mostrar un mensaje personalizado.
-                        await DisplayAlert("Error", "Inicio de sesión incorrecto. Verifica tus credenciales.", "OK");
+                        var responseObject = JsonConvert.DeserializeObject<LoginResponse>(jsonResponse);
+
+                        if (responseObject != null)
+                        {
+                            return responseObject; // Devuelve la respuesta completa del inicio de sesión
+                        }
                     }
                     else
                     {
-                        // Otros errores del servidor o de red
-                        await DisplayAlert("Error", "Error al llamar al servicio: " + response.StatusCode, "OK");
+                        await DisplayAlert("Error", "Inicio de sesión fallido. Verifica tus credenciales.", "OK");
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones
+                // Manejo de errores
                 await DisplayAlert("Error", "Ocurrió un error: " + ex.Message, "OK");
             }
 
-            return false; // Indica que el inicio de sesión falló
+            return null; // Indica que el inicio de sesión falló
         }
 
-        private async void OnCounterClicked(object sender, EventArgs e)
+
+        private async void OnLoginClicked(object sender, EventArgs e)
         {
-            string username = "asnahue2592";
-            string password = "Daxhulk2016";
+            string username = usernameEntry.Text;
+            string password = passwordEntry.Text;
 
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
                 try
                 {
-                    bool loginSuccess = await LoginAsync(username, password);
+                    LoginResponse loginResponse = await LoginAsync(username, password);
+                   
 
-                    if (loginSuccess)
+                    if (loginResponse != null)
                     {
-                        // El inicio de sesión fue exitoso, redirige a otra página
-                        await Application.Current.MainPage.Navigation.PushAsync(new CreatePerson());
+
+                        int userId = loginResponse.UserId; // Obtén el UserID del LoginResponse
+                        string tokenValue = loginResponse.token; // Obtén el token del LoginResponse
+
+
+                        bool firstLogin = loginResponse.FirstLogin; // Obtén FirstLogin del LoginResponse
+
+
+                        string role = loginResponse.Role; // Obtén Role del LoginResponse
+                        // El inicio de sesión fue exitoso, muestra el UserID y el token en una alerta
+                        string message = $"User ID: {loginResponse.UserId}\nToken: {loginResponse.token}";
+                        await DisplayAlert("Información de inicio de sesión", message, "OK");
+                        Navigation.PushAsync(new MenuMain(userId,tokenValue));
+
+                        // Realiza otras acciones con el UserID y el token si es necesario
                     }
                 }
                 catch (Exception ex)
@@ -91,6 +110,5 @@ namespace PetPass.View.Login
                 await DisplayAlert("Error", "Usuario y contraseña son obligatorios", "OK");
             }
         }
-
     }
 }

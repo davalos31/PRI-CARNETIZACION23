@@ -17,15 +17,15 @@ namespace PetPass.ViewModel
         private readonly IPatrol _patrolService;
         private readonly int _personID;
         public ObservableCollection<Zone> Zones { get; set; }
-        public ObservableCollection<Campaign> Campaigns { get; set; }
+        public ObservableCollection<Campaigns> Campaigns { get; set; }
 
         private int _selectedZoneId;
         private int _selectedCampaignId;
 
 
-        Person person;
+        Persons person;
         Zone zone;
-        Campaign campaign;
+        Campaigns campaign;
 
         // Propiedades para las selecciones de zona y campaña
         public int SelectedZoneId
@@ -75,7 +75,7 @@ namespace PetPass.ViewModel
             _patrolService = new PatrolService();
 
             Zones = new ObservableCollection<Zone>();
-            Campaigns = new ObservableCollection<Campaign>();
+            Campaigns = new ObservableCollection<Campaigns>();
 
             LoadDataCommand = new Command(async () => await LoadDataAsync());
             InsertPatrolCommand = new Command(async () => await InsertPatrolAsync());
@@ -87,21 +87,21 @@ namespace PetPass.ViewModel
         {
             try
             {
-                List<Zone> loadedZones = await _patrolService.GetZonesAsync();
-                List<Campaign> loadedCampaigns = await _patrolService.GetCampaignsAsync();
+                //List<Zone> loadedZones = await _patrolService.GetZonesAsync();
+                //List<Campaigns> loadedCampaigns = await _patrolService.GetCampaignsAsync();
 
-                Zones.Clear();
-                Campaigns.Clear();
+                //Zones.Clear();
+                //Campaigns.Clear();
 
-                foreach (var zone in loadedZones)
-                {
-                    Zones.Add(zone);
-                }
+                //foreach (var zone in loadedZones)
+                //{
+                //    Zones.Add(zone);
+                //}
 
-                foreach (var campaign in loadedCampaigns)
-                {
-                    Campaigns.Add(campaign);
-                }
+                //foreach (var campaign in loadedCampaigns)
+                //{
+                //    Campaigns.Add(campaign);
+                //}
 
                 // Agregar mensaje de depuración
                 Console.WriteLine("Datos de zonas y campañas cargados correctamente.");
@@ -112,6 +112,37 @@ namespace PetPass.ViewModel
                 ShowMessageRequest?.Invoke(this, $"Error al cargar datos: {ex.Message}");
             }
         }
+
+        public async Task LoadDataAsyncApi()
+        {
+            try
+            {
+                //List<Zone> loadedZones = await _patrolService.GetZonesAsync();
+                //List<Campaigns> loadedCampaigns = await _patrolService.GetCampaignsAsync();
+
+                //Zones.Clear();
+                //Campaigns.Clear();
+
+                //foreach (var zone in loadedZones)
+                //{
+                //    Zones.Add(zone);
+                //}
+
+                //foreach (var campaign in loadedCampaigns)
+                //{
+                //    Campaigns.Add(campaign);
+                //}
+
+                // Agregar mensaje de depuración
+                Console.WriteLine("Datos de zonas y campañas cargados correctamente.");
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores, log, etc.
+                ShowMessageRequest?.Invoke(this, $"Error al cargar datos: {ex.Message}");
+            }
+        }
+
 
         public void SetSelectedZoneId(int zoneId)
         {
@@ -150,9 +181,9 @@ namespace PetPass.ViewModel
             try
             {
                 // Obtener el objeto Zone correspondiente a partir del ID seleccionado
-                Person person = await _patrolService.GetPersonByIdAsync(_personID);
+                Persons person = await _patrolService.GetPersonByIdAsync(_personID);
                 Zone zone = await _patrolService.GetZoneByIdAsync(SelectedZoneId);
-                Campaign campaign = await _patrolService.GetCampaignByIdAsync(SelectedCampaignId);
+                Campaigns campaign = await _patrolService.GetCampaignByIdAsync(SelectedCampaignId);
 
 
                 if (zone != null)
@@ -160,8 +191,8 @@ namespace PetPass.ViewModel
                     // Crear una nueva patrulla y asignar valores
                     var patrol = new Patrol1
                     {
-                        patrolDate = CurrentPatrolDate,
-                        Person = person, // Asegúrate de que person esté inicializado correctamente
+                        PatrolDate = CurrentPatrolDate,
+                       // Person = person, // Asegúrate de que person esté inicializado correctamente
                         Zone = zone,     // Asignar el objeto Zone en lugar de un entero
                         Campaign = campaign // Asegúrate de que campaign esté inicializado correctamente
                     };

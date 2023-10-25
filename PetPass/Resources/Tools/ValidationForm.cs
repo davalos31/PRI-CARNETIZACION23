@@ -11,7 +11,7 @@ namespace PetPass.Resources.Tools
     public class ValidationForm
     {
 
-        public static List<string> ValidatePerson(Person person)
+        public static List<string> ValidatePerson(Persons person)
         {
             List<string> errores = new List<string>();
 

@@ -1,4 +1,6 @@
 using PetPass.Model;
+using PetPass.Service;
+using PetPass.ViewModel;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 
@@ -6,77 +8,123 @@ namespace PetPass.View.Patrol;
 
 public partial class EditPatrol : ContentPage
 {
-    private Patrol1 selectedPatrol;
-    public EditPatrol(Patrol1 patrol)
+    private PatrolViewModel _viewModel;
+    private PatrolService _patrolService;
+    private ObservableCollection<string> zoneNames = new ObservableCollection<string>();
+    private ObservableCollection<string> campaignNames = new ObservableCollection<string>();
+    private List<Zone> zones;
+    private List<Campaigns> campaigns;
+    private int selectedZoneId;
+    private int selectedCampaignId;
+    private DateTime selectedDate;
+    int _idPatrolValue;
+    string _tokenValue;
+    public EditPatrol(int _idPatrol, string _token)
 	{
 
         InitializeComponent();
-    //    selectedPatrol = patrol;
 
-    //    // Obtén una referencia a la instancia de CreatePatrol
-    //    CreatePatrol createPatrolPage = (CreatePatrol)Application.Current.MainPage;
+        _patrolService = new PatrolService();
+        _viewModel = new PatrolViewModel(_idPatrol);
+        BindingContext = _viewModel;
 
-    //    // Accede a la lista de campañas cargadas en la instancia de CreatePatrol
-    //    ObservableCollection<Campaign> campaigns = createPatrolPage.Campaigns;
+        zonePicker.ItemsSource = zoneNames;
+        campaignPicker.ItemsSource = campaignNames;
 
-    //    // Configura el origen de datos del Picker con la lista de campañas
-    //    campaignPicker.ItemsSource = campaigns;
+        zones = new List<Zone>();
+        campaigns = new List<Campaigns>();
 
-    //    // Accede a la lista de zonas cargadas en la instancia de CreatePatrol
-    //    ObservableCollection<Zone> zones = createPatrolPage.Zones;
+        _idPatrolValue = _idPatrol;
+        _tokenValue = _token;
 
-    //    // Configura el origen de datos del ListView u otro control con la lista de zonas
-    //    // Por ejemplo, si deseas usar un ListView:
-    //    zoneListView.ItemsSource = zones;
-    //}
+        LoadPatrolDetails(_idPatrolValue);
+        LoadData();
+    }
 
-    //private async void OnSaveButtonClicked(object sender, EventArgs e)
-    //{
-    //    try
-    //    {
-    //        // Establece la cadena de conexión a tu base de datos
-    //        string connectionString = "TuCadenaDeConexion";
 
-    //        using (SqlConnection conexion = new SqlConnection(connectionString))
-    //        {
-    //            conexion.Open();
 
-    //            // Define la consulta SQL para actualizar el registro en la base de datos
-    //            string consultaSQL = "UPDATE Patrols SET PatrolDate = @PatrolDate, PersonName = @PersonName, ZoneName = @ZoneName, CampaignName = @CampaignName WHERE PatrolID = @PatrolID";
+    private async void LoadPatrolDetails(int Id)
+    {
+        var patrol = await _patrolService.GetPatrolDetailsAsyncApi(_tokenValue, _idPatrolValue);
 
-    //            using (SqlCommand comando = new SqlCommand(consultaSQL, conexion))
-    //            {
-    //                // Asigna los valores editados de los campos de entrada a los parámetros
-    //                comando.Parameters.AddWithValue("@PatrolID", selectedPatrol.PatrolID);
-    //                comando.Parameters.AddWithValue("@PatrolDate", DateTime.Parse(patrolDateEntry.Text));
-    //                comando.Parameters.AddWithValue("@PersonName", personNameEntry.Text);
-    //                comando.Parameters.AddWithValue("@ZoneName", zoneNameEntry.Text);
-    //                comando.Parameters.AddWithValue("@CampaignName", campaignNameEntry.Text);
+        if (patrol != null)
+        {
+            if (patrol.Zone != null)
+            {
+                zonePicker.SelectedItem = patrol.Zone.Name;
+            }
 
-    //                // Ejecuta la consulta de actualización
-    //                int filasActualizadas = comando.ExecuteNonQuery();
+            if (patrol.Campaign != null)
+            {
+                campaignPicker.SelectedItem = patrol.Campaign.Name;
+            }
 
-    //                if (filasActualizadas > 0)
-    //                {
-    //                    // Los datos se actualizaron correctamente
-    //                    // Puedes mostrar un mensaje de éxito o realizar cualquier otra acción necesaria.
-    //                    await DisplayAlert("Éxito", "Los datos se actualizaron correctamente", "Aceptar");
+            patrolDatePicker.Date = patrol.PatrolDate;
+        }
+        else
+        {
+            await DisplayAlert("Error", "No se pudieron cargar los detalles de la Persona.", "OK");
 
-    //                    // Regresa a la página anterior
-    //                    await Navigation.PopAsync();
-    //                }
-    //                else
-    //                {
-    //                    // No se pudo actualizar ningún registro
-    //                    await DisplayAlert("Error", "No se pudo actualizar ningún registro", "Aceptar");
-    //                }
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        // Maneja las excepciones apropiadamente
-    //        await DisplayAlert("Error", "Error al actualizar los datos: " + ex.Message, "Aceptar");
-    //    }
+        }
+    }
+
+
+
+
+
+
+    private async void LoadData()
+    {
+        try
+        {
+            PatrolService _patrolService = new PatrolService();
+            zones = await _patrolService.GetZonesAsyncApi(_tokenValue);
+            campaigns = await _patrolService.GetCampaignsAsync();
+
+            zoneNames.Clear();
+            campaignNames.Clear();
+
+            foreach (var zone in zones)
+            {
+                zoneNames.Add(zone.Name);
+            }
+
+            foreach (var campaign in campaigns)
+            {
+                campaignNames.Add(campaign.Name);
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error al cargar lista de datos", ex.Message, "OK");
+        }
+
+    }
+
+
+    private void OnZonePickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var selectedZoneName = (string)zonePicker.SelectedItem;
+        var selectedZone = zones.FirstOrDefault(z => z.Name == selectedZoneName);
+
+        if (selectedZone != null)
+        {
+            selectedZoneId = selectedZone.ZoneID;
+
+        }
+    }
+
+    private void OnCampaignPickerSelectedIndexChanged(object sender, EventArgs e)
+    {
+        var selectedCampaignName = (string)campaignPicker.SelectedItem;
+        var selectedCampaign = campaigns.FirstOrDefault(c => c.Name == selectedCampaignName);
+
+        if (selectedCampaign != null)
+        {
+            selectedCampaignId = selectedCampaign.CampaignID;
+
+        }
     }
 }
+
+

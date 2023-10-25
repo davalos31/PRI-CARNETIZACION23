@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace PetPass.Model
 {
-    public class Campaign
+    public class Campaigns
     {
         public int CampaignID { get; set; }
         public string Name { get; set; }
-        public DateTime CampaignDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+       // public int State { get; internal set; }
     }
 }

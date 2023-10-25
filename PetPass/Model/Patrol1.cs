@@ -8,10 +8,14 @@ namespace PetPass.Model
 {
     public class Patrol1
     {
-         public int patrolID { get; set; }
-        public DateTime patrolDate { get; set; }
-        public Person Person { get; set; } // Relación con la tabla Person
-        public Zone Zone { get; set; }     // Relación con la tabla Zone
-        public Campaign Campaign { get; set; } // Relación con la tabla Campaign
+        public int PatrolId { get; set; }
+        public DateTime PatrolDate { get; set; }
+        public int PersonId { get; set; }
+        public byte ZoneId { get; set; }
+        public int CampaignId { get; set; }
+
+        public Campaigns? Campaign { get; set; }
+        public User? Person { get; set; }
+        public Zone? Zone { get; set; }
     }
 }

@@ -26,11 +26,6 @@
         <Entry Placeholder="Contraseña" IsPassword="True" x:Name="passwordEntry" />
 
         <!-- Botón de inicio de sesión -->
-        <Button
-     x:Name="CounterBtn"
-     Text="Click me"
-     SemanticProperties.Hint="Counts the number of times you click"
-     Clicked="OnCounterClicked"
-     HorizontalOptions="Center" />
+        <Button Text="Iniciar Sesión" Clicked="OnLoginClicked" />
     </StackLayout>
 </ContentPage>

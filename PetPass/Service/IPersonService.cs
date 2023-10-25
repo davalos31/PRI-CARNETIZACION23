@@ -9,8 +9,11 @@ namespace PetPass.Service
 {
     public interface IPersonService
     {
-        Task<Person> CreatePersonAsync(Person person);
-        Task<List<Person>> GetPeopleAsync();
+        Task<Persons> CreatePersonAsync(Persons person, string authToken);
+        Task<List<Persons>> GetPeopleAsync(string token);
+        Task<bool> UpdatePersonAsync(string token, Persons person);
+        Task<Persons> GetPersonDetailsAsync(string token, int personId);
+        Task<bool> DeletePersonAsync(string token, int personId);
     }
 }
 

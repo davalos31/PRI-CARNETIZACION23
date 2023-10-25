@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.View.Person.DetailPerson"
+             Title="DetailPerson">
+    <ScrollView>
+        <VerticalStackLayout>
+            <ListView x:Name="PersonDataListView" ItemsSource="{Binding PersonDataList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding LastName}" />
+                                <Label Text="{Binding Phone}" />
+                                <Label Text="{Binding PersonId}" />
+                                <Button Text="Editar" Clicked="Edit" CommandParameter="{Binding PersonId}" />
+                                <Button Text="Eliminar" Clicked="Delete_Clicked" CommandParameter="{Binding PersonId}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Volver" Clicked="Volver_Clicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

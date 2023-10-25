@@ -29,6 +29,15 @@
     <MauiXaml Update="Resources\Styles\Styles.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="View\Campaign\CreateCampaign.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Campaign\DetailCampaign.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Campaign\EditCampaign.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="View\Login\Login.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
@@ -45,6 +54,12 @@
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="View\Patrol\EditPatrol.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Person\DetailPerson.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="View\Person\EditPerson.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="View\Report\ReportPet.xaml">

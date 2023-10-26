@@ -65,17 +65,17 @@ namespace PetPass.View
 
         private void OnReporte1Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ReportPet());
+            Navigation.PushAsync(new ReportPet(_token));
         }
 
         private void OnReporte2Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ReportZone());
+            Navigation.PushAsync(new ReportZone(_token));
         }
 
         private void OnReporte3Clicked(object sender, EventArgs e)
         {
-            // Lógica para el Reporte 3
+            Navigation.PushAsync(new TotalPet(_token));
         }
 
         private void OnJefeBrigadaClicked(object sender, EventArgs e)

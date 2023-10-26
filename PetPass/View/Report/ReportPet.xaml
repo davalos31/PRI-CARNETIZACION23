@@ -11,8 +11,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="{Binding PersonName}" />
-                                <Label Text="{Binding PetCount, StringFormat='People Count: {0}'}" />
+                                <Label Text="{Binding BrigadierName}" />
+                                <Label Text="{Binding TotalPetsRegistered, StringFormat='Mascotas Registrados: {0}'}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

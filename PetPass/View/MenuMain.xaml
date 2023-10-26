@@ -31,9 +31,9 @@
 
             <!-- Espacio para mostrar los botones adicionales de "Mostrar Reportes" -->
             <StackLayout x:Name="showReportsButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
-                <Button Text="Reporte 1" Clicked="OnReporte1Clicked" />
-                <Button Text="Reporte 2" Clicked="OnReporte2Clicked" />
-                <Button Text="Reporte 3" Clicked="OnReporte3Clicked" />
+                <Button Text="Registros de mascotas por Jefe Brigada" Clicked="OnReporte1Clicked" />
+                <Button Text="Registros de jefe de Brigada por zona" Clicked="OnReporte2Clicked" />
+                <Button Text="Registro de mascotas por zona" Clicked="OnReporte3Clicked" />
             </StackLayout>
 
             <!-- Botón "Por Jefe Brigada" -->

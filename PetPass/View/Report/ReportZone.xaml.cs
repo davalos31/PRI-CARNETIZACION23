@@ -6,11 +6,12 @@ namespace PetPass.View.Report;
 
 public partial class ReportZone : ContentPage
 {
-    private readonly PatrolService _patrolService = new PatrolService(); // Asegúrate de tener una instancia de tu servicio aquí.
-
-    public ReportZone()
+    private readonly ReportService _reportService = new ReportService(); // Asegúrate de tener una instancia de tu servicio aquí.
+     string _token;
+    public ReportZone(string token)
     {
         InitializeComponent();
+        _token = token;
         LoadPatrolsAsync();
     }
 
@@ -19,13 +20,13 @@ public partial class ReportZone : ContentPage
         try
         {
             // Obtén los datos de patrullas desde tu servicio
-            var dataFromService = await _patrolService.GetPatrolsByZoneAsync();
+            var dataFromService = await _reportService.GetZoneReport(_token);
 
             // Crea una lista de objetos PatrolViewModel
-            var dataList = dataFromService.Select(item => new Reports
+            var dataList = dataFromService.Select(item => new BrigadierData
             {
                 ZoneName = item.ZoneName,
-                PeopleCount = item.PeopleCount
+                TotalBrigadiers = item.TotalBrigadiers
             }).ToList();
 
             // Asigna la lista de objetos PatrolViewModel a la ListView

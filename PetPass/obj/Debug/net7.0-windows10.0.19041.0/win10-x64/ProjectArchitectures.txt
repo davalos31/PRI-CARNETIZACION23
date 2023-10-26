@@ -1,1 +1,1 @@
-C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\PetPass.csproj;x64
+C:\Users\Lenovo\Documents\GitHub\PRI-CARNETIZACION23\PetPass\PetPass.csproj;x64

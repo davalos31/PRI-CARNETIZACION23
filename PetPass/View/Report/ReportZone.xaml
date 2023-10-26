@@ -11,7 +11,7 @@
                     <ViewCell>
                         <StackLayout>
                             <Label Text="{Binding ZoneName}" />
-                            <Label Text="{Binding PeopleCount, StringFormat='People Count: {0}'}" />
+                            <Label Text="{Binding TotalBrigadiers, StringFormat='Jefe de Brigada registrados: {0}'}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

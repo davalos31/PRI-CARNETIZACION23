@@ -9,17 +9,12 @@ namespace PetPass.Service
 {
 	public interface IPatrol
 	{
-		Task<Person> GetPersonByIdAsync(int personId);
-		Task<Zone> GetZoneByIdAsync(int zoneId);
-		Task<Campaigns> GetCampaignByIdAsync(int campaignId);
-		Task<List<Person>> GetAllPersonsAsync();
-		Task<List<Patrol1>> GetPatrolsAsync();
-		Task<Patrol1> CreatePatrolAsync(Patrol1 patrol);
-		Task<List<Reports>> GetPatrolsByZoneAsync();
-		Task<List<Reports>> GetReportByPet();
+	
+		
+	
 
 		Task<List<Campaigns>> GetCampaignsAsync();
-		//Task<List<Zone>> GetZonesAsync();
+		
 
 		Task<bool> CreatePatrolAsyncApi(string token, Patrol1 patrol);
 

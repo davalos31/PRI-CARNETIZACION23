@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.View.Report.ReportPet"
+             Title="ReportPet">
+    <ScrollView>
+        <VerticalStackLayout>
+            <ActivityIndicator x:Name="loadingIndicator" IsRunning="True" IsVisible="True" />
+            <ListView x:Name="patrolListView" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding PersonName}" />
+                                <Label Text="{Binding PetCount, StringFormat='People Count: {0}'}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

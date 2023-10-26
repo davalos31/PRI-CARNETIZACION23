@@ -43,5 +43,37 @@ namespace PetPass.Service
 				return false;
 			}
 		}
+
+		public async Task<Person> findbyCI(string ci)
+		{
+			try
+			{
+				if (ci == null) return null;
+
+				HttpResponseMessage response = await _httpClient.GetAsync($"PetPass/People/FindByCI?ci={ci}");
+
+				if (response.IsSuccessStatusCode)
+				{
+					string responseBody = await response.Content.ReadAsStringAsync();
+
+					if (string.IsNullOrEmpty(responseBody))
+					{
+						Console.WriteLine("La respuesta del servidor está vacía.");
+						return null;
+					}
+
+					return JsonConvert.DeserializeObject<Person>(responseBody);
+				}
+				else
+				{
+					Console.WriteLine($"Error al usar la api. Código de estado HTTP: {response.StatusCode}");
+					return null;
+				}
+			}
+			catch
+			{
+				return null;
+			}
+		}
 	}
 }

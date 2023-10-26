@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PetPass.Model
 {
-	internal class Person
+	public class Person
 	{
 		public int PersonId { get; set; }
 		public string Name { get; set; }
@@ -20,7 +20,7 @@ namespace PetPass.Model
 		public int Phone { get; set; }
 		public string Email { get; set; }
 		public short State { get; set; }
-
+		public Person() { }
 		public Person(int personId, string name, string firstName, string lastName, string ci, string gender, string address, int phone, string email, short state)
 		{
 			PersonId = personId;

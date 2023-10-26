@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PetPass.Service
 {
-	internal class BaseService
+	public class BaseService
 	{
 		protected readonly HttpClient _httpClient;
 

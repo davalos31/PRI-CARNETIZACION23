@@ -13,13 +13,20 @@ public partial class UseCamera : ContentPage
 
 	private void CameraView_CamerasLoaded(object sender, EventArgs e)
 	{
-		CameraView.Camera = CameraView.Cameras.First();
-
-		MainThread.BeginInvokeOnMainThread(async () =>
+		try
 		{
-			await CameraView.StopCameraAsync();
-			await CameraView.StartCameraAsync();
-		});
+			CameraView.Camera = CameraView.Cameras.First();
+
+			MainThread.BeginInvokeOnMainThread(async () =>
+			{
+				await CameraView.StopCameraAsync();
+				await CameraView.StartCameraAsync();
+			});
+		}
+		catch
+		{
+			DisplayAlert("Sistema", "no se encontro una camara", "ok");
+		}
 	}
 
 	private void btnPick_Clicked(object sender, EventArgs e)

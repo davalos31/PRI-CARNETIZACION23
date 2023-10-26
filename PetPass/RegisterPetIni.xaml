@@ -11,22 +11,20 @@
             HorizontalOptions="Center" />
 
         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-            <Entry Placeholder="Número" />
+            <Entry x:Name="EntryCi" Placeholder="Número" />
             <Button Text="Buscar" 
                     Clicked="Button_Clicked"/>
         </StackLayout>
 
-        <Entry Placeholder="Nombre" />
-        <Entry Placeholder="Apellido Paterno" />
-        <Entry Placeholder="Apellido Materno" />
+        <Entry x:Name="Name" Placeholder="Nombre" />
+        <Entry x:Name="FirstName" Placeholder="Apellido Paterno" />
+        <Entry x:Name="LastName" Placeholder="Apellido Materno" />
 
-        <!-- Usamos una etiqueta para indicar la selección de fecha -->
-        <Label Text="Fecha de Nacimiento" />
-        <DatePicker />
-
-        <Button Text="Continuar"
+        <Button x:Name="btnCreate"
+                Text="Continuar"
                 BackgroundColor="#007ACC"
                 TextColor="White"
-                VerticalOptions="EndAndExpand" />
+                VerticalOptions="EndAndExpand" 
+                Clicked="btnCreate_Clicked"/>
     </VerticalStackLayout>
 </ContentPage>

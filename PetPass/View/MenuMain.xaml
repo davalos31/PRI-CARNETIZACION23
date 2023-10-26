@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPass.View.MenuMain"
+             Title="MenuMain" BackgroundColor="White">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Blue" />
+                <Setter Property="TextColor" Value="White" />
+                <!-- Cambia el color del texto de los botones a blanco -->
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Contenedor principal que maneja el evento de "tapping" -->
+    <ContentView BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <ContentView.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnContentViewTapped" />
+        </ContentView.GestureRecognizers>
+
+        <!-- Aquí va todo el contenido de la página, incluyendo los botones y otros elementos -->
+        <StackLayout>
+            <Label Text="Welcome to .NET MAUI!"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+
+            <!-- Botón "Mostrar Reportes" -->
+            <Button x:Name="showReportsButton" Text="Mostrar Reportes" Clicked="OnShowReportsClicked" 
+                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Espacio para mostrar los botones adicionales de "Mostrar Reportes" -->
+            <StackLayout x:Name="showReportsButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                <Button Text="Reporte 1" Clicked="OnReporte1Clicked" />
+                <Button Text="Reporte 2" Clicked="OnReporte2Clicked" />
+                <Button Text="Reporte 3" Clicked="OnReporte3Clicked" />
+            </StackLayout>
+
+            <!-- Botón "Por Jefe Brigada" -->
+            <Button x:Name="jefeBrigadaButton" Text="Por Jefe Brigada" Clicked="OnJefeBrigadaClicked" 
+                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Espacio para mostrar los botones adicionales de "Por Jefe Brigada" -->
+            <StackLayout x:Name="jefeBrigadaButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                <Button Text="Crear Jefe" Clicked="OnJefeBrigada1Clicked" />
+                <Button Text="Detalles" Clicked="OnJefeBrigada2Clicked" />
+            </StackLayout>
+
+            <!-- Botón "Crear Campañas" -->
+            <Button x:Name="crearCampanasButton" Text="Crear Campañas" Clicked="OnCrearCampanasClicked" 
+                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Espacio para mostrar los botones adicionales de "Crear Campañas" -->
+            <StackLayout x:Name="crearCampanasButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                <Button Text="Opción 1" Clicked="OnCrearCampanas1Clicked" />
+                <Button Text="Opción 2" Clicked="OnCrearCampanas2Clicked" />
+                <Button Text="Opción 3" Clicked="OnCrearCampanas3Clicked" />
+            </StackLayout>
+
+            <!-- Botón "Crear Patrullaje" -->
+            <Button x:Name="crearPatrullajeButton" Text="Patrullaje" Clicked="OnCrearPatrullajeClicked" 
+                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Espacio para mostrar los botones adicionales de "Crear Patrullaje" -->
+            <StackLayout x:Name="crearPatrullajeButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                <Button Text="Crear Patrullaje " Clicked="OnCrearPatrullajeAClicked" />
+                <Button Text="Opción B" Clicked="OnCrearPatrullajeBClicked" />
+                <Button Text="Opción C" Clicked="OnCrearPatrullajeCClicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentView>
+</ContentPage>

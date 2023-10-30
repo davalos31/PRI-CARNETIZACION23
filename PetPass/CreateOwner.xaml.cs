@@ -99,11 +99,14 @@ public partial class CreateOwner : ContentPage
 			return false;
 		}
 
-		validacion = val.ValidateName(EntryLastName.Text);
-		if (!validacion.res)
+		if (!string.IsNullOrWhiteSpace(EntryLastName.Text))
 		{
-			DisplayAlert("Error", "el segundo apellido " + validacion.msg, "ok");
-			return false;
+			validacion = val.ValidateName(EntryLastName.Text);
+			if (!validacion.res)
+			{
+				DisplayAlert("Error", "el segundo apellido " + validacion.msg, "ok");
+				return false;
+			}
 		}
 
 		validacion = val.ValidateCI(EntryCI.Text);

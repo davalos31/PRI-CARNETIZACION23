@@ -12,13 +12,6 @@ namespace PetPass.Model.Extras
         public string Token;
         public bool FirstLogin;
         public char Role;
-
-		public AuthResponse(int userID, string token, bool firstLogin, char role)
-		{
-			this.userID = userID;
-			Token = token;
-			FirstLogin = firstLogin;
-			Role = role;
-		}
+		public string? Photo;
 	}
 }

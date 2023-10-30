@@ -5,6 +5,7 @@ using PetPass.Model.Extras;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +28,7 @@ namespace PetPass.Service
 					return null;
 				}
 
-				string dataJson = JsonConvert.SerializeObject(new UserRequest(Username,Userpassword));
+				string dataJson = JsonConvert.SerializeObject(new UserRequest(Username,GetSha256(Userpassword)));
 				var content = new StringContent(dataJson, Encoding.UTF8, "application/json");
 				HttpResponseMessage response = await _httpClient.PostAsync($"PetPass/Users/Login", content);
 
@@ -66,7 +67,7 @@ namespace PetPass.Service
 					return false;
 				}
 
-				string dataJson = JsonConvert.SerializeObject(new FirstLoginUser(userID, newPassword));
+				string dataJson = JsonConvert.SerializeObject(new FirstLoginUser(userID, GetSha256(newPassword)));
 				var content = new StringContent(dataJson, Encoding.UTF8, "application/json");
 				HttpResponseMessage response = await _httpClient.PutAsync($"PetPass/Users/firstPassword", content);
 
@@ -145,7 +146,9 @@ namespace PetPass.Service
 					return false;
 				}
 
-				HttpResponseMessage response = await _httpClient.PutAsync($"PetPass/Users/RecoveryPassword?userID={userID}&codeRecovery={codeRecovery}&newPassword={newPassword}", null);
+				string dataJson = JsonConvert.SerializeObject(new AuthRecoveryPassword(userID, GetSha256(codeRecovery), GetSha256(newPassword)));
+				var content = new StringContent(dataJson, Encoding.UTF8, "application/json");
+				HttpResponseMessage response = await _httpClient.PutAsync($"PetPass/Users/RecoveryPassword", content);
 
 				if (response.IsSuccessStatusCode)
 				{
@@ -162,6 +165,17 @@ namespace PetPass.Service
 				Console.WriteLine($"Error al actualizar la contraseña: {ex.Message}");
 				return false;
 			}
+		}
+
+		private string GetSha256(string str)
+		{
+			SHA256 sha256 = SHA256Managed.Create();
+			ASCIIEncoding encoding = new ASCIIEncoding();
+			byte[] stream = null;
+			StringBuilder sb = new StringBuilder();
+			stream = sha256.ComputeHash(encoding.GetBytes(str));
+			for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+			return sb.ToString();
 		}
 	}
 }

@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             
              x:Class="PetPass.UseCamera"
              Title="UseCamera">
-    <ScrollView>
-        <VerticalStackLayout>
-            <Label 
+    <StackLayout>
+        <Label 
             Text="Camera Page"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-            <cv:CameraView x:Name="CameraView" WidthRequest="300" HeightRequest="300"
-                           CamerasLoaded="CameraView_CamerasLoaded"/>
+        
 
-            <Button x:Name="btnPick" Text="Take photo" Clicked="btnPick_Clicked"/>
+        <Button x:Name="btnPick" Text="Take photo" Clicked="btnPick_Clicked"/>
+        <Button x:Name="btnTerminar" Text="Take photo" Clicked="btnTerminar_Clicked"/>
 
-            <Image x:Name="myImage" WidthRequest="300" HeightRequest="300"/>
-            <Image x:Name="myImage2" WidthRequest="300" HeightRequest="300"/>
-            <Image x:Name="myImage3" WidthRequest="300" HeightRequest="300"/>
-            <Image x:Name="myImage4" WidthRequest="300" HeightRequest="300"/>
-        </VerticalStackLayout>
-    </ScrollView>
-</ContentPage>
+        <Image x:Name="myImage" WidthRequest="300" HeightRequest="300"/>
+        <Image x:Name="myImage2" WidthRequest="300" HeightRequest="300"/>
+        <Image x:Name="myImage3" WidthRequest="300" HeightRequest="300"/>
+        <Image x:Name="myImage4" WidthRequest="300" HeightRequest="300"/>
+       
+    </StackLayout>
+</ContentPage>          

@@ -54,7 +54,7 @@
 
             <Button Text="Capturar Fotografía" Clicked="Button_Clicked_1"  />
 
-            <Button Text="Registrar" Clicked="Button_Clicked"  HorizontalOptions="CenterAndExpand" Margin="0,20,0,0"/>
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

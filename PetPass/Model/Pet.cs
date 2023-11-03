@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetPass.Model
 {
-	internal class Pet 
+	public class Pet 
 	{
 		public int PetId { get; set; }
 		public string Name { get; set; }

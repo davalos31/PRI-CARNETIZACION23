@@ -10,12 +10,14 @@ namespace PetPass.Service
 {
 	internal class PetService : BaseService, IPetService
 	{
+
 		public PetService() : base()
 		{
 
 		}
 
-		public async Task<bool> CreatePet(Pet pet)
+		public async Task<bool> CreatePet(PetCreated pet)
+
 		{
 			try
 			{

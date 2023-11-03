@@ -12,177 +12,177 @@ build_property.EnableSingleFileAnalyzer = true
 build_property.EnableTrimAnalyzer = false
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = PetPass
-build_property.ProjectDir = C:\Users\Diego\Documents\GitHub\PRI-CARNETIZACION23\PetPass\
+build_property.ProjectDir = C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/App.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/AppShell.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/CreateOwner.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/CreateOwner.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.CreateOwner.xaml
 build_metadata.AdditionalFiles.TargetPath = CreateOwner.xaml
 build_metadata.AdditionalFiles.RelativePath = CreateOwner.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/FirstLogin.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/FirstLogin.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.FirstLogin.xaml
 build_metadata.AdditionalFiles.TargetPath = Login\FirstLogin.xaml
 build_metadata.AdditionalFiles.RelativePath = Login\FirstLogin.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/LoginPage.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/LoginPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.LoginPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Login\LoginPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Login\LoginPage.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/RequireEmail.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/RequireEmail.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.RequireEmail.xaml
 build_metadata.AdditionalFiles.TargetPath = Login\RequireEmail.xaml
 build_metadata.AdditionalFiles.RelativePath = Login\RequireEmail.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/RestorePassword.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Login/RestorePassword.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Login.RestorePassword.xaml
 build_metadata.AdditionalFiles.TargetPath = Login\RestorePassword.xaml
 build_metadata.AdditionalFiles.RelativePath = Login\RestorePassword.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/MainPage.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/MenuBrigadier.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/MenuBrigadier.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.MenuBrigadier.xaml
 build_metadata.AdditionalFiles.TargetPath = MenuBrigadier.xaml
 build_metadata.AdditionalFiles.RelativePath = MenuBrigadier.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/OwnerNotFound.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/OwnerNotFound.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.OwnerNotFound.xaml
 build_metadata.AdditionalFiles.TargetPath = OwnerNotFound.xaml
 build_metadata.AdditionalFiles.RelativePath = OwnerNotFound.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/RegisterPet.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/RegisterPet.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.RegisterPet.xaml
 build_metadata.AdditionalFiles.TargetPath = RegisterPet.xaml
 build_metadata.AdditionalFiles.RelativePath = RegisterPet.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/RegisterPetIni.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/RegisterPetIni.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.RegisterPetIni.xaml
 build_metadata.AdditionalFiles.TargetPath = RegisterPetIni.xaml
 build_metadata.AdditionalFiles.RelativePath = RegisterPetIni.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Resources/Styles/Colors.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Resources/Styles/Styles.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/UseCamera.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/UseCamera.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.UseCamera.xaml
 build_metadata.AdditionalFiles.TargetPath = UseCamera.xaml
 build_metadata.AdditionalFiles.RelativePath = UseCamera.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Campaign/CreateCampaign.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Campaign/CreateCampaign.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Campaign.CreateCampaign.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Campaign\CreateCampaign.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Campaign\CreateCampaign.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Campaign/DetailCampaign.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Campaign/DetailCampaign.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Campaign.DetailCampaign.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Campaign\DetailCampaign.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Campaign\DetailCampaign.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Campaign/EditCampaign.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Campaign/EditCampaign.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Campaign.EditCampaign.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Campaign\EditCampaign.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Campaign\EditCampaign.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/MenuMain.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/MenuMain.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.MenuMain.xaml
 build_metadata.AdditionalFiles.TargetPath = View\MenuMain.xaml
 build_metadata.AdditionalFiles.RelativePath = View\MenuMain.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Menu/Menu.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Menu/Menu.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Menu.Menu.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Menu\Menu.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Menu\Menu.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Patrol/CreatePatrol.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Patrol/CreatePatrol.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Patrol.CreatePatrol.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Patrol\CreatePatrol.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Patrol\CreatePatrol.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Patrol/DetailPatrol.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Patrol/DetailPatrol.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Patrol.DetailPatrol.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Patrol\DetailPatrol.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Patrol\DetailPatrol.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Patrol/EditPatrol.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Patrol/EditPatrol.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Patrol.EditPatrol.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Patrol\EditPatrol.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Patrol\EditPatrol.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Person/CreatePerson.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Person/CreatePerson.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Person.CreatePerson.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Person\CreatePerson.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Person\CreatePerson.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Person/DetailPerson.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Person/DetailPerson.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Person.DetailPerson.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Person\DetailPerson.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Person\DetailPerson.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Person/EditPerson.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Person/EditPerson.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Person.EditPerson.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Person\EditPerson.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Person\EditPerson.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Report/ReportPet.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Report/ReportPet.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Report.ReportPet.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Report\ReportPet.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Report\ReportPet.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Report/ReportZone.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Report/ReportZone.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Report.ReportZone.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Report\ReportZone.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Report\ReportZone.xaml
 
-[C:/Users/Diego/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Report/TotalPet.xaml]
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Report/TotalPet.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Report.TotalPet.xaml
 build_metadata.AdditionalFiles.TargetPath = View\Report\TotalPet.xaml

@@ -69,5 +69,19 @@ namespace PetPass.Validation
             if (!match.Success) return (false, "el correo no es valido");
             else return (true, null);
         }
+        private static List<string> base64Images = new List<string>();
+
+        public static void ProcessImages(List<string> images)
+        {
+            // Aquí puedes procesar las imágenes base64 como desees.
+            // Por ejemplo, puedes guardarlas en una base de datos o realizar cualquier otro tipo de procesamiento.
+            base64Images.AddRange(images);
+        }
+
+        public static List<string> GetImages()
+        {
+            // Este método estático devuelve la lista de imágenes base64.
+            return base64Images;
+        }
     }
 }

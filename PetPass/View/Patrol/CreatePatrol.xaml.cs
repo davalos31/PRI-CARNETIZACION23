@@ -6,13 +6,13 @@ using System.Linq;
 using Microsoft.Extensions.Logging;
 using PetPass.Model;
 using PetPass.Service;
-
+using PetPass.Validation;
 
 namespace PetPass.View.Patrol
 {
     public partial class CreatePatrol : ContentPage
     {
-       // private PatrolViewModel _viewModel;
+        // private PatrolViewModel _viewModel;
         private PatrolService _patrolService;
         private ObservableCollection<string> zoneNames = new ObservableCollection<string>();
         private ObservableCollection<string> campaignNames = new ObservableCollection<string>();
@@ -28,8 +28,8 @@ namespace PetPass.View.Patrol
         {
             InitializeComponent();
             _patrolService = new PatrolService();
-          //  _viewModel = new PatrolViewModel(personID);
-           // BindingContext = _viewModel;
+            //  _viewModel = new PatrolViewModel(personID);
+            // BindingContext = _viewModel;
 
             zonePicker.ItemsSource = zoneNames;
             campaignPicker.ItemsSource = campaignNames;
@@ -78,7 +78,7 @@ namespace PetPass.View.Patrol
             if (selectedZone != null)
             {
                 selectedZoneId = selectedZone.ZoneID;
-               
+
             }
         }
 
@@ -90,7 +90,7 @@ namespace PetPass.View.Patrol
             if (selectedCampaign != null)
             {
                 selectedCampaignId = selectedCampaign.CampaignID;
-                
+
             }
         }
 
@@ -98,15 +98,14 @@ namespace PetPass.View.Patrol
         {
             try
             {
-                selectedDate = patrolDatePicker.Date;
-       
 
-               
+
+                selectedDate = patrolDatePicker.Date;
 
                 string authToken = _tokenValue;
 
 
-				Model.Person person = null;
+                Model.Person person = null;
                 Zone zone = null;
                 Campaigns campaign = null;
 
@@ -114,15 +113,22 @@ namespace PetPass.View.Patrol
                 byte zoneId = (byte)selectedZoneId; // Realiza una conversión explícita a byte
                 campaign = new Campaigns { CampaignID = selectedCampaignId };
 
+
                 Patrol1 newPatrol = new Patrol1
                 {
-                    PatrolDate = DateTime.Now,
+                    PatrolDate = selectedDate,
                     PersonId = _idUser,
-                    ZoneId = zoneId, 
+                    ZoneId = zoneId,
                     CampaignId = selectedCampaignId
                 };
 
-                bool createResult = await _patrolService.CreatePatrolAsyncApi(authToken, newPatrol);
+                Validations val = new Validations();
+                (bool isNameValid, string nameError) = val.ValidateFields(zoneId, selectedCampaignId);
+                (bool isEndDateValid, string EndDateError) = val.ValidateDate(selectedDate);
+
+                if (isNameValid && isEndDateValid)
+                {
+                    bool createResult = await _patrolService.CreatePatrolAsyncApi(authToken, newPatrol);
 
                     if (createResult)
                     {
@@ -132,9 +138,17 @@ namespace PetPass.View.Patrol
                     {
                         await DisplayAlert("Error", "No se pudo crear la patrulla", "OK");
                     }
-                
+                }
+                else
+                {
+                    string errorMessage = "Por favor, corrija los siguientes errores:\n";
+                    if (!isNameValid) errorMessage += $"- {nameError}\n";
+                    if (!isEndDateValid) errorMessage += $"- {EndDateError}\n";
 
-              
+                    await DisplayAlert("Error", errorMessage, "OK");
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -142,6 +156,6 @@ namespace PetPass.View.Patrol
             }
         }
 
-       
+
     }
 }

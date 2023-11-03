@@ -13,19 +13,44 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!-- Contenedor principal que maneja el evento de "tapping" -->
-    <ContentView BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <ContentView.GestureRecognizers>
-            <TapGestureRecognizer Tapped="OnContentViewTapped" />
-        </ContentView.GestureRecognizers>
+    <!-- Dividimos la página en dos partes con un StackLayout vertical -->
+    <StackLayout>
+        <!-- Parte superior -->
+        <StackLayout BackgroundColor="Blue">
+            <!-- Parte superior -->
+            <StackLayout BackgroundColor="Blue">
+                <!-- Fila 1: Bienvenido con espacio arriba y abajo -->
+                <Label Text="Bienvenido"
+               VerticalOptions="CenterAndExpand"
+               VerticalTextAlignment="Center"
+               HorizontalOptions="CenterAndExpand"
+               Margin="0,15,0,15"/>
+            </StackLayout>
 
-        <!-- Aquí va todo el contenido de la página, incluyendo los botones y otros elementos -->
+            <!-- Parte inferior -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!-- Primera fila en la parte inferior, para la imagen -->
+                    <RowDefinition Height="150" />
+                    <!-- Segunda fila en la parte inferior, para los datos -->
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Primera columna, para cargar una imagen -->
+                <StackLayout Grid.Row="0">
+                    <Image x:Name="myImage" WidthRequest="300" HeightRequest="300"/>
+
+                </StackLayout>
+
+                <!-- Segunda columna, para mostrar tres datos -->
+                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                    <!-- Coloca los tres datos aquí, por ejemplo, etiquetas o controles de texto -->
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+
+        <!-- Parte inferior (botones y otros elementos) -->
         <StackLayout>
-            <Label Text="Welcome to .NET MAUI!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-
-            <!-- Botón "Mostrar Reportes" -->
             <Button x:Name="showReportsButton" Text="Mostrar Reportes" Clicked="OnShowReportsClicked" 
                     VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
 
@@ -68,5 +93,5 @@
                 <Button Text="Opción C" Clicked="OnCrearPatrullajeCClicked" />
             </StackLayout>
         </StackLayout>
-    </ContentView>
+    </StackLayout>
 </ContentPage>

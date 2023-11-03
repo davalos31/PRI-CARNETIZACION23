@@ -75,7 +75,8 @@ public partial class EditPatrol : ContentPage
         {
             PatrolService _patrolService = new PatrolService();
             zones = await _patrolService.GetZonesAsyncApi(_tokenValue);
-            campaigns = await _patrolService.GetCampaignsAsync();
+            //campaigns = await _patrolService.GetCampaignsAsync();
+            campaigns = null;
 
             zoneNames.Clear();
             campaignNames.Clear();

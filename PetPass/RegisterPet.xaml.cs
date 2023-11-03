@@ -25,7 +25,7 @@ public partial class RegisterPet : ContentPage
         {
             Pet p = new(0, Name.Text, Specie.SelectedItem.ToString(), Breed.Text, Gender.SelectedItem.ToString()[0], BirthDate.Date, SpecialFeature.Text, 0, id);
             var page = new UseCamera(p);
-            Navigation.PushAsync(page);
+            await Navigation.PushAsync(page);
         }
         catch
         {

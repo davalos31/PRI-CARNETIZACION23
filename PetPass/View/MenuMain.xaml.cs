@@ -15,12 +15,17 @@ namespace PetPass.View
         private bool arePatrullajeVisible = false;
         int _userId;
         string _token;
+        string _image;
 
-        public MenuMain(int userId, string token)
+        public MenuMain(int userId, string token, string image)
         {
             InitializeComponent();
             _userId = userId;
             _token = token;
+            _image = image;
+
+            //myImage.Source = new UriImageSource { Uri = new Uri(_image) };
+
         }
 
         private void OnContentViewTapped(object sender, EventArgs e)

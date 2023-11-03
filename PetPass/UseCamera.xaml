@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
              x:Class="PetPass.UseCamera"
              Title="UseCamera">
-    <StackLayout>
-        <Label 
-            Text="Camera Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <ScrollView>
+        <StackLayout>
+            <Label 
+                Text="Camera Page"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
 
-        
 
-        <Button x:Name="btnPick" Text="Take photo" Clicked="btnPick_Clicked"/>
-        <Button x:Name="btnTerminar" Text="Take photo" Clicked="btnTerminar_Clicked"/>
 
-        <Image x:Name="myImage" WidthRequest="300" HeightRequest="300"/>
-        <Image x:Name="myImage2" WidthRequest="300" HeightRequest="300"/>
-        <Image x:Name="myImage3" WidthRequest="300" HeightRequest="300"/>
-        <Image x:Name="myImage4" WidthRequest="300" HeightRequest="300"/>
+            <Button x:Name="btnPick" Text="sacar foto" Clicked="btnPick_Clicked"/>
        
-    </StackLayout>
+
+            <Image x:Name="myImage" WidthRequest="300" HeightRequest="300"/>
+            <Image x:Name="myImage2" WidthRequest="300" HeightRequest="300"/>
+            <Image x:Name="myImage3" WidthRequest="300" HeightRequest="300"/>
+            <Image x:Name="myImage4" WidthRequest="300" HeightRequest="300"/>
+            <Button x:Name="btnTerminar" Text="Terminar " Clicked="btnTerminar_Clicked"/>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>          

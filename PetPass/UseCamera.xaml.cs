@@ -9,7 +9,7 @@ namespace PetPass;
 
 public partial class UseCamera : ContentPage
 {
-    List<string> base64Images = new List<string>();
+	List<string> base64Images;
 
     int index = 0;
 	private Pet pet1 ;
@@ -20,59 +20,100 @@ public partial class UseCamera : ContentPage
 		InitializeComponent();
 		pet1 = pet ;
 		pets = new PetService();
-	}
+        base64Images = new List<string>();
+    }
 
-	private async void btnPick_Clicked(object sender, EventArgs e)
+    private async void btnPick_Clicked(object sender, EventArgs e)
 	{
-		try
-		{
-			var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
-			if (status != PermissionStatus.Granted)
-			{
-				status = await Permissions.RequestAsync<Permissions.Camera>();
-			}
+        //ImageSource newImage = CameraView.GetSnapShot(Camera.MAUI.ImageFormat.PNG);
 
-			if (status == PermissionStatus.Granted)
-			{
-				var photo = await MediaPicker.CapturePhotoAsync();
+        //if (newImage is StreamImageSource streamImageSource)
+        //{
+        //    var cancellationToken = new CancellationToken();
+        //    Stream imageStream = await streamImageSource.Stream(cancellationToken);
 
-				if (photo != null)
-				{
-					using (Stream imageStream = await photo.OpenReadAsync())
-					{
-						using (MemoryStream ms = new MemoryStream())
-						{
-							await imageStream.CopyToAsync(ms);
-							byte[] imageBytes = ms.ToArray();
+        //    using (MemoryStream memoryStream = new MemoryStream())
+        //    {
+        //        await imageStream.CopyToAsync(memoryStream);
 
-							if(index < 4)
-							{
-								base64Images.Add(Convert.ToBase64String(imageBytes));  // este es el string para mandar
-								if(index==0) myImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
-								else if (index == 1) myImage2.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
-								else if (index == 2) myImage3.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
-								else if (index == 3) myImage4.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
+        //        byte[] imageBytes = memoryStream.ToArray();
+        //        string base64Image = Convert.ToBase64String(imageBytes);
 
-								index++;
-							}
-						}
-					}
-				}
-				else
-				{
-					await DisplayAlert("Error", "no se pudo sacar la foto", "Aceptar");
-				}
-			}
-			else
-			{
-				await DisplayAlert("Permiso denegado", "La aplicación no tiene permisos para acceder a la cámara.", "Aceptar");
-			}
-		}
-		catch (Exception ex)
-		{
-			await DisplayAlert("Error", "Ha ocurrido un error al capturar la imagen: " + ex.Message, "Aceptar");
-		}
-	}
+
+
+        //        bool savePhoto = await DisplayAlert("Guardar Foto", "¿Deseas guardar la foto?", "Sí", "No");
+
+        //        if (savePhoto)
+        //        {
+
+        //            Validations.SetCapturedImage(base64Image);
+        //            MainThread.BeginInvokeOnMainThread(async () =>
+        //            {
+        //                await CameraView.StopCameraAsync();
+
+        //            });
+        //            await Navigation.PopAsync();
+
+        //        }
+        //        else
+        //        {
+        //            //myImage.Source = null;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    await DisplayAlert("Valor de la Imagen", "La imagen no se puede convertir en formato base64.", "OK");
+        //}
+        try
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.Camera>();
+            }
+
+            if (status == PermissionStatus.Granted)
+            {
+                var photo = await MediaPicker.CapturePhotoAsync();
+
+                if (photo != null)
+                {
+                    using (Stream imageStream = await photo.OpenReadAsync())
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            await imageStream.CopyToAsync(ms);
+                            byte[] imageBytes = ms.ToArray();
+
+                            if (index < 4)
+                            {
+                                base64Images.Add(Convert.ToBase64String(imageBytes));  // este es el string para mandar
+                                if (index == 0) myImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
+                                else if (index == 1) myImage2.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
+                                else if (index == 2) myImage3.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
+                                else if (index == 3) myImage4.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
+
+                                index++;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Error", "no se pudo sacar la foto", "Aceptar");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Permiso denegado", "La aplicación no tiene permisos para acceder a la cámara.", "Aceptar");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", "Ha ocurrido un error al capturar la imagen: " + ex.Message, "Aceptar");
+        }
+    }
 
     private async void btnTerminar_Clicked(object sender, EventArgs e)
     {

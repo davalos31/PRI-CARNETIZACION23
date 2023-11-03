@@ -1,5 +1,6 @@
 using PetPass.Model;
 using PetPass.Service;
+using PetPass.Validation;
 
 namespace PetPass.View.Campaign;
 
@@ -8,11 +9,11 @@ public partial class CreateCampaign : ContentPage
     string _token;
     private readonly CampaignService campaignService;
     public CreateCampaign(string token)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         campaignService = new CampaignService();
         _token = token;
-       
+
     }
 
 
@@ -25,38 +26,56 @@ public partial class CreateCampaign : ContentPage
 
     private async Task SaveCampaignAsync()
     {
+
         string nameCam = NameEntry.Text;
         DateTime startDate = DateTime.Now;
         DateTime endDate = EndDateEntry.Date;
+        Validations val = new Validations();
+        (bool isNameValid, string nameError) = val.ValidateCampaignName(nameCam);
+        (bool isEndDateValid, string EndDateError) = val.ValidateEndDate(endDate);
+        (bool isCharacterValid, string CharacterError) = val.ContainsSpecialCharacters(nameCam);
 
-        try
+        if (isNameValid && isEndDateValid && isCharacterValid)
         {
-            var campaign = new Campaigns
+            try
             {
-                Name = nameCam,
-                StartDate = startDate,
-                EndDate = endDate, 
-            };
+                var campaign = new Campaigns
+                {
+                    Name = nameCam,
+                    StartDate = startDate,
+                    EndDate = endDate,
+                };
 
-            var result = await campaignService.CreateCampaignAsync(campaign,_token);
+                var result = await campaignService.CreateCampaignAsync(campaign, _token);
 
-            if (result != null)
-            {
-                // Éxito: la campaña se creó con éxito
-                await Application.Current.MainPage.DisplayAlert("Éxito", "La campaña se creó con éxito.", "OK");
-                 Clear();
-                Navigation.PopAsync();
+                if (result != null)
+                {
+                    // Éxito: la campaña se creó con éxito
+                    await Application.Current.MainPage.DisplayAlert("Éxito", "La campaña se creó con éxito.", "OK");
+                    Clear();
+                    Navigation.PopAsync();
+                }
+                else
+                {
+                    // Error: no se pudo crear la campaña
+                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo crear la campaña.", "OK");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                // Error: no se pudo crear la campaña
-                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo crear la campaña.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", "Ocurrió un error: " + ex.Message, "OK");
             }
         }
-        catch (Exception ex)
+        else
         {
-            await Application.Current.MainPage.DisplayAlert("Error", "Ocurrió un error: " + ex.Message, "OK");
+            string errorMessage = "Por favor, corrija los siguientes errores:\n";
+            if (!isNameValid) errorMessage += $"- {nameError}\n";
+            if (!isEndDateValid) errorMessage += $"- {EndDateError}\n";
+            if (!isCharacterValid) errorMessage += $"- {CharacterError}\n";
+
+            await DisplayAlert("Error", errorMessage, "OK");
         }
+
     }
 
     void Clear()

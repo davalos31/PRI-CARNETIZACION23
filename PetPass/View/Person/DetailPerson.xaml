@@ -3,25 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PetPass.View.Person.DetailPerson"
              Title="DetailPerson">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#3498DB" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ScrollView>
-        <VerticalStackLayout>
-            <ListView x:Name="PersonDataListView" ItemsSource="{Binding PersonDataList}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Name}" />
-                                <Label Text="{Binding LastName}" />
-                                <Label Text="{Binding Phone}" />
-                                <Label Text="{Binding PersonId}" />
-                                <Button Text="Editar" Clicked="Edit" CommandParameter="{Binding PersonId}" />
-                                <Button Text="Eliminar" Clicked="Delete_Clicked" CommandParameter="{Binding PersonId}" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Text="Volver" Clicked="Volver_Clicked" />
-        </VerticalStackLayout>
+        <ListView x:Name="PersonDataListView" ItemsSource="{Binding PersonDataList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Name}" Style="{StaticResource LabelStyle}" />
+                            <Label Grid.Column="1" Text="{Binding LastName}" Style="{StaticResource LabelStyle}" />
+                            <Label Grid.Column="2" Text="{Binding Phone}" Style="{StaticResource LabelStyle}" />
+                            <Button Grid.Column="3" Text="Editar" Clicked="Edit" CommandParameter="{Binding PersonId}" Style="{StaticResource ButtonStyle}" />
+                            <Button Grid.Column="4" Text="Eliminar" Clicked="Delete_Clicked" CommandParameter="{Binding PersonId}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ScrollView>
 </ContentPage>

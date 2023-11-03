@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PetPass.Validation
 {
-    internal class Validations
+
+    public class Validations
     {
+        private static string capturedImageBase64;
         public (bool, string) ValidateName(string value)
         {
-            if (string.IsNullOrEmpty(value)) return (false, "es obligatorio");
+            if (string.IsNullOrEmpty(value)) return (false, "el nombre es obligatorio");
 
             foreach (char c in value)
                 if (!char.IsLetter(c))
@@ -20,6 +24,32 @@ namespace PetPass.Validation
 
             return (true, null);
         }
+        public (bool, string) ValidateFirstName(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return (false, "el primer Apellido es obligatorio");
+
+            foreach (char c in value)
+                if (!char.IsLetter(c))
+                    if (!c.Equals(" "))
+                        return (false, "solo puede contener letras");
+
+            return (true, null);
+        }
+        public (bool, string) ValidateLastName(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return (false, "el segundo Apellido es obligatorio");
+
+            foreach (char c in value)
+                if (!char.IsLetter(c))
+                    if (!c.Equals(" "))
+                        return (false, "solo puede contener letras");
+
+            return (true, null);
+        }
+
+
+
+
         public (bool, string) ValidateDate(DateTime? date)
         {
             if (date == null) return (false, "es obligatorio");
@@ -42,6 +72,26 @@ namespace PetPass.Validation
             if (phone.Length > max || phone.Length < min) return (false, $"el telefono debe tener de {min} a {max} caracteres");
 
             if (!phone.All(char.IsDigit)) return (false, "el telefono solo puede tener numeros");
+
+            return (true, null);
+        }
+
+        public (bool, string) ValidateGender(string gender)
+        {
+            if (string.IsNullOrEmpty(gender))
+                return (false, "El género es obligatorio");
+
+            // Puedes agregar más validaciones específicas del género si es necesario
+
+            return (true, null);
+        }
+
+        public (bool, string) ValidateImage(string image)
+        {
+            if (string.IsNullOrEmpty(image))
+                return (false, "La imagen es obligatoria");
+
+            // Puedes agregar más validaciones específicas de la imagen si es necesario
 
             return (true, null);
         }
@@ -69,19 +119,80 @@ namespace PetPass.Validation
             if (!match.Success) return (false, "el correo no es valido");
             else return (true, null);
         }
-        private static List<string> base64Images = new List<string>();
-
-        public static void ProcessImages(List<string> images)
+        public static void SetCapturedImage(string imageSource)
         {
-            // Aquí puedes procesar las imágenes base64 como desees.
-            // Por ejemplo, puedes guardarlas en una base de datos o realizar cualquier otro tipo de procesamiento.
-            base64Images.AddRange(images);
+            capturedImageBase64 = imageSource;
         }
 
-        public static List<string> GetImages()
+        public static string GetCapturedImageBase64()
         {
-            // Este método estático devuelve la lista de imágenes base64.
-            return base64Images;
+            return capturedImageBase64;
         }
+
+
+
+        public static string GetSha256(string str)
+        {
+            SHA256 sha256 = SHA256Managed.Create();
+            ASCIIEncoding encoding = new ASCIIEncoding();
+            byte[] stream = null;
+            StringBuilder sb = new StringBuilder();
+            stream = sha256.ComputeHash(encoding.GetBytes(str));
+            for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
+            return sb.ToString();
+        }
+
+
+        public (bool, string) ValidateCampaignName(string campaignName)
+        {
+            if (string.IsNullOrWhiteSpace(campaignName))
+            {
+                return (false, "Debe de insertar un dato en el nombre de la campaña.");
+            }
+            return (true, null);
+        }
+
+        public (bool, string) ValidateEndDate(DateTime endDate)
+        {
+            if (endDate <= DateTime.Now)
+            {
+                return (false, "La fecha de finalización debe ser posterior a la fecha actual.");
+            }
+            return (true, null);
+        }
+
+        public (bool, string) ContainsSpecialCharacters(string input)
+        {
+
+            string specialCharacters = "!@#$%^&*()_+[]{}|;:'\",.<>?~";
+            foreach (char c in specialCharacters)
+            {
+                if (input.Contains(c))
+                {
+                    return (false, "El nombre de la campaña contiene caracteres especiales.");
+                }
+            }
+            return (true, null);
+        }
+
+        public (bool, string) ValidateFields(int selectedZone, int selectedCampaign)
+        {
+            if (string.IsNullOrWhiteSpace(selectedZone.ToString()) || string.IsNullOrWhiteSpace(selectedCampaign.ToString()))
+            {
+                return (false, "Por favor, selecciona una zona o una campaña.");
+            }
+            return (true, null);
+        }
+
+        public (bool, string) ValidateDate(DateTime selectedDate)
+        {
+            if (selectedDate < DateTime.Now.Date)
+            {
+                return (false, "La fecha de la patrulla debe ser igual o posterior a la fecha actual.");
+            }
+            return (true, null);
+        }
+
     }
 }
+

@@ -41,10 +41,11 @@ public partial class EditCampaign : ContentPage
         string newCampaignName = CampaignNameEntry.Text; // Obtén el nuevo nombre de la campaña desde el formulario
         DateTime newStartDate = StartDatePicker.Date; // Obtén la nueva fecha de inicio desde el formulario
         DateTime newEndDate = EndDatePicker.Date; // Obtén la nueva fecha de finalización desde el formulario
-     
+
 
         // Llama al método para actualizar la campaña con los datos obtenidos
-        bool updated = _campaignService.UpdateCampaign(campaignIDToUpdate, newCampaignName, newStartDate, newEndDate);
+        //bool updated = _campaignService.UpdateCampaign(campaignIDToUpdate, newCampaignName, newStartDate, newEndDate);
+        bool updated = true;
 
         if (updated)
         {

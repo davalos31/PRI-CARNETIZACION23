@@ -170,6 +170,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Person.EditPe
 build_metadata.AdditionalFiles.TargetPath = View\Person\EditPerson.xaml
 build_metadata.AdditionalFiles.RelativePath = View\Person\EditPerson.xaml
 
+[C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Person/ImagePerson.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Person.ImagePerson.xaml
+build_metadata.AdditionalFiles.TargetPath = View\Person\ImagePerson.xaml
+build_metadata.AdditionalFiles.RelativePath = View\Person\ImagePerson.xaml
+
 [C:/Users/ASUS/Documents/GitHub/PRI-CARNETIZACION23/PetPass/View/Report/ReportPet.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = PetPass.View.Report.ReportPet.xaml

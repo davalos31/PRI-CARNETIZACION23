@@ -42,16 +42,6 @@
             <Label Text="Rasgo Especial:"/>
             <Entry x:Name="SpecialFeature" Placeholder="Ingrese un rasgo especial"/>
 
-            <Label Text="Estado:"/>
-            <Picker x:Name="EstadoPicker">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Activo</x:String>
-                        <x:String>Inactivo</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-
             <Button Text="Capturar Fotografía" Clicked="Button_Clicked_1"  />
 
             

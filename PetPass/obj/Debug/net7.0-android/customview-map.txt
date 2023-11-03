@@ -17,6 +17,7 @@ attr;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0
 attr;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-android\lp\156\jl\res\values\attr.xml
 background;obj\Debug\net7.0-android\resizetizer\r\mipmap-anydpi-v26\appicon.xml
 background;obj\Debug\net7.0-android\resizetizer\r\mipmap-anydpi-v26\appicon_round.xml
+base-config;obj\Debug\net7.0-android\res\xml\network_security_config.xml
 bitmap;obj\Debug\net7.0-android\resizetizer\sp\drawable\maui_splash_image.xml
 bitmap;obj\Debug\net7.0-android\resizetizer\sp\drawable-v31\maui_splash_image.xml
 cache-path;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-android\lp\157\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
@@ -44,6 +45,7 @@ layer-list;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\
 layer-list;obj\Debug\net7.0-android\resizetizer\sp\drawable\maui_splash_image.xml
 layer-list;obj\Debug\net7.0-android\resizetizer\sp\drawable-v31\maui_splash_image.xml
 microsoft.maui.controls.platform.compatibility.ShellFlyoutLayout;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-android\lp\153\jl\res\layout\flyoutcontent.xml
+network-security-config;obj\Debug\net7.0-android\res\xml\network_security_config.xml
 paths;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-android\lp\157\jl\res\xml\microsoft_maui_essentials_fileprovider_file_paths.xml
 resources;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-android\lp\153\jl\res\values\strings.xml
 resources;C:\Users\ASUS\Documents\GitHub\PRI-CARNETIZACION23\PetPass\obj\Debug\net7.0-android\lp\154\jl\res\values\attrs.xml

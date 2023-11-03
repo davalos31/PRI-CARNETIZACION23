@@ -19,6 +19,7 @@ namespace PetPass.Model
 		public string Email { get; set; }
 		public int State { get; set; }
 		public int UserID { get; set; }
+		public string Image {  get; set; }
 
 	}
 }

@@ -72,7 +72,8 @@ public partial class DetailCampaign : ContentPage
 
 
 
-        bool deleteConfirmation = _campaignService.DeleteCampaign(_id);
+        //bool deleteConfirmation = _campaignService.DeleteCampaign(_id);
+        bool deleteConfirmation = true;
 
       
 

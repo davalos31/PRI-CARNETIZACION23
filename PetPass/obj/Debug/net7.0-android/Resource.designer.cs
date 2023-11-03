@@ -29046,6 +29046,9 @@ namespace PetPass
 			// aapt resource value: 0x7F120001
 			public const int microsoft_maui_essentials_fileprovider_file_paths = 2131886081;
 			
+			// aapt resource value: 0x7F120002
+			public const int network_security_config = 2131886082;
+			
 			static Xml()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

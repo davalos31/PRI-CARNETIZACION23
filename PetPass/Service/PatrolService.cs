@@ -12,7 +12,7 @@ namespace PetPass.Service
 {
 	public class PatrolService : BaseService, IPatrol
 	{
-		private readonly string _connectionString = "Server=DbPetPass.mssql.somee.com; Database=DbPetPass;User=nahuubj_SQLLogin_1; Password=z5qp9mphxt; Trusted_Connection=false; Encrypt=False;";
+		
 
 		public PatrolService() : base()
 		{
@@ -25,8 +25,6 @@ namespace PetPass.Service
 			{
 				using (HttpClient client = new HttpClient())
 				{
-			
-					string apiUrl = "https://localhost:44313/PetPass/Patrol/CreatePatrol";
 
 					string patrolJson = JsonConvert.SerializeObject(patrol);
 
@@ -37,7 +35,7 @@ namespace PetPass.Service
 					var content = new StringContent(patrolJson, Encoding.UTF8, "application/json");
 
 					
-					HttpResponseMessage response = await client.PostAsync(apiUrl, content);
+					HttpResponseMessage response = await client.PostAsync("PetPass/Patrol/CreatePatrol", content);
 
 					if (response.IsSuccessStatusCode)
 					{
@@ -65,13 +63,12 @@ namespace PetPass.Service
 				using (HttpClient client = new HttpClient())
 				{
 					
-					string apiUrl = $"https://localhost:44313/PetPass/Patrol/{patrolId}"; 
 
 				
 					client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 					
-					HttpResponseMessage response = await client.GetAsync(apiUrl);
+					HttpResponseMessage response = await client.GetAsync($"PetPass/Patrol/{patrolId}");
 
 					if (response.IsSuccessStatusCode)
 					{
@@ -102,14 +99,12 @@ namespace PetPass.Service
 			{
 				using (HttpClient client = new HttpClient())
 				{
-					
-					string apiUrl = "https://localhost:44313/PetPass/Patrol/GetZones";
 
 				
 					client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 					
-					HttpResponseMessage response = await client.GetAsync(apiUrl);
+					HttpResponseMessage response = await client.GetAsync("PetPass/Patrol/GetZones");
 
 					if (response.IsSuccessStatusCode)
 					{
@@ -140,14 +135,12 @@ namespace PetPass.Service
 			{
 				using (HttpClient client = new HttpClient())
 				{
-					
-					string apiUrl = "https://localhost:44313/PetPass/Patrol";
 
 					
 					client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 					
-					HttpResponseMessage response = await client.GetAsync(apiUrl);
+					HttpResponseMessage response = await client.GetAsync("PetPass/Patrol");
 
 					if (response.IsSuccessStatusCode)
 					{
@@ -179,28 +172,28 @@ namespace PetPass.Service
 		{
 			List<Campaigns> campaigns = new List<Campaigns>();
 
-			using (SqlConnection connection = new SqlConnection(_connectionString))
-			{
-				await connection.OpenAsync();
+			//using (SqlConnection connection = new SqlConnection(_connectionString))
+			//{
+			//	await connection.OpenAsync();
 
-				string sql = "SELECT [CampaignID], [Name] FROM [Campaign]";
+			//	string sql = "SELECT [CampaignID], [Name] FROM [Campaign]";
 
-				using (SqlCommand command = new SqlCommand(sql, connection))
-				{
-					using (SqlDataReader reader = await command.ExecuteReaderAsync())
-					{
-						while (reader.Read())
-						{
-							Campaigns campaign = new Campaigns
-							{
-								CampaignID = reader.GetInt32(0),
-								Name = reader.GetString(1)
-							};
-							campaigns.Add(campaign);
-						}
-					}
-				}
-			}
+			//	using (SqlCommand command = new SqlCommand(sql, connection))
+			//	{
+			//		using (SqlDataReader reader = await command.ExecuteReaderAsync())
+			//		{
+			//			while (reader.Read())
+			//			{
+			//				Campaigns campaign = new Campaigns
+			//				{
+			//					CampaignID = reader.GetInt32(0),
+			//					Name = reader.GetString(1)
+			//				};
+			//				campaigns.Add(campaign);
+			//			}
+			//		}
+			//	}
+			//}
 
 			return campaigns;
 		}

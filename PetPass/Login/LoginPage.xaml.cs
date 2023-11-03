@@ -46,7 +46,7 @@ public partial class LoginPage : ContentPage
 			{
 				if (res.Role == 'A') //admin
 				{
-					await Navigation.PushAsync(new MenuMain(session.AuthResponse.userID, session.AuthResponse.Token));
+					await Navigation.PushAsync(new MenuMain(session.AuthResponse.userID, session.AuthResponse.Token,session.AuthResponse.Photo));
 				}
 				else if (res.Role == 'B')//brigadier
 				{

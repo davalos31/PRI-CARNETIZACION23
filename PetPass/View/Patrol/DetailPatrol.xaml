@@ -5,22 +5,42 @@
              Title="DetailPatrol">
     <VerticalStackLayout>
         <!-- Contenido de tu página aquí -->
+        <ScrollView>
+            <StackLayout>
+                <Grid BackgroundColor="#EFEFF1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Responsable" Style="{StaticResource ColumnTitleStyle}" />
+                    <Label Grid.Column="1" Text="Campaña" Style="{StaticResource ColumnTitleStyle}" />
+                    <Label Grid.Column="2" Text="Zona" Style="{StaticResource ColumnTitleStyle}" />
+                    <Label Grid.Column="3" Text="Fecha Registro" Style="{StaticResource ColumnTitleStyle}" />
+                </Grid>
 
-        <ListView x:Name="PatrolListView" ItemsSource="{Binding patrolListView}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding PatrolDate}" />
-                            <Label Text="{Binding Person.Name}" />
-                            <Label Text="{Binding Zone.Name}" />
-                            <Label Text="{Binding Campaign.Name}" />
-                            <Button Text="Editar" Clicked="Edit" CommandParameter="{Binding PatrolId}"/>
-                            <Button Text="Eliminar" Clicked="OnEditButtonClicked"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView x:Name="PatrolListView" ItemsSource="{Binding patrolListView}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="3*" />
+                                        <ColumnDefinition Width="3*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding PersonName}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10" />
+                                    <Label Grid.Column="1" Text="{Binding CampaignName}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10"/>
+                                    <Label Grid.Column="2" Text="{Binding ZoneName}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10" />
+                                    <Label Grid.Column="3" Text="{Binding PatrolDate, StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>

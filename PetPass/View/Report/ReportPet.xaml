@@ -6,14 +6,28 @@
     <ScrollView>
         <VerticalStackLayout>
             <ActivityIndicator x:Name="loadingIndicator" IsRunning="True" IsVisible="True" />
+
+            <Grid BackgroundColor="#EFEFF1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Nombre Brigadier" Style="{StaticResource ColumnTitleStyle}" />
+                <Label Grid.Column="1" Text="Mascotas Registradas" Style="{StaticResource ColumnTitleStyle}" />
+            </Grid>
+
             <ListView x:Name="patrolListView" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding BrigadierName}" />
-                                <Label Text="{Binding TotalPetsRegistered, StringFormat='Mascotas Registrados: {0}'}" />
-                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="3*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding BrigadierName}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10"/>
+                                <Label Grid.Column="1" Text="{Binding TotalPetsRegistered}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10" />
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

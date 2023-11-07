@@ -24,7 +24,7 @@ namespace PetPass.Service
         public async Task<List<BrigadierData>> GetBrigadierDataAsync(string token)
         {
             // URL del servicio API
-            string apiUrl = "https://localhost:44313/PetPass/Patrol/GetPetsRegisteredByBrigadiers";
+            string apiUrl = "https://localhost:44313/PetPass/Reports/GetPetsRegisteredByBrigadiers";
 
             using (var httpClient = new HttpClient())
             {
@@ -64,7 +64,7 @@ namespace PetPass.Service
         public async Task<List<BrigadierData>> GetZoneReport(string token)
         {
             // URL del servicio API
-            string apiUrl = "https://localhost:44313/PetPass/Patrol/GetZoneReport";
+            string apiUrl = "https://localhost:44313/PetPass/Reports/GetZoneReport";
 
             using (var httpClient = new HttpClient())
             {
@@ -104,7 +104,7 @@ namespace PetPass.Service
         public async Task<List<BrigadierData>> GetZoneAndTotalDogs(string token)
         {
             // URL del servicio API
-            string apiUrl = "https://localhost:44313/PetPass/Patrol/GetZoneAndTotalDogs";
+            string apiUrl = "https://localhost:44313/PetPass/Reports/GetZoneAndTotalDogs";
 
             using (var httpClient = new HttpClient())
             {

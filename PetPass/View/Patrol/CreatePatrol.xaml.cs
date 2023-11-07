@@ -27,20 +27,19 @@ namespace PetPass.View.Patrol
         public CreatePatrol(int personID, string _token)
         {
             InitializeComponent();
+    
             _patrolService = new PatrolService();
-            //  _viewModel = new PatrolViewModel(personID);
-            // BindingContext = _viewModel;
+            _tokenValue = _token;
+            _idUser = personID;
+
+            // Inicializa las listas aquí
+            zones = new List<Zone>();
+            campaigns = new List<Campaigns>();
 
             zonePicker.ItemsSource = zoneNames;
             campaignPicker.ItemsSource = campaignNames;
 
-            zones = new List<Zone>();
-            campaigns = new List<Campaigns>();
-
-            _tokenValue = _token;
-            _idUser = personID;
-
-            LoadData();
+            LoadData(); // Llama al método para cargar los datos
         }
 
         private async void LoadData()
@@ -49,10 +48,10 @@ namespace PetPass.View.Patrol
             {
                 PatrolService _patrolService = new PatrolService();
                 zones = await _patrolService.GetZonesAsyncApi(_tokenValue);
-                campaigns = await _patrolService.GetCampaignsAsync();
+                campaigns = await _patrolService.GetCampaignsAsync(_tokenValue);
 
-                zoneNames.Clear();
-                campaignNames.Clear();
+              zoneNames.Clear();
+              campaignNames.Clear();
 
                 foreach (var zone in zones)
                 {
@@ -66,8 +65,9 @@ namespace PetPass.View.Patrol
             }
             catch (Exception ex)
             {
+                // Handle the exception, for example, log it or display an error message.
                 await DisplayAlert("Error al cargar lista de datos", ex.Message, "OK");
-            }
+             }
         }
 
         private void OnZonePickerSelectedIndexChanged(object sender, EventArgs e)

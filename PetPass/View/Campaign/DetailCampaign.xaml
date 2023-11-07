@@ -3,20 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PetPass.View.Campaign.DetailCampaign"
              Title="DetailCampaign">
-    <ListView x:Name="CampaignDataListView" ItemsSource="{Binding CampaignDataList}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{Binding Name}" />
-                        <Label Text="{Binding StartDate}" />
-                        <Label Text="{Binding EndDate}" />
-                        <Label Text="{Binding CampaignID}" />
-                        <Button Text="Editar" Clicked="Edit" CommandParameter="{Binding CampaignID}" />
-                        <Button Text="Eliminar" Clicked="Delete_Clicked" CommandParameter="{Binding CampaignID}" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <ScrollView>
+        <StackLayout>
+            <!-- Títulos de columna con estilo diferente -->
+            <Grid BackgroundColor="#EFEFF1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Nombre Campaña" Style="{StaticResource ColumnTitleStyle}" />
+                <Label Grid.Column="1" Text="Fecha Inicio" Style="{StaticResource ColumnTitleStyle}" />
+                <Label Grid.Column="2" Text="Fecha Fin" Style="{StaticResource ColumnTitleStyle}" />
+            </Grid>
+
+            <!-- ListView para los datos -->
+            <ListView x:Name="CampaignDataListView" ItemsSource="{Binding CampaignDataList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Datos -->
+                                <Label Grid.Column="0" Text="{Binding Name}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10" />
+                                <Label Grid.Column="1" Text="{Binding StartDate, StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10" />
+                                <Label Grid.Column="2" Text="{Binding EndDate, StringFormat='{0:dd/MM/yyyy}'}" Style="{StaticResource LabelStyle}" Padding="0,10,0,10" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
+
+

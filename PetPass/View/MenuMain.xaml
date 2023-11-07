@@ -13,85 +13,59 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <!-- Dividimos la página en dos partes con un StackLayout vertical -->
-    <StackLayout>
-        <!-- Parte superior -->
-        <StackLayout BackgroundColor="Blue">
-            <!-- Parte superior -->
-            <StackLayout BackgroundColor="Blue">
-                <!-- Fila 1: Bienvenido con espacio arriba y abajo -->
-                <Label Text="Bienvenido"
-               VerticalOptions="CenterAndExpand"
-               VerticalTextAlignment="Center"
-               HorizontalOptions="CenterAndExpand"
-               Margin="0,15,0,15"/>
-            </StackLayout>
-
-            <!-- Parte inferior -->
-            <Grid>
-                <Grid.RowDefinitions>
-                    <!-- Primera fila en la parte inferior, para la imagen -->
-                    <RowDefinition Height="150" />
-                    <!-- Segunda fila en la parte inferior, para los datos -->
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-
-                <!-- Primera columna, para cargar una imagen -->
-                <StackLayout Grid.Row="0">
-                    <Image x:Name="myImage" WidthRequest="300" HeightRequest="300"/>
-
-                </StackLayout>
-
-                <!-- Segunda columna, para mostrar tres datos -->
-                <StackLayout Grid.Row="1" Orientation="Horizontal">
-                    <!-- Coloca los tres datos aquí, por ejemplo, etiquetas o controles de texto -->
-                </StackLayout>
-            </Grid>
-        </StackLayout>
-
-        <!-- Parte inferior (botones y otros elementos) -->
+    <ScrollView>
+        <!-- Dividimos la página en dos partes con un StackLayout vertical -->
         <StackLayout>
-            <Button x:Name="showReportsButton" Text="Mostrar Reportes" Clicked="OnShowReportsClicked" 
-                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-
-            <!-- Espacio para mostrar los botones adicionales de "Mostrar Reportes" -->
-            <StackLayout x:Name="showReportsButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
-                <Button Text="Registros de mascotas por Jefe Brigada" Clicked="OnReporte1Clicked" />
-                <Button Text="Registros de jefe de Brigada por zona" Clicked="OnReporte2Clicked" />
-                <Button Text="Registro de mascotas por zona" Clicked="OnReporte3Clicked" />
+            <!-- Parte superior -->
+            <StackLayout BackgroundColor="Blue" HeightRequest="40" WidthRequest="1500" Margin="0,0,0,80">
+                <!-- Parte superior -->
             </StackLayout>
 
-            <!-- Botón "Por Jefe Brigada" -->
-            <Button x:Name="jefeBrigadaButton" Text="Por Jefe Brigada" Clicked="OnJefeBrigadaClicked" 
-                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <!-- Parte inferior (botones y otros elementos) -->
+            <StackLayout>
+                <!-- Botón "Reportes" -->
+                <Button x:Name="showReportsButton" Text="Reportes" Clicked="OnShowReportsClicked" 
+        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200" />
 
-            <!-- Espacio para mostrar los botones adicionales de "Por Jefe Brigada" -->
-            <StackLayout x:Name="jefeBrigadaButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
-                <Button Text="Crear Jefe" Clicked="OnJefeBrigada1Clicked" />
-                <Button Text="Detalles" Clicked="OnJefeBrigada2Clicked" />
+                <!-- Espacio para mostrar los botones adicionales de "Mostrar Reportes" -->
+                <StackLayout x:Name="showReportsButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                    <Button Text="Mascotas por Jefe Brigada" Clicked="OnReporte1Clicked" Margin="0,10,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue" />
+                    <Button Text="Jefe de Brigada por zona" Clicked="OnReporte2Clicked" Margin="0,0,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue" />
+                    <Button Text="Mascotas por zona" Clicked="OnReporte3Clicked"  Margin="0,0,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue"/>
+                </StackLayout>
+
+                <!-- Botón "Por Jefe Brigada" -->
+                <Button x:Name="jefeBrigadaButton" Text="Jefes Brigadas" Clicked="OnJefeBrigadaClicked" 
+        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200" />
+
+                <!-- Espacio para mostrar los botones adicionales de "Por Jefe Brigada" -->
+                <StackLayout x:Name="jefeBrigadaButtonsStackLayout" IsVisible="false" HorizontalOptions="Center" >
+                    <Button Text="Crear Jefe" Clicked="OnJefeBrigada1Clicked" Margin="0,10,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue"/>
+                    <Button Text="Detalles" Clicked="OnJefeBrigada2Clicked" Margin="0,0,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue"/>
+                </StackLayout>
+
+                <!-- Botón "Crear Campañas" -->
+                <Button x:Name="crearCampanasButton" Text="Campañas" Clicked="OnCrearCampanasClicked" 
+        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200" />
+
+                <!-- Espacio para mostrar los botones adicionales de "Crear Campañas" -->
+                <StackLayout x:Name="crearCampanasButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                    <Button Text="Crear Campaña" Clicked="OnCrearCampanas1Clicked" Margin="0,10,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue"/>
+                    <Button Text="Detalles" Clicked="OnCrearCampanas2Clicked" Margin="0,0,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue"/>
+                </StackLayout>
+
+                <!-- Botón "Crear Patrullaje" -->
+                <Button x:Name="crearPatrullajeButton" Text="Patrullajes" Clicked="OnCrearPatrullajeClicked" 
+        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200" />
+
+                <!-- Espacio para mostrar los botones adicionales de "Crear Patrullaje" -->
+                <StackLayout x:Name="crearPatrullajeButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
+                    <Button Text="Crear Patrullaje " Clicked="OnCrearPatrullajeAClicked" Margin="0,10,0,10" WidthRequest="200" BackgroundColor="LightSkyBlue"/>
+                    <Button Text="Detalles" Clicked="OnCrearPatrullajeBClicked" Margin="0,0,0,10" WidthRequest="200"  BackgroundColor="LightSkyBlue"/>
+                </StackLayout>
             </StackLayout>
 
-            <!-- Botón "Crear Campañas" -->
-            <Button x:Name="crearCampanasButton" Text="Crear Campañas" Clicked="OnCrearCampanasClicked" 
-                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-
-            <!-- Espacio para mostrar los botones adicionales de "Crear Campañas" -->
-            <StackLayout x:Name="crearCampanasButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
-                <Button Text="Opción 1" Clicked="OnCrearCampanas1Clicked" />
-                <Button Text="Opción 2" Clicked="OnCrearCampanas2Clicked" />
-                <Button Text="Opción 3" Clicked="OnCrearCampanas3Clicked" />
-            </StackLayout>
-
-            <!-- Botón "Crear Patrullaje" -->
-            <Button x:Name="crearPatrullajeButton" Text="Patrullaje" Clicked="OnCrearPatrullajeClicked" 
-                    VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-
-            <!-- Espacio para mostrar los botones adicionales de "Crear Patrullaje" -->
-            <StackLayout x:Name="crearPatrullajeButtonsStackLayout" IsVisible="false" HorizontalOptions="Center">
-                <Button Text="Crear Patrullaje " Clicked="OnCrearPatrullajeAClicked" />
-                <Button Text="Opción B" Clicked="OnCrearPatrullajeBClicked" />
-                <Button Text="Opción C" Clicked="OnCrearPatrullajeCClicked" />
-            </StackLayout>
+           
         </StackLayout>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>

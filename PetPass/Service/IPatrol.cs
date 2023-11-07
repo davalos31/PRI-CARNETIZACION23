@@ -13,14 +13,14 @@ namespace PetPass.Service
 		
 	
 
-		Task<List<Campaigns>> GetCampaignsAsync();
+		Task<List<Campaigns>> GetCampaignsAsync(string token);
 		
 
 		Task<bool> CreatePatrolAsyncApi(string token, Patrol1 patrol);
 
 		Task<List<Zone>> GetZonesAsyncApi(string token);
 
-		Task<List<Patrol1>> GetPatrolAsyncApi(string token);
+		Task<List<PatrolInfo>> GetPatrolAsyncApi(string token);
 
 		Task<Patrol1> GetPatrolDetailsAsyncApi(string token, int patrolId);
 	}

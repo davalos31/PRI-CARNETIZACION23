@@ -193,6 +193,19 @@ namespace PetPass.Validation
             return (true, null);
         }
 
+        public (bool, string) ValidateAgeOver18(DateTime birthDate)
+        {
+            DateTime today = DateTime.Now;
+            DateTime eighteenYearsAgo = today.AddYears(-18);
+
+            if (birthDate > eighteenYearsAgo)
+            {
+                return (false, "La persona debe ser mayor de 18 años.");
+            }
+
+            return (true, null);
+        }
+
     }
 }
 

@@ -21,37 +21,37 @@ namespace PetPass.Service
 
 		public async Task<bool> CreatePatrolAsyncApi(string token, Patrol1 patrol)
 		{
-			//try
-			//{
-			//	using (HttpClient client = new HttpClient())
-			//	{
+            //try
+            //{
+            //    using (HttpClient client = new HttpClient())
+            //    {
 
-			//		string patrolJson = JsonConvert.SerializeObject(patrol);
+            //        string patrolJson = JsonConvert.SerializeObject(patrol);
 
-					
-			//		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-					
-			//		var content = new StringContent(patrolJson, Encoding.UTF8, "application/json");
+            //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-					
-			//		HttpResponseMessage response = await client.PostAsync("PetPass/Patrol/CreatePatrol", content);
 
-			//		if (response.IsSuccessStatusCode)
-			//		{
-						
-			//			return true;
-			//		}
-			//	}
-			//}
-			//catch (Exception ex)
-			//{
-			
-			//	Console.WriteLine($"Error al crear el Patrol: {ex.Message}");
-			//}
+            //        var content = new StringContent(patrolJson, Encoding.UTF8, "application/json");
 
-	
-			//return false;
+
+            //        HttpResponseMessage response = await client.PostAsync("PetPass/Patrol/CreatePatrol", content);
+
+            //        if (response.IsSuccessStatusCode)
+            //        {
+
+            //            return true;
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    Console.WriteLine($"Error al crear el Patrol: {ex.Message}");
+            //}
+
+
+            //return false;
 
 
 
@@ -132,35 +132,35 @@ namespace PetPass.Service
 		{
             //try
             //{
-            //	using (HttpClient client = new HttpClient())
-            //	{
+            //    using (HttpClient client = new HttpClient())
+            //    {
 
 
-            //		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 
-            //		HttpResponseMessage response = await client.GetAsync("PetPass/Patrol/GetZones");
+            //        HttpResponseMessage response = await client.GetAsync("PetPass/Patrol/GetZones");
 
-            //		if (response.IsSuccessStatusCode)
-            //		{
+            //        if (response.IsSuccessStatusCode)
+            //        {
 
-            //			string responseContent = await response.Content.ReadAsStringAsync();
-            //			List<Zone> zoneList = JsonConvert.DeserializeObject<List<Zone>>(responseContent);
-            //			return zoneList;
-            //		}
-            //		else
-            //		{
+            //            string responseContent = await response.Content.ReadAsStringAsync();
+            //            List<Zone> zoneList = JsonConvert.DeserializeObject<List<Zone>>(responseContent);
+            //            return zoneList;
+            //        }
+            //        else
+            //        {
 
-            //			Console.WriteLine("Error: " + response.StatusCode);
-            //			return null;
-            //		}
-            //	}
+            //            Console.WriteLine("Error: " + response.StatusCode);
+            //            return null;
+            //        }
+            //    }
             //}
             //catch (Exception ex)
             //{
 
-            //	Console.WriteLine("Error: " + ex.Message);
-            //	return null;
+            //    Console.WriteLine("Error: " + ex.Message);
+            //    return null;
             //}
 
             string apiUrl = "https://localhost:44313/PetPass/Patrol/GetZones";
@@ -206,35 +206,35 @@ namespace PetPass.Service
 		{
             //try
             //{
-            //	using (HttpClient client = new HttpClient())
-            //	{
+            //    using (HttpClient client = new HttpClient())
+            //    {
 
 
-            //		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 
-            //		HttpResponseMessage response = await client.GetAsync("PetPass/Patrol");
+            //        HttpResponseMessage response = await client.GetAsync("PetPass/Patrol");
 
-            //		if (response.IsSuccessStatusCode)
-            //		{
+            //        if (response.IsSuccessStatusCode)
+            //        {
 
-            //			string responseContent = await response.Content.ReadAsStringAsync();
-            //			List<Patrol1> patrolList = JsonConvert.DeserializeObject<List<Patrol1>>(responseContent);
-            //			return patrolList;
-            //		}
-            //		else
-            //		{
+            //            string responseContent = await response.Content.ReadAsStringAsync();
+            //            List<PatrolInfo> patrolList = JsonConvert.DeserializeObject<List<PatrolInfo>>(responseContent);
+            //            return patrolList;
+            //        }
+            //        else
+            //        {
 
-            //			Console.WriteLine("Error: " + response.StatusCode);
-            //			return null;
-            //		}
-            //	}
+            //            Console.WriteLine("Error: " + response.StatusCode);
+            //            return null;
+            //        }
+            //    }
             //}
             //catch (Exception ex)
             //{
 
-            //	Console.WriteLine("Error: " + ex.Message);
-            //	return null;
+            //    Console.WriteLine("Error: " + ex.Message);
+            //    return null;
             //}
 
 
@@ -278,7 +278,7 @@ namespace PetPass.Service
 
 
 
-		public async Task<List<Campaigns>> GetCampaignsAsync(string token)
+        public async Task<List<Campaigns>> GetCampaignsAsync(string token)
 		{
 
 

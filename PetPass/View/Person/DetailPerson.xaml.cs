@@ -62,7 +62,7 @@ public partial class DetailPerson : ContentPage
         if (sender is Button button && button.CommandParameter is int PersonId)
         {
             string userIDValue = PersonId.ToString(); 
-            DisplayAlert("ID Guardado", "El valor de la persona es: " + userIDValue, "OK");
+            DisplayAlert("Exito", "Usuario Seleccionado", "OK");
             Navigation.PushAsync(new EditPerson(PersonId,_token,_userId));
         }
         else

@@ -115,7 +115,7 @@ public partial class CreateOwner : ContentPage
 			return false;
 		}
 
-		validacion = val.ValidateDate(EntryBirthDate.Date);
+		validacion = val.ValidateAgeOver18(EntryBirthDate.Date);
 		if (!validacion.res)
 		{
 			DisplayAlert("Error", "la fecha de nacimiento " + validacion.msg, "ok");

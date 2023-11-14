@@ -67,41 +67,36 @@ namespace PetPass.Service
 
 		public async Task<List<PersonRegister>> GetPeopleAsync(string token)
 		{
-			try
-			{
-				using (HttpClient client = new HttpClient())
-				{
-					// Define la URL del servicio
-					string apiUrl = "https://localhost:44313/PetPass/People";
+			
+            try
+            {
+                using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "PetPass/People"))
+                {
+                    // Agregar el token de autorización a la solicitud
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-					// Configura el encabezado de autorización con el token
-					client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    var response = await _httpClient.SendAsync(requestMessage);
 
-					// Realiza una solicitud GET al servicio
-					HttpResponseMessage response = await client.GetAsync(apiUrl);
-
-					if (response.IsSuccessStatusCode)
-					{
-						// Lee y deserializa el contenido de la respuesta a una lista de Persons
-						string responseContent = await response.Content.ReadAsStringAsync();
-						List<PersonRegister> peopleList = JsonConvert.DeserializeObject<List<PersonRegister>>(responseContent);
-						return peopleList;
-					}
-					else
-					{
-						// Maneja el error si la solicitud no fue exitosa
-						Console.WriteLine("Error: " + response.StatusCode);
-						return null;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				// Maneja las excepciones, como problemas de red
-				Console.WriteLine("Error: " + ex.Message);
-				return null;
-			}
-		}
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var campaigns = JsonConvert.DeserializeObject<List<PersonRegister>>(responseContent);
+                        return campaigns;
+                    }
+                    else
+                    {
+                        // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar una lista vacía
+                        return new List<PersonRegister>();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Maneja excepciones, por ejemplo, registra el error
+                Console.WriteLine("Error: " + ex.Message);
+                return new List<PersonRegister>();
+            }
+        }
 
 		public async Task<bool> UpdatePersonAsync(string token, PersonRegister person)
 		{
@@ -143,39 +138,66 @@ namespace PetPass.Service
 
 		public async Task<PersonRegister> GetPersonDetailsAsync(string token, int personId)
 		{
-			try
-			{
-				using (HttpClient client = new HttpClient())
-				{
-					// Define la URL del servicio con el ID de la persona
-					string apiUrl = $"https://localhost:44313/PetPass/People/{personId}";
+			//try
+			//{
+			//	using (HttpClient client = new HttpClient())
+			//	{
+			//		// Define la URL del servicio con el ID de la persona
+			//		string apiUrl = $"https://localhost:44313/PetPass/People/{personId}";
 
-					// Configura el encabezado de autorización con el token
-					client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+			//		// Configura el encabezado de autorización con el token
+			//		client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-					// Realiza una solicitud GET al servicio
-					HttpResponseMessage response = await client.GetAsync(apiUrl);
+			//		// Realiza una solicitud GET al servicio
+			//		HttpResponseMessage response = await client.GetAsync(apiUrl);
 
-					if (response.IsSuccessStatusCode)
-					{
-						// Lee y deserializa el contenido de la respuesta a un objeto Person
-						string responseContent = await response.Content.ReadAsStringAsync();
-						PersonRegister person = JsonConvert.DeserializeObject<PersonRegister>(responseContent);
-						return person;
-					}
-					else
-					{
-						// Maneja el error si la solicitud no fue exitosa
+			//		if (response.IsSuccessStatusCode)
+			//		{
+			//			// Lee y deserializa el contenido de la respuesta a un objeto Person
+			//			string responseContent = await response.Content.ReadAsStringAsync();
+			//			PersonRegister person = JsonConvert.DeserializeObject<PersonRegister>(responseContent);
+			//			return person;
+			//		}
+			//		else
+			//		{
+			//			// Maneja el error si la solicitud no fue exitosa
+			//			return null;
+			//		}
+			//	}
+			//}
+			//catch (Exception ex)
+			//{
+			//	// Maneja las excepciones, como problemas de red
+			//	return null;
+			//}
+
+            try
+            {
+                using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, $"PetPass/People/{personId}"))
+                {
+                    // Agregar el token de autorización a la solicitud
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    var response = await _httpClient.SendAsync(requestMessage);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        PersonRegister person = JsonConvert.DeserializeObject<PersonRegister>(responseContent);
+                        return person;
+                    }
+                    else
+                    {
+						// Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar una lista vacía
 						return null;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				// Maneja las excepciones, como problemas de red
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 				return null;
-			}
-		}
+            }
+        }
 
 		public async Task<bool> DeletePersonAsync(string token, int personId)
 		{

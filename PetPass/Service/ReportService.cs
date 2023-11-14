@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace PetPass.Service
 {
-    public class ReportService :  IReport
+    public class ReportService :  BaseService, IReport
     {
 
-        public ReportService() 
+        public ReportService() : base()
         {
 
         }
@@ -21,124 +21,104 @@ namespace PetPass.Service
  
 
 
-        public async Task<List<BrigadierData>> GetBrigadierDataAsync(string token)
+        public async Task<List<BrigadierData>> GetBrigadierDataAsync(string authToken)
         {
-            // URL del servicio API
-            string apiUrl = "https://localhost:44313/PetPass/Reports/GetPetsRegisteredByBrigadiers";
-
-            using (var httpClient = new HttpClient())
+           
+            try
             {
-                // Establecer el encabezado de autorización con el token
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                try
+                using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "PetPass/Reports/GetPetsRegisteredByBrigadiers"))
                 {
-                    // Realizar la solicitud GET al servicio API
-                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                    // Agregar el token de autorización a la solicitud
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                    var response = await _httpClient.SendAsync(requestMessage);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // Leer la respuesta como una cadena JSON
-                        string responseBody = await response.Content.ReadAsStringAsync();
-
-                        // Deserializar la respuesta en una lista de objetos
-                        List<BrigadierData> brigadierDataList = JsonConvert.DeserializeObject<List<BrigadierData>>(responseBody);
-
-                        return brigadierDataList;
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var campaigns = JsonConvert.DeserializeObject<List<BrigadierData>>(responseContent);
+                        return campaigns;
                     }
                     else
                     {
-                        Console.WriteLine($"Error en la solicitud: {response.StatusCode}");
+                        // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar una lista vacía
+                        return new List<BrigadierData>();
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error en la solicitud: {ex.Message}");
-                }
             }
-
-            // Si hay un error, devuelve una lista vacía o maneja el error de acuerdo a tus necesidades
-            return new List<BrigadierData>();
+            catch (Exception ex)
+            {
+                // Maneja excepciones, por ejemplo, registra el error
+                Console.WriteLine("Error: " + ex.Message);
+                return new List<BrigadierData>();
+            }
         }
 
-        public async Task<List<BrigadierData>> GetZoneReport(string token)
+        public async Task<List<BrigadierData>> GetZoneReport(string authToken)
         {
-            // URL del servicio API
-            string apiUrl = "https://localhost:44313/PetPass/Reports/GetZoneReport";
+           
 
-            using (var httpClient = new HttpClient())
+            try
             {
-                // Establecer el encabezado de autorización con el token
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                try
+                using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "PetPass/Reports/GetZoneReport"))
                 {
-                    // Realizar la solicitud GET al servicio API
-                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                    // Agregar el token de autorización a la solicitud
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+
+                    var response = await _httpClient.SendAsync(requestMessage);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // Leer la respuesta como una cadena JSON
-                        string responseBody = await response.Content.ReadAsStringAsync();
-
-                        // Deserializar la respuesta en una lista de objetos
-                        List<BrigadierData> brigadierDataList = JsonConvert.DeserializeObject<List<BrigadierData>>(responseBody);
-
-                        return brigadierDataList;
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var campaigns = JsonConvert.DeserializeObject<List<BrigadierData>>(responseContent);
+                        return campaigns;
                     }
                     else
                     {
-                        Console.WriteLine($"Error en la solicitud: {response.StatusCode}");
+                        // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar una lista vacía
+                        return new List<BrigadierData>();
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error en la solicitud: {ex.Message}");
-                }
             }
-
-            // Si hay un error, devuelve una lista vacía o maneja el error de acuerdo a tus necesidades
-            return new List<BrigadierData>();
+            catch (Exception ex)
+            {
+                // Maneja excepciones, por ejemplo, registra el error
+                Console.WriteLine("Error: " + ex.Message);
+                return new List<BrigadierData>();
+            }
         }
 
         public async Task<List<BrigadierData>> GetZoneAndTotalDogs(string token)
         {
-            // URL del servicio API
-            string apiUrl = "https://localhost:44313/PetPass/Reports/GetZoneAndTotalDogs";
 
-            using (var httpClient = new HttpClient())
+            try
             {
-                // Establecer el encabezado de autorización con el token
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                try
+                using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "PetPass/Reports/GetZoneAndTotalDogs"))
                 {
-                    // Realizar la solicitud GET al servicio API
-                    HttpResponseMessage response = await httpClient.GetAsync(apiUrl);
+                    // Agregar el token de autorización a la solicitud
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+                    var response = await _httpClient.SendAsync(requestMessage);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // Leer la respuesta como una cadena JSON
-                        string responseBody = await response.Content.ReadAsStringAsync();
-
-                        // Deserializar la respuesta en una lista de objetos
-                        List<BrigadierData> brigadierDataList = JsonConvert.DeserializeObject<List<BrigadierData>>(responseBody);
-
-                        return brigadierDataList;
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var campaigns = JsonConvert.DeserializeObject<List<BrigadierData>>(responseContent);
+                        return campaigns;
                     }
                     else
                     {
-                        Console.WriteLine($"Error en la solicitud: {response.StatusCode}");
+                        // Maneja los errores, por ejemplo, puedes lanzar una excepción o retornar una lista vacía
+                        return new List<BrigadierData>();
                     }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error en la solicitud: {ex.Message}");
-                }
             }
-
-            // Si hay un error, devuelve una lista vacía o maneja el error de acuerdo a tus necesidades
-            return new List<BrigadierData>();
+            catch (Exception ex)
+            {
+                // Maneja excepciones, por ejemplo, registra el error
+                Console.WriteLine("Error: " + ex.Message);
+                return new List<BrigadierData>();
+            }
         }
 
 

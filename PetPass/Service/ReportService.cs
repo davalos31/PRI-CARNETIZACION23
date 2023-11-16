@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PetPass.Service
 {
-    public class ReportService :  BaseService, IReport
+    public class ReportService : BaseService, IReport
     {
 
         public ReportService() : base()
@@ -18,12 +18,12 @@ namespace PetPass.Service
         }
 
 
- 
+
 
 
         public async Task<List<BrigadierData>> GetBrigadierDataAsync(string authToken)
         {
-           
+
             try
             {
                 using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, "PetPass/Reports/GetPetsRegisteredByBrigadiers"))
@@ -56,7 +56,7 @@ namespace PetPass.Service
 
         public async Task<List<BrigadierData>> GetZoneReport(string authToken)
         {
-           
+
 
             try
             {
@@ -124,5 +124,5 @@ namespace PetPass.Service
 
     }
 
- }
+}
 

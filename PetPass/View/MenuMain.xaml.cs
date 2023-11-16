@@ -17,12 +17,12 @@ namespace PetPass.View
         string _token;
         string _image;
 
-        public MenuMain(int userId, string token, string image)
+        public MenuMain(int userId, string token)
         {
             InitializeComponent();
             _userId = userId;
             _token = token;
-            _image = image;
+            // _image = image;
 
             //myImage.Source = new UriImageSource { Uri = new Uri(_image) };
 
@@ -135,7 +135,7 @@ namespace PetPass.View
 
         private void OnCrearCampanas1Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreateCampaign( _token));
+            Navigation.PushAsync(new CreateCampaign(_token));
         }
 
         private void OnCrearCampanas2Clicked(object sender, EventArgs e)
@@ -175,7 +175,7 @@ namespace PetPass.View
 
         private void OnCrearPatrullajeBClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new DetailPatrol( _token,_userId));
+            Navigation.PushAsync(new DetailPatrol(_token, _userId));
         }
 
         private void OnCrearPatrullajeCClicked(object sender, EventArgs e)

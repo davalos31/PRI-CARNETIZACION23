@@ -12,7 +12,7 @@ namespace PetPass.View.Patrol
     public partial class DetailPatrol : ContentPage
     {
         private ObservableCollection<PatrolInfo> Patrols;
-       
+
         private PatrolService _patrolService;
         string _tokenValue;
         int _idUser;
@@ -44,7 +44,7 @@ namespace PetPass.View.Patrol
                 Patrols = new ObservableCollection<PatrolInfo>();
                 string authToken = _tokenValue; // Reemplaza con tu token real
                 List<PatrolInfo> patrolList = await _patrolService.GetPatrolAsyncApi(authToken);
-               
+
                 if (patrolList != null)
                 {
                     // Los datos se cargaron con éxito, ahora puedes usar la lista `patrolList`.

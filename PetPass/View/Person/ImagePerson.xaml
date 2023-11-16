@@ -14,7 +14,7 @@
             <cv:CameraView x:Name="CameraView" WidthRequest="300" HeightRequest="300"
                            CamerasLoaded="CameraView_CamerasLoaded"/>
 
-            <Button x:Name="btnPick" Text="Take photo" Clicked="btnPick_Clicked"/>
+            <Button x:Name="btnPick" Text="Tomar Foto" Clicked="btnPick_Clicked"/>
 
             <Button x:Name="btnPick1" Text="Volver Atras" Clicked="btnVolver_Clicked"/>
 

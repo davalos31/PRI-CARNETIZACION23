@@ -11,10 +11,10 @@ public partial class DetailPerson : ContentPage
     int _idPerson;
     int _userId;
     string _token;
-    
+
     public DetailPerson(string token, int _idUser)
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _token = token;
         _userId = _idUser;
         _personService = new PersonService();
@@ -61,9 +61,10 @@ public partial class DetailPerson : ContentPage
     {
         if (sender is Button button && button.CommandParameter is int PersonId)
         {
-            string userIDValue = PersonId.ToString(); 
+            string userIDValue = PersonId.ToString();
             DisplayAlert("Exito", "Usuario Seleccionado", "OK");
-            Navigation.PushAsync(new EditPerson(PersonId,_token,_userId));
+
+            Navigation.PushAsync(new EditPerson(PersonId, _token, _userId));
         }
         else
         {

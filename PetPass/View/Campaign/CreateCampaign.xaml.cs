@@ -26,16 +26,18 @@ public partial class CreateCampaign : ContentPage
 
     private async Task SaveCampaignAsync()
     {
+        // Deshabilita el botón antes de iniciar el proceso
+        SaveCampaignButton.IsEnabled = false;
 
         string nameCam = NameEntry.Text;
         DateTime startDate = DateTime.Now;
         DateTime endDate = EndDateEntry.Date;
         Validations val = new Validations();
-        (bool isNameValid, string nameError) = val.ValidateCampaignName(nameCam);
+        // (bool isNameValid, string nameError) = val.ValidateCampaignName(nameCam);
         (bool isEndDateValid, string EndDateError) = val.ValidateEndDate(endDate);
         (bool isCharacterValid, string CharacterError) = val.ContainsSpecialCharacters(nameCam);
 
-        if (isNameValid && isEndDateValid && isCharacterValid)
+        if (/*isNameValid &&*/ isEndDateValid && isCharacterValid)
         {
             try
             {
@@ -65,17 +67,25 @@ public partial class CreateCampaign : ContentPage
             {
                 await Application.Current.MainPage.DisplayAlert("Error", "Ocurrió un error: " + ex.Message, "OK");
             }
+            finally
+            {
+                // Habilita el botón después de completar el proceso, incluso si hay una excepción
+                SaveCampaignButton.IsEnabled = true;
+            }
         }
         else
         {
+            // Muestra un mensaje de error con los detalles de las validaciones fallidas
             string errorMessage = "Por favor, corrija los siguientes errores:\n";
-            if (!isNameValid) errorMessage += $"- {nameError}\n";
+            // if (!isNameValid) errorMessage += $"- {nameError}\n";
             if (!isEndDateValid) errorMessage += $"- {EndDateError}\n";
             if (!isCharacterValid) errorMessage += $"- {CharacterError}\n";
 
             await DisplayAlert("Error", errorMessage, "OK");
-        }
 
+            // Habilita el botón después de mostrar el mensaje de error
+            SaveCampaignButton.IsEnabled = true;
+        }
     }
 
     void Clear()

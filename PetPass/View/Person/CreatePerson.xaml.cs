@@ -23,17 +23,22 @@ public partial class CreatePerson : ContentPage
 
     private async void CreatePersonButton_Clicked(object sender, EventArgs e)
     {
+        // Deshabilitar los botones antes de iniciar el proceso
+        AssignPhotoButton.IsEnabled = false;
+        SendButton.IsEnabled = false;
+
         string name = NameEntry.Text;
         string firtname = FirtsEntry.Text;
         string lastName = LastNameEntry.Text;
         string ci = CIEntry.Text;
-        string gender = GenderEntry.Text;
+        string gender = GenderPicker.SelectedItem as string;
         string address = AddressEntry.Text;
         string phone = PhoneEntry.Text;
         string email = EmailEntry.Text;
         int state = 1;
         int userId = _userId;
         string base64Image = Validations.GetCapturedImageBase64();
+
         // Realiza las validaciones
         Validations val = new Validations();
         (bool isNameValid, string nameError) = val.ValidateName(name);
@@ -50,8 +55,6 @@ public partial class CreatePerson : ContentPage
             try
             {
                 // Supongamos que 'Validations.GetCapturedImageBase64()' contiene la imagen en formato base64
-
-
                 var person = new PersonRegister
                 {
                     Name = name,
@@ -85,6 +88,12 @@ public partial class CreatePerson : ContentPage
             {
                 await DisplayAlert("Error", ex.Message, "OK");
             }
+            finally
+            {
+                // Habilitar los botones después de completar el proceso, incluso si hay una excepción
+                AssignPhotoButton.IsEnabled = true;
+                SendButton.IsEnabled = true;
+            }
         }
         else
         {
@@ -100,13 +109,29 @@ public partial class CreatePerson : ContentPage
             if (!isImageValid) errorMessage += $"- {imageError}\n";
 
             await DisplayAlert("Error", errorMessage, "OK");
+
+            // Habilitar los botones después de mostrar el mensaje de error
+            AssignPhotoButton.IsEnabled = true;
+            SendButton.IsEnabled = true;
         }
     }
 
-
     private async void CamerButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ImagePerson());
+        try
+        {
+            // Deshabilitar los botones antes de iniciar el proceso
+            AssignPhotoButton.IsEnabled = false;
+            SendButton.IsEnabled = false;
+
+            await Navigation.PushAsync(new ImagePerson());
+        }
+        finally
+        {
+            // Habilitar los botones después de mostrar la página, incluso si hay una excepción
+            AssignPhotoButton.IsEnabled = true;
+            SendButton.IsEnabled = true;
+        }
     }
 
     void Clear()
@@ -115,7 +140,7 @@ public partial class CreatePerson : ContentPage
         FirtsEntry.Text = "";
         LastNameEntry.Text = "";
         CIEntry.Text = "";
-        GenderEntry.Text = "";
+        //GenderEntry.Text = "";
         AddressEntry.Text = "";
         PhoneEntry.Text = "";
         EmailEntry.Text = "";

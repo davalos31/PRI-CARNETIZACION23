@@ -18,7 +18,7 @@
                 <DatePicker x:Name="patrolDatePicker"  />
 
                 <!-- Botón para agregar -->
-                <Button Text="Agregar" Clicked="OnInsertButtonClicked" />
+                <Button Text="Crear Patrullaje" x:Name="CreatePatrolButton" Clicked="OnInsertButtonClicked" />
             </StackLayout>
         </VerticalStackLayout>
 

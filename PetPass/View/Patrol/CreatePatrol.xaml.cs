@@ -27,7 +27,7 @@ namespace PetPass.View.Patrol
         public CreatePatrol(int personID, string _token)
         {
             InitializeComponent();
-    
+
             _patrolService = new PatrolService();
             _tokenValue = _token;
             _idUser = personID;
@@ -50,8 +50,8 @@ namespace PetPass.View.Patrol
                 zones = await _patrolService.GetZonesAsyncApi(_tokenValue);
                 campaigns = await _patrolService.GetCampaignsAsync(_tokenValue);
 
-              zoneNames.Clear();
-              campaignNames.Clear();
+                zoneNames.Clear();
+                campaignNames.Clear();
 
                 foreach (var zone in zones)
                 {
@@ -67,7 +67,7 @@ namespace PetPass.View.Patrol
             {
                 // Handle the exception, for example, log it or display an error message.
                 await DisplayAlert("Error al cargar lista de datos", ex.Message, "OK");
-             }
+            }
         }
 
         private void OnZonePickerSelectedIndexChanged(object sender, EventArgs e)
@@ -98,21 +98,19 @@ namespace PetPass.View.Patrol
         {
             try
             {
-
+                // Deshabilitar el botón antes de iniciar el proceso
+                CreatePatrolButton.IsEnabled = false;
 
                 selectedDate = patrolDatePicker.Date;
-
                 string authToken = _tokenValue;
-
 
                 Model.Person person = null;
                 Zone zone = null;
                 Campaigns campaign = null;
 
                 person = new Model.Person() { PersonId = _idUser };
-                byte zoneId = (byte)selectedZoneId; // Realiza una conversión explícita a byte
+                byte zoneId = (byte)selectedZoneId;
                 campaign = new Campaigns { CampaignID = selectedCampaignId };
-
 
                 Patrol1 newPatrol = new Patrol1
                 {
@@ -123,16 +121,26 @@ namespace PetPass.View.Patrol
                 };
 
                 Validations val = new Validations();
+
+                // Validaciones
                 (bool isNameValid, string nameError) = val.ValidateFields(zoneId, selectedCampaignId);
                 (bool isEndDateValid, string EndDateError) = val.ValidateDate(selectedDate);
 
-                if (isNameValid && isEndDateValid)
+                if (isNameValid && isEndDateValid && selectedDate > DateTime.Now)
                 {
+                    // Validación adicional para verificar que la zona y la campaña no estén vacías
+                    if (zoneId == 0 || selectedCampaignId == 0)
+                    {
+                        await DisplayAlert("Error", "La zona y la campaña no pueden estar vacías.", "OK");
+                        return;
+                    }
+
                     bool createResult = await _patrolService.CreatePatrolAsyncApi(authToken, newPatrol);
 
                     if (createResult)
                     {
                         await DisplayAlert("Éxito", "Patrulla creada", "OK");
+                        Navigation.PopAsync();
                     }
                     else
                     {
@@ -145,14 +153,29 @@ namespace PetPass.View.Patrol
                     if (!isNameValid) errorMessage += $"- {nameError}\n";
                     if (!isEndDateValid) errorMessage += $"- {EndDateError}\n";
 
+                    // Validación adicional para verificar que la zona y la campaña no estén vacías
+                    if (zoneId == 0 || selectedCampaignId == 0)
+                    {
+                        errorMessage += "- La zona y la campaña no pueden estar vacías.\n";
+                    }
+
+                    // Validación adicional para verificar que la fecha sea posterior a la actual
+                    if (selectedDate <= DateTime.Now)
+                    {
+                        errorMessage += "- La fecha debe ser posterior a la actual.\n";
+                    }
+
                     await DisplayAlert("Error", errorMessage, "OK");
                 }
-
-
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error", "Ocurrió un error: " + ex.Message, "OK");
+            }
+            finally
+            {
+                // Habilitar el botón después de completar el proceso
+                CreatePatrolButton.IsEnabled = true;
             }
         }
 

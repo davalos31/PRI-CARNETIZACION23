@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PetPass.View.Patrol.DetailPatrol"
              Title="DetailPatrol">
-    <VerticalStackLayout>
-        <!-- Contenido de tu página aquí -->
-        <ScrollView>
+    <ScrollView>
+        <VerticalStackLayout>
+            <!-- Contenido de tu página aquí -->
+
             <StackLayout>
                 <Grid BackgroundColor="#EFEFF1">
                     <Grid.ColumnDefinitions>
@@ -41,6 +42,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-        </ScrollView>
-    </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

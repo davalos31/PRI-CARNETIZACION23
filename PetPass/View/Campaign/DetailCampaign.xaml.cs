@@ -11,10 +11,10 @@ public partial class DetailCampaign : ContentPage
     {
         InitializeComponent();
         // Inicializa viewModel con una instancia de CampaignViewModel y CampaignService
-       // viewModel = new CampaignViewModel(new CampaignService());
+        // viewModel = new CampaignViewModel(new CampaignService());
         _campaignService = new CampaignService();
         _token = token;
-      //  BindingContext = viewModel;
+        //  BindingContext = viewModel;
         LoadPersonData();
     }
 
@@ -33,14 +33,14 @@ public partial class DetailCampaign : ContentPage
             }
             else
             {
-                
+
                 await DisplayAlert("Error", "No se encontraron datos de las campanias.", "OK");
             }
         }
         catch (Exception ex)
         {
-         
-          
+
+
             await DisplayAlert("Error", "Ocurrió un error al cargar los datos de la campania.", "OK");
         }
     }
@@ -75,13 +75,13 @@ public partial class DetailCampaign : ContentPage
         //bool deleteConfirmation = _campaignService.DeleteCampaign(_id);
         bool deleteConfirmation = true;
 
-      
+
 
         bool result = await DisplayAlert("Confirmación", "¿Está seguro de eliminar el registro?", "Sí", "No");
 
         if (result && deleteConfirmation)
         {
-           
+
 
             await DisplayAlert("Éxito", "El registro se ha eliminado con éxito.", "OK");
         }

@@ -15,12 +15,18 @@ namespace PetPass.Validation
         private static string capturedImageBase64;
         public (bool, string) ValidateName(string value)
         {
-            if (string.IsNullOrEmpty(value)) return (false, "el nombre es obligatorio");
+            if (string.IsNullOrEmpty(value))
+            {
+                return (false, "El nombre es obligatorio");
+            }
 
             foreach (char c in value)
-                if (!char.IsLetter(c))
-                    if (!c.Equals(' '))
-                        return (false, "solo puede contener letras");
+            {
+                if (!char.IsLetter(c) && !char.IsWhiteSpace(c))
+                {
+                    return (false, "Solo puede contener letras");
+                }
+            }
 
             return (true, null);
         }
@@ -29,9 +35,12 @@ namespace PetPass.Validation
             if (string.IsNullOrEmpty(value)) return (false, "el primer Apellido es obligatorio");
 
             foreach (char c in value)
-                if (!char.IsLetter(c))
-                    if (!c.Equals(' '))
-                        return (false, "solo puede contener letras");
+            {
+                if (!char.IsLetter(c) && !char.IsWhiteSpace(c))
+                {
+                    return (false, "Solo puede contener letras");
+                }
+            }
 
             return (true, null);
         }
@@ -40,9 +49,12 @@ namespace PetPass.Validation
             if (string.IsNullOrEmpty(value)) return (false, "el segundo Apellido es obligatorio");
 
             foreach (char c in value)
-                if (!char.IsLetter(c))
-                    if (!c.Equals(' '))
-                        return (false, "solo puede contener letras");
+            {
+                if (!char.IsLetter(c) && !char.IsWhiteSpace(c))
+                {
+                    return (false, "Solo puede contener letras");
+                }
+            }
 
             return (true, null);
         }
@@ -164,6 +176,13 @@ namespace PetPass.Validation
         public (bool, string) ContainsSpecialCharacters(string input)
         {
 
+            // Validar que el nombre de la campaña no esté vacío
+            if (string.IsNullOrEmpty(input))
+            {
+                return (false, "El nombre de la campaña no puede estar vacío.");
+            }
+
+            // Validar la presencia de caracteres especiales en el nombre
             string specialCharacters = "!@#$%^&*()_+[]{}|;:'\",.<>?~";
             foreach (char c in specialCharacters)
             {
@@ -172,6 +191,8 @@ namespace PetPass.Validation
                     return (false, "El nombre de la campaña contiene caracteres especiales.");
                 }
             }
+
+            // Si no se encontraron caracteres especiales y el nombre no está vacío, la validación es exitosa
             return (true, null);
         }
 

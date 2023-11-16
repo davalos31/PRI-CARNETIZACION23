@@ -10,6 +10,6 @@
         <Label Text="Fecha de Finalización" />
         <DatePicker x:Name="EndDateEntry" />
 
-        <Button Text="Guardar Campaña" Clicked="OnSaveCampaignClicked"/>
+        <Button Text="Crear Campaña" Clicked="OnSaveCampaignClicked" x:Name="SaveCampaignButton" />
     </StackLayout>
 </ContentPage>

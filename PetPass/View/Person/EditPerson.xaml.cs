@@ -33,7 +33,7 @@ public partial class EditPerson : ContentPage
             FirtsEntry.Text = person.FirstName;
             LastNameEntry.Text = person.LastName;
             CIEntry.Text = person.CI;
-            GenderEntry.Text = person.Gender;
+            GenderPicker.SelectedItem = person.Gender;
             AddressEntry.Text = person.Address;
             PhoneEntry.Text = person.Phone.ToString();
             EmailEntry.Text = person.Email;
@@ -51,6 +51,9 @@ public partial class EditPerson : ContentPage
     {
         try
         {
+            // Deshabilitar los botones antes de iniciar el proceso
+            AssignPhotoButton.IsEnabled = false;
+            UpdateCampaignButton.IsEnabled = false;
 
             string base64Image = Validations.GetCapturedImageBase64();
 
@@ -61,45 +64,36 @@ public partial class EditPerson : ContentPage
                 FirstName = FirtsEntry.Text,
                 LastName = LastNameEntry.Text,
                 CI = CIEntry.Text,
-                Gender = GenderEntry.Text,
+                Gender = GenderPicker.SelectedItem as string,
                 Address = AddressEntry.Text,
                 Phone = int.Parse(PhoneEntry.Text),
                 Email = EmailEntry.Text,
                 State = 1,
                 UserID = _idUserValue,
                 Image = base64Image
-
-
-
             };
 
-
             string authToken = _token;
-
 
             Validations val = new Validations();
             (bool isNameValid, string nameError) = val.ValidateName(person.Name);
             (bool isFirtsNameValid, string FirtsnameError) = val.ValidateFirstName(person.FirstName);
             (bool isLastNameValid, string LastnameError) = val.ValidateLastName(person.LastName);
             (bool isGenderValid, string genderError) = val.ValidateGender(person.Gender);
-            (bool isImageValid, string imageError) = val.ValidateImage(person.Image);
             (bool isPhoneValid, string phoneError) = val.ValidatePhone(person.Phone.ToString());
             (bool isCIValid, string ciError) = val.ValidateCI(person.CI);
             (bool isEmailValid, string emailError) = val.ValidateEmail(person.Email);
 
-
-
-            if (isNameValid && isPhoneValid && isCIValid && isEmailValid && isFirtsNameValid && isLastNameValid && isGenderValid && isImageValid)
+            if (isNameValid && isPhoneValid && isCIValid && isEmailValid && isFirtsNameValid && isLastNameValid && isGenderValid /*&& isImageValid*/)
             {
-                // Llama al método CreatePersonAsync de PersonService
+                // Llama al método UpdatePersonAsync de PersonService
                 bool updatePerson = await _personService.UpdatePersonAsync(_token, person);
 
                 if (updatePerson)
                 {
                     DisplayAlert("Éxito", "Jefe Brigada Actualizado correctamente.", "OK");
-                    Clear();
-                    // Navigation.PushAsync(new MenuMain(_idUserValue, _token));
-                    Navigation.PopAsync();
+
+                    Navigation.PushAsync(new MenuMain(_idUserValue, _token));
                 }
                 else
                 {
@@ -117,7 +111,7 @@ public partial class EditPerson : ContentPage
                 if (!isFirtsNameValid) errorMessage += $"- {FirtsnameError}\n";
                 if (!isLastNameValid) errorMessage += $"- {LastnameError}\n";
                 if (!isGenderValid) errorMessage += $"- {genderError}\n";
-                if (!isImageValid) errorMessage += $"- {imageError}\n";
+                //if (!isImageValid) errorMessage += $"- {imageError}\n";
 
                 await DisplayAlert("Error", errorMessage, "OK");
             }
@@ -126,23 +120,28 @@ public partial class EditPerson : ContentPage
         {
             await DisplayAlert("Error", ex.Message, "OK");
         }
-
-
-        void Clear()
+        finally
         {
-            NameEntry.Text = "";
-            FirtsEntry.Text = "";
-            LastNameEntry.Text = "";
-            CIEntry.Text = "";
-            GenderEntry.Text = "";
-            AddressEntry.Text = "";
-            PhoneEntry.Text = "";
-            EmailEntry.Text = "";
+            // Habilitar los botones después de completar el proceso, incluso si hay una excepción
+            AssignPhotoButton.IsEnabled = true;
+            UpdateCampaignButton.IsEnabled = true;
         }
-
     }
     private async void CamerButton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new ImagePerson());
+        try
+        {
+            // Deshabilitar los botones antes de iniciar el proceso
+            AssignPhotoButton.IsEnabled = false;
+            UpdateCampaignButton.IsEnabled = false;
+
+            await Navigation.PushAsync(new ImagePerson());
+        }
+        finally
+        {
+            // Habilitar los botones después de mostrar la página, incluso si hay una excepción
+            AssignPhotoButton.IsEnabled = true;
+            UpdateCampaignButton.IsEnabled = true;
+        }
     }
 }

@@ -21,8 +21,12 @@
             <Image x:Name="myImage2" WidthRequest="300" HeightRequest="300"/>
             <Image x:Name="myImage3" WidthRequest="300" HeightRequest="300"/>
             <Image x:Name="myImage4" WidthRequest="300" HeightRequest="300"/>
-            <Button x:Name="btnTerminar" Text="Terminar " Clicked="btnTerminar_Clicked"/>
+            <Button x:Name="btnTerminar" Text="Terminar " Clicked="btnTerminar_Clicked" IsEnabled="False"/>
 
+            <Grid BackgroundColor="Transparent" Opacity="0.5">
+                <ActivityIndicator x:Name="loadingIndicator" IsRunning="False" IsVisible="False"
+                               HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            </Grid>
         </StackLayout>
     </ScrollView>
 </ContentPage>          

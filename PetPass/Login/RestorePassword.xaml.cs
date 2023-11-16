@@ -17,6 +17,10 @@ public partial class RestorePassword : ContentPage
 
 	private async void btnRestorePassword_Clicked(object sender, EventArgs e)
 	{
+		loadingIndicator.IsRunning = true;
+		loadingIndicator.IsVisible = true;
+		btnRestaurar.IsEnabled = false;
+
 		try
 		{
 			string res = Validate();
@@ -32,17 +36,24 @@ public partial class RestorePassword : ContentPage
 				}
 				else
 				{
-					await DisplayAlert("Sistema", "revise el codigo", "ok");
+					await DisplayAlert("Error", "no se pudo conectar con el sistema", "ok");
 				}
 			}
 			else
 			{
-				await DisplayAlert("dato no aceptado", res, "ok");
+				await DisplayAlert("Error", res, "ok");
 			}
 		}
 		catch (Exception ex)
 		{
 			Console.WriteLine(ex.Message);
+		}
+		finally
+		{
+			// Ocultar la pantalla de carga, incluso si hay una excepción
+			loadingIndicator.IsRunning = false;
+			loadingIndicator.IsVisible = false;
+			btnRestaurar.IsEnabled = true;
 		}
 	}
 

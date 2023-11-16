@@ -56,6 +56,10 @@
                 </VerticalStackLayout>
             </StackLayout>
 
+            <Grid BackgroundColor="Transparent" Opacity="0.5">
+                <ActivityIndicator x:Name="loadingIndicator" IsRunning="False" IsVisible="False"
+                               HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            </Grid>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

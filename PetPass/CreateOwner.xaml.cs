@@ -50,11 +50,17 @@ public partial class CreateOwner : ContentPage
 
 	private async void btnRegistrar_Clicked(object sender, EventArgs e)
 	{
-		bool valid = Validation();
+		// Mostrar la pantalla de carga
+		loadingIndicator.IsRunning = true;
+		loadingIndicator.IsVisible = true;
+		btnRegistrar.IsEnabled = false;
+		btnVolver.IsEnabled = false;
 
-		if (valid)
+		try
 		{
-			try
+			bool valid = Validation();
+
+			if (valid)
 			{
 				Person p = new(0, EntryName.Text, EntryFirstName.Text, EntryLastName.Text, EntryCI.Text, Sexos[EntryGender.SelectedIndex][0].ToString(), EntryAddress.Text, int.Parse(EntryPhone.Text), EntryEmail.Text, 1);
 
@@ -62,20 +68,25 @@ public partial class CreateOwner : ContentPage
 				if (res)
 				{
 					await DisplayAlert("Sistema", "el registro se completo correctamente", "ok");
-					var page = new MainPage();
-					await Navigation.PushAsync(page);
+					await Navigation.PopAsync();
 				}
 				else
 				{
 					await DisplayAlert("Sistema", "no se pudo completar el registro", "ok");
 				}
-
 			}
-			catch
-			{
-				await DisplayAlert("Sistema", "no se pudo completar el registro", "ok");
-			}
-
+		}
+		catch
+		{
+			await DisplayAlert("Sistema", "no se pudo completar el registro", "ok");
+		}
+		finally
+		{
+			// Ocultar la pantalla de carga, incluso si hay una excepción
+			loadingIndicator.IsRunning = false;
+			loadingIndicator.IsVisible = false;
+			btnRegistrar.IsEnabled = true;
+			btnVolver.IsEnabled = true;
 		}
 	}
 

@@ -13,6 +13,10 @@ public partial class RequireEmail : ContentPage
 
 	private async void btnRecovery_Clicked(object sender, EventArgs e)
 	{
+		loadingIndicator.IsRunning = true;
+		loadingIndicator.IsVisible = true;
+		btnRecovery.IsEnabled = false;
+
 		try
 		{
 			int UserId = await ls.FindByEmail(EmailEntry.Text);
@@ -29,6 +33,13 @@ public partial class RequireEmail : ContentPage
 		catch (Exception ex)
 		{
 			Console.WriteLine(ex.Message);
+		}
+		finally
+		{
+			// Ocultar la pantalla de carga, incluso si hay una excepción
+			loadingIndicator.IsRunning = false;
+			loadingIndicator.IsVisible = false;
+			btnRecovery.IsEnabled = true;
 		}
 	}
 }

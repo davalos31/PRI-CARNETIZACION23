@@ -29,7 +29,7 @@ public partial class RegisterPet : ContentPage
         }
         catch
         {
-            await DisplayAlert("Sistema", "no se pudo completar el registro1", "ok");
+            await DisplayAlert("Sistema", "no se pudo completar el registro de mascota", "ok");
         }
         
 	}

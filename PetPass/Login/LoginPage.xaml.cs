@@ -21,51 +21,74 @@ public partial class LoginPage : ContentPage
 
 	private async void Button_Clicked(object sender, EventArgs e)
 	{
-		// Validar que el campo de correo electrónico no esté vacío
-		if (string.IsNullOrWhiteSpace(UserEntry.Text))
-		{
-			await DisplayAlert("Error", "Por favor, ingrese su correo electrónico.", "OK");
-			return;
-		}
+		loadingIndicator.IsRunning = true;
+		loadingIndicator.IsVisible = true;
+		btnLogin.IsEnabled = false;
 
-		// Validar que el campo de contraseña no esté vacío
-		if (string.IsNullOrWhiteSpace(PasswordEntry.Text))
+		try
 		{
-			await DisplayAlert("Error", "Por favor, ingrese su contraseña.", "OK");
-			return;
-		}
-
-		// antes de mandar debe recibir el token, id, rol, etc
-		AuthResponse res = await LS.Login(UserEntry.Text, PasswordEntry.Text);
-		if (res != null)
-		{
-			// Aquí puedes agregar la lógica de autenticación y manejo del inicio de sesión
-			// Si las validaciones pasan, realiza la autenticación y navega a la siguiente página
-			session.AuthResponse = res;
-			if (!res.FirstLogin)
+			// Validar que el campo de correo electrónico no esté vacío
+			if (string.IsNullOrWhiteSpace(UserEntry.Text))
 			{
-				if (res.Role == 'A') //admin
+				await DisplayAlert("Error", "Por favor, ingrese su nombre de usuario.", "OK");
+				return;
+			}
+
+			// Validar que el campo de contraseña no esté vacío
+			if (string.IsNullOrWhiteSpace(PasswordEntry.Text))
+			{
+				await DisplayAlert("Error", "Por favor, ingrese su contraseña.", "OK");
+				return;
+			}
+
+			// antes de mandar debe recibir el token, id, rol, etc
+			AuthResponse res = await LS.Login(UserEntry.Text, PasswordEntry.Text);
+			if (res != null)
+			{
+				// Aquí puedes agregar la lógica de autenticación y manejo del inicio de sesión
+				// Si las validaciones pasan, realiza la autenticación y navega a la siguiente página
+				session.AuthResponse = res;
+				if (!res.FirstLogin)
 				{
-					await Navigation.PushAsync(new MenuMain(session.AuthResponse.userID, session.AuthResponse.Token,session.AuthResponse.Photo));
+					if (res.Role == 'A') //admin
+					{
+						await Navigation.PushAsync(new MenuMain(session.AuthResponse.userID, session.AuthResponse.Token, session.AuthResponse.Photo));
+					}
+					else if (res.Role == 'B')//brigadier
+					{
+						await Navigation.PushAsync(new MenuBrigadier());
+					}
+					else if (res.Role == 'O')// dueño
+					{
+						await DisplayAlert("mensaje", "No hay ventana de dueño.", "OK");
+					}
 				}
-				else if (res.Role == 'B')//brigadier
+				else
 				{
-					await Navigation.PushAsync(new MenuBrigadier());
+					await Navigation.PushAsync(new FirstLogin());
 				}
-				else if (res.Role == 'O')// dueño
-				{
-					await DisplayAlert("mensaje", "No hay ventana de dueño.", "OK");
-				}
+
 			}
 			else
 			{
-				await Navigation.PushAsync(new FirstLogin());
+				await DisplayAlert("Error", "Usaurio o contraseña no validos.", "OK");
 			}
-
 		}
-		else
+		finally
 		{
-			await DisplayAlert("Error", "Usaurio o contraseña no validos.", "OK");
+			// Ocultar la pantalla de carga, incluso si hay una excepción
+			loadingIndicator.IsRunning = false;
+			loadingIndicator.IsVisible = false;
+			btnLogin.IsEnabled = true;
 		}
+	}
+
+	protected async override void OnAppearing()
+	{
+		base.OnAppearing();
+
+		await Navigation.PopToRootAsync();
+		PasswordEntry.Text = "";
+		session.AuthResponse = null;
 	}
 }

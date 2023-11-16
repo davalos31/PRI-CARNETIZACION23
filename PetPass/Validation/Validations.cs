@@ -19,7 +19,7 @@ namespace PetPass.Validation
 
             foreach (char c in value)
                 if (!char.IsLetter(c))
-                    if (!c.Equals(" "))
+                    if (!c.Equals(' '))
                         return (false, "solo puede contener letras");
 
             return (true, null);
@@ -30,7 +30,7 @@ namespace PetPass.Validation
 
             foreach (char c in value)
                 if (!char.IsLetter(c))
-                    if (!c.Equals(" "))
+                    if (!c.Equals(' '))
                         return (false, "solo puede contener letras");
 
             return (true, null);
@@ -41,7 +41,7 @@ namespace PetPass.Validation
 
             foreach (char c in value)
                 if (!char.IsLetter(c))
-                    if (!c.Equals(" "))
+                    if (!c.Equals(' '))
                         return (false, "solo puede contener letras");
 
             return (true, null);

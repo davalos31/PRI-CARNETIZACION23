@@ -33,20 +33,20 @@ public partial class UseCamera : ContentPage
 				await CameraView.StartCameraAsync();
 			});
 
-			//if (DeviceInfo.Platform != DevicePlatform.Android)
-			//{
-			//	CameraView.Camera = CameraView.Cameras.First();
+			/*if (DeviceInfo.Platform != DevicePlatform.Android)
+			{
+				CameraView.Camera = CameraView.Cameras.First();
 
-			//	MainThread.BeginInvokeOnMainThread(async () =>
-			//	{
-			//		await CameraView.StopCameraAsync();
-			//		await CameraView.StartCameraAsync();
-			//	});
-			//}
-			//else
-			//{
-			//	CameraView.IsVisible = false;
-			//}
+				MainThread.BeginInvokeOnMainThread(async () =>
+				{
+					await CameraView.StopCameraAsync();
+					await CameraView.StartCameraAsync();
+				});
+			}
+			else
+			{
+				CameraView.IsVisible = false;
+			}*/
 		}
 		catch
 		{
@@ -56,6 +56,9 @@ public partial class UseCamera : ContentPage
 
 	private void btnPick_Clicked(object sender, EventArgs e)
 	{
+		generalCamera();
+		
+
 		//if (DeviceInfo.Platform == DevicePlatform.Android)
 		//{
 		//	cameraAndroid();
@@ -64,8 +67,42 @@ public partial class UseCamera : ContentPage
 		//{
 		//	generalCamera();
 		//}
-		generalCamera();
 	}
+
+	private async void btnTerminar_Clicked(object sender, EventArgs e)
+	{
+		// Mostrar la pantalla de carga
+		loadingIndicator.IsRunning = true;
+		loadingIndicator.IsVisible = true;
+		btnTerminar.IsEnabled = false;
+
+		try
+		{
+			PetCreated p = new(0, pet1.Name, pet1.Specie, pet1.Breed, pet1.Gender, pet1.BirthDate, pet1.SpecialFeature, 0, pet1.PersonId, session.AuthResponse.userID, base64Images);
+			bool res = await pets.CreatePet(p);
+			if (res)
+			{
+				await DisplayAlert("Sistema", "el registro se completo correctamente", "ok");
+
+				await CameraView.StopCameraAsync();
+
+				await Navigation.PushAsync(new MenuBrigadier());
+			}
+			else
+			{
+				await DisplayAlert("Sistema", "no se pudo completar el registro", "ok");
+			}
+		}
+		finally
+		{
+			// Ocultar la pantalla de carga, incluso si hay una excepción
+			loadingIndicator.IsRunning = false;
+			loadingIndicator.IsVisible = false;
+			btnTerminar.IsEnabled = true;
+		}
+
+	}
+
 
 	private async void generalCamera()
 	{
@@ -89,13 +126,19 @@ public partial class UseCamera : ContentPage
 				{
 					if (index < 4)
 					{
-						base64Images.Add(Convert.ToBase64String(imageBytes));  // este es el string para mandar
-						if (index == 0) myImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
-						else if (index == 1) myImage2.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
-						else if (index == 2) myImage3.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
-						else if (index == 3) myImage4.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)); // este es para mostrar en la aplicacion
+						base64Images.Add(Convert.ToBase64String(imageBytes));
+						if (index == 0) myImage.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+						else if (index == 1) myImage2.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+						else if (index == 2) myImage3.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+						else if (index == 3) myImage4.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
 
 						index++;
+
+						if (index == 4)
+						{
+							btnTerminar.IsEnabled = true;
+							btnPick.IsEnabled = false;
+						}
 					}
 				}
 			}
@@ -105,6 +148,10 @@ public partial class UseCamera : ContentPage
 			await DisplayAlert("Valor de la Imagen", "La imagen no se puede convertir en formato base64.", "OK");
 		}
 	}
+
+	/// <summary>
+	/// no se usa
+	/// </summary>
 	private async void cameraAndroid()
 	{
 		try
@@ -158,23 +205,21 @@ public partial class UseCamera : ContentPage
 		}
 	}
 
-	private async void btnTerminar_Clicked(object sender, EventArgs e)
+	private void volver()
 	{
-		if (base64Images.Count == 4)
+		// Obtén la instancia de NavigationPage
+		var navigationPage = Application.Current.MainPage as NavigationPage;
+
+		// Verifica que sea un NavigationPage y no sea nulo
+		if (navigationPage != null)
 		{
-			PetCreated p = new(0, pet1.Name, pet1.Specie, pet1.Breed, pet1.Gender, pet1.BirthDate, pet1.SpecialFeature, 0, pet1.PersonId, session.AuthResponse.userID, base64Images);
-			bool res = await pets.CreatePet(p);
-			if (res)
-			{
-				await DisplayAlert("Sistema", "el registro se completo correctamente", "ok");
+			// Obtén la página específica a la que quieres ir
+			var paginaEspecifica = new MenuBrigadier();
 
-				await CameraView.StopCameraAsync();
-
-				await Navigation.PushAsync(new MenuBrigadier());
-			}
-			else
+			// Itera sobre el historial y utiliza PopAsync hasta llegar a la página específica
+			while (navigationPage.Navigation.NavigationStack.LastOrDefault() != paginaEspecifica)
 			{
-				await DisplayAlert("Sistema", "no se pudo completar el registro", "ok");
+				navigationPage.Navigation.PopAsync();
 			}
 		}
 	}

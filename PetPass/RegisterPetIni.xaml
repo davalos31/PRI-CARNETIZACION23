@@ -12,7 +12,8 @@
 
         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
             <Entry x:Name="EntryCi" Placeholder="Número" />
-            <Button Text="Buscar" 
+            <Button x:Name="btnSearch"
+                    Text="Buscar" 
                     Clicked="Button_Clicked"/>
         </StackLayout>
 
@@ -25,6 +26,12 @@
                 BackgroundColor="#007ACC"
                 TextColor="White"
                 VerticalOptions="EndAndExpand" 
+                IsEnabled="False"
                 Clicked="btnCreate_Clicked"/>
+
+        <Grid BackgroundColor="Transparent" Opacity="0.5">
+            <ActivityIndicator x:Name="loadingIndicator" IsRunning="False" IsVisible="False"
+                               HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

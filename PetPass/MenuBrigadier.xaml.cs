@@ -7,7 +7,7 @@ public partial class MenuBrigadier : ContentPage
 		InitializeComponent();
 	}
 
-    private void Button_Clicked(object sender, EventArgs e)
+	private void Button_Clicked(object sender, EventArgs e)
     {
         var formPet = new RegisterPetIni();
         Navigation.PushAsync(formPet);

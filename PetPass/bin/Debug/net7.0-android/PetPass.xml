@@ -4,5 +4,10 @@
         <name>PetPass</name>
     </assembly>
     <members>
+        <member name="M:PetPass.UseCamera.cameraAndroid">
+            <summary>
+            no se usa
+            </summary>
+        </member>
     </members>
 </doc>

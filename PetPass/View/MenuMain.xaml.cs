@@ -89,6 +89,7 @@ namespace PetPass.View
             {
                 // Si los botones de "Por Jefe Brigada" ya están visibles, ocúltalos
                 jefeBrigadaButtonsStackLayout.IsVisible = false;
+
             }
             else
             {
